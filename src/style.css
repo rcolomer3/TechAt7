@@ -38,3 +38,10 @@
 .save-news svg{width:18px;height:18px}.save-news.is-saved{color:var(--accent)}.save-news.is-saved svg{fill:currentColor}.save-news[aria-busy="true"] svg{fill:none}
 .save-news:hover:not(:disabled){color:var(--accent);background:var(--accent-soft)}.news-card h3{margin-top:16px}
 .news-card p{text-align:justify;text-align-last:start;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3;text-wrap:wrap;overflow-wrap:break-word}
+
+/* Give reading space to both the preview and the expanded summary. */
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.news-card{padding:28px}.news-card h3{line-height:1.5;margin:20px 0 22px}
+.news-summary{margin-bottom:20px}.news-card .news-summary p{font-size:14px;line-height:1.9;margin:0 0 18px}.news-card .news-summary p:last-child{margin-bottom:0}
+.news-card .read-more{margin:0 0 22px}.news-card .card-footer{padding-top:20px}
+@media(max-width:700px){.grid{grid-template-columns:1fr;gap:22px}.news-card{padding:26px 24px}.news-card h3{font-size:21px;line-height:1.5;margin:20px 0 24px}.news-card .news-summary p{font-size:15px;line-height:1.9;margin-bottom:20px}}
