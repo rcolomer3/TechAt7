@@ -1,6 +1,7 @@
 import type {SVGProps} from 'react';
-type IconName='today'|'archive'|'updates'|'calendar'|'settings'|'refresh'|'sun'|'moon'|'display'|'appearance'|'check'|'bell'|'radar'|'cloud';
+type IconName='bookmark'|'today'|'archive'|'updates'|'calendar'|'settings'|'refresh'|'sun'|'moon'|'display'|'appearance'|'check'|'bell'|'radar'|'cloud';
 const paths:Record<IconName,React.ReactNode>={
+ bookmark:<path d="M6 3h12v18l-6-4-6 4V3z"/>,
  cloud:<><path d="M7 18H6a4 4 0 0 1-.4-8A6.5 6.5 0 0 1 18 8.2a5 5 0 0 1 0 9.8h-1M9 16l3 3 3-3m-3-6v9"/></>,
  sun:<><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></>,
  moon:<path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14z"/>,

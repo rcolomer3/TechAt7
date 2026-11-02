@@ -26,6 +26,14 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm test
       - run: npm run build -- --base=/TechRadar/
+      - name: Publicar reglas de noticias guardadas
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          node --input-type=module -e 'import {writeFileSync} from "node:fs"; if (!process.env.FIREBASE_SERVICE_ACCOUNT) throw new Error("Falta FIREBASE_SERVICE_ACCOUNT"); writeFileSync(process.env.RUNNER_TEMP + "/techradar-firebase.json", process.env.FIREBASE_SERVICE_ACCOUNT, {mode: 0o600});'
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/techradar-firebase.json"
+          trap 'rm -f "$GOOGLE_APPLICATION_CREDENTIALS"' EXIT
+          npx --yes firebase-tools@14.17.0 deploy --only firestore:rules --project techradar-4f238 --non-interactive
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
