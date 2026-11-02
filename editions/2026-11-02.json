@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-02",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "ivanti-connect-secure-two-exploited-zero-days-november-2026",
+      "category": "Seguridad",
+      "title": "Ivanti corrige dos fallos de Connect Secure utilizados en ataques reales",
+      "sentences": [
+        "Ivanti ha publicado parches para dos vulnerabilidades de Connect Secure que se estaban encadenando en ataques contra equipos de acceso remoto.",
+        "Los fallos CVE-2026-111357 y CVE-2026-118527 se combinaron con una vulnerabilidad de autenticación corregida en octubre para conseguir acceso privilegiado.",
+        "La firma Volexity observó ataques desde principios de octubre y documentó que los intrusos alteraban registros para dificultar su detección.",
+        "Los administradores de estos dispositivos deben instalar las versiones corregidas y revisar posibles indicios de compromiso, incluso si ya habían aplicado el parche anterior."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/ivanti-patches-two-more-connect-secure-zero-days-chained-in-attacks/",
+          "publishedAt": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "storyKey": "apple-ternus-first-earnings-memory-costs-november-2026",
+      "category": "Apple",
+      "title": "Apple afronta sus resultados con Ternus al frente y presión por el coste de la memoria",
+      "sentences": [
+        "John Ternus afronta el 2 de noviembre su primera presentación de resultados como consejero delegado de Apple, tras sustituir a Tim Cook en septiembre.",
+        "Los analistas esperan un crecimiento cercano al 11 % en los ingresos del trimestre de julio a septiembre, pero advierten del encarecimiento de los chips de memoria.",
+        "Los inversores también esperan detalles sobre la estrategia de inteligencia artificial, la nueva Siri y las previsiones de ventas para la campaña navideña.",
+        "El iPhone plegable Duo y otros dispositivos recientes empezaron a venderse en el trimestre actual, por lo que su impacto se reflejará sobre todo en las próximas previsiones."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/retail-consumer/apples-new-ceo-ternus-face-first-earnings-test-memory-costs-surge-2026-11-02/",
+          "publishedAt": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "storyKey": "marvell-lumentum-115-billion-optical-ai-deal-2026",
+      "category": "Tecnología",
+      "title": "Marvell acuerda comprar Lumentum por 115.000 millones de dólares",
+      "sentences": [
+        "Marvell ha anunciado la adquisición de Lumentum mediante una operación en acciones valorada en 115.000 millones de dólares, incluida la deuda.",
+        "La combinación uniría los chips y sistemas de red de Marvell con los láseres y componentes ópticos de Lumentum utilizados en centros de datos.",
+        "Ambas empresas apuestan por conexiones más rápidas y eficientes para grandes infraestructuras de inteligencia artificial, aunque el elevado precio genera dudas entre inversores.",
+        "Los consejos de administración han aprobado el acuerdo, pero su cierre está previsto para la primera mitad de 2028 y sigue sujeto a las autorizaciones necesarias."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/legal/transactional/marvell-buy-lumentum-115-billion-deal-ai-data-center-bet-2026-11-02/",
+          "publishedAt": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "storyKey": "wired-hundreds-disguised-ai-deepfake-apps-investigation-2026",
+      "category": "Seguridad",
+      "title": "Una investigación destapa cientos de aplicaciones de IA con funciones ocultas de deepfakes abusivos",
+      "sentences": [
+        "WIRED ha identificado una red de más de 400 aplicaciones y dominios que aparentaban ofrecer servicios corrientes de inteligencia artificial, como retratos de mascotas.",
+        "Según la investigación, determinadas condiciones activaban interfaces ocultas para generar imágenes y vídeos íntimos falsificados sin consentimiento.",
+        "Los investigadores vincularon la promoción de estas herramientas con anuncios en plataformas de Meta y con aplicaciones presentes en las tiendas de Apple y Google.",
+        "Apple retiró 19 aplicaciones tras recibir la información y las plataformas afirman que prohíben este contenido, lo que evidencia dificultades para detectar cambios engañosos después de aprobar una app."
+      ],
+      "sources": [
+        {
+          "name": "WIRED",
+          "url": "https://www.wired.com/story/hundreds-of-mundane-ai-apps-are-hiding-abusive-deepfake-features/",
+          "publishedAt": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "storyKey": "anthropic-q3-2026-financial-filing-ipo",
+      "category": "Inteligencia artificial",
+      "title": "Anthropic aumenta sus ingresos mientras prepara su salida a bolsa",
+      "sentences": [
+        "Una documentación regulatoria actualizada revela que Anthropic ingresó 16.960 millones de dólares en el tercer trimestre, frente a 11.560 millones en el anterior.",
+        "Su pérdida neta se redujo a 23.290 millones de dólares, aunque la compañía siguió registrando pérdidas operativas por el coste de la infraestructura y la investigación.",
+        "El documento también recoge compromisos de gasto informático cercanos a 895.400 millones de dólares con distintos socios, que implican importantes necesidades de financiación.",
+        "La empresa se prepara para presentar sus acciones a inversores en noviembre, pero el calendario y la valoración definitiva de su salida a bolsa aún no están cerrados."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/anthropics-quarterly-loss-shrinks-revenue-jumps-ahead-blockbuster-ipo-2026-11-02/",
+          "publishedAt": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "storyKey": "europe-supermarket-refrigeration-cyberattacks-november-2026",
+      "category": "Seguridad",
+      "title": "Un ciberataque altera sistemas de refrigeración de supermercados europeos",
+      "sentences": [
+        "Supermercados de Suecia, Bélgica y Luxemburgo han sufrido incidencias en sus sistemas de refrigeración y congelación, con pérdidas de alimentos en varias tiendas.",
+        "Entre las cadenas afectadas figuran ICA, Coop y establecimientos de Ahold Delhaize y Colruyt, según la información recopilada por Reuters.",
+        "Algunos equipos utilizaban sistemas de control de temperatura de Danfoss, cuyo fabricante afirma estar ayudando a sus clientes a aplicar soluciones.",
+        "Las autoridades todavía no han identificado a los responsables ni confirmado una relación con ataques similares registrados en Francia durante octubre."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/retail-consumer/temperature-soars-swedish-grocery-store-freezers-one-store-blames-hackers-2026-11-02/",
+          "publishedAt": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "storyKey": "openai-adnoc-g42-ai-energy-deployment-november-2026",
+      "category": "Inteligencia artificial",
+      "title": "OpenAI acuerda desplegar su tecnología de IA en la energética ADNOC",
+      "sentences": [
+        "La petrolera estatal ADNOC, la empresa tecnológica G42 y OpenAI han firmado un acuerdo para aplicar inteligencia artificial avanzada a las operaciones energéticas de ADNOC.",
+        "El anuncio se ha realizado durante la feria ADIPEC de Abu Dabi, donde el responsable de ADNOC afirmó que sería la primera energética en utilizar esta tecnología de frontera.",
+        "Sam Altman explicó que los modelos se destinarán a problemas operativos complejos, aunque no se han detallado todavía resultados concretos del despliegue.",
+        "OpenAI también ha anunciado acuerdos con Mubadala e Inception42 para explorar aplicaciones de IA en análisis de inversiones y evaluación de riesgos."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/energy/abu-dhabis-adnoc-g42-sign-deal-with-openai-sam-altman-travels-uae-2026-11-02/",
+          "publishedAt": "2026-11-02"
+        }
+      ]
+    }
+  ]
+}
