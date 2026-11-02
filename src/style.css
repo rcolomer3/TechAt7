@@ -51,3 +51,6 @@
 .share-feedback{position:absolute;bottom:calc(100% + 6px);left:0;z-index:2;min-width:130px;max-width:240px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);font-size:12px;line-height:1.5;box-shadow:var(--shadow)}.share-manual{width:220px;display:flex;gap:8px;align-items:flex-start}.share-manual label{display:grid;gap:8px;min-width:0}.share-manual input{width:100%;padding:8px;border:1px solid var(--border);border-radius:8px;color:var(--text);background:var(--surface-soft)}.share-manual button{padding:0 4px;min-height:28px;border:0;background:transparent}
 
 .news-card .card-footer{position:relative}
+
+/* Keep the two article actions together without squeezing the metadata. */
+.news-card .card-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;position:relative}.card-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px;min-width:0}.card-meta .tag{margin-right:0;max-width:100%;overflow-wrap:anywhere;line-height:1.5}.card-actions{display:flex;align-items:center;flex-shrink:0;gap:0;margin-right:-10px}.card-actions .save-news{margin:0}.card-actions .share-feedback{top:calc(100% + 6px);bottom:auto;left:auto;right:0;max-width:min(240px,100%)}
