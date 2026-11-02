@@ -5,6 +5,23 @@ service cloud.firestore {
   match /digests/{date} { allow read: if resource.data.status == 'published'; allow write: if false; }
   match /updates/{id} { allow read: if true; allow write: if false; }
   match /events/{id} { allow read: if resource.data.confirmed == true; allow write: if false; }
+  match /users/{uid}/saved/{id} {
+   allow read, delete: if signedIn() && request.auth.uid == uid;
+   allow create, update: if signedIn() && request.auth.uid == uid
+    && id.matches('^[a-f0-9]{64}$')
+    && request.resource.data.keys().hasOnly(['article', 'savedAt'])
+    && request.resource.data.savedAt == request.time
+    && request.resource.data.article.keys().hasAll(['id','title','summary','url','source','publishedAt','category','editionDate'])
+    && request.resource.data.article.keys().hasOnly(['id','title','summary','url','source','publishedAt','category','editionDate'])
+    && request.resource.data.article.id is string && request.resource.data.article.id.size() <= 512
+    && request.resource.data.article.title is string && request.resource.data.article.title.size() <= 1000
+    && request.resource.data.article.summary is string && request.resource.data.article.summary.size() <= 12000
+    && request.resource.data.article.url is string && request.resource.data.article.url.size() <= 2048
+    && request.resource.data.article.source is string && request.resource.data.article.source.size() <= 256
+    && request.resource.data.article.category is string && request.resource.data.article.category.size() <= 256
+    && request.resource.data.article.publishedAt is string && request.resource.data.article.publishedAt.size() <= 64
+    && request.resource.data.article.editionDate is string && request.resource.data.article.editionDate.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
+  }
   match /users/{uid}/tokens/{id} {
    allow read, delete: if signedIn() && request.auth.uid == uid;
    allow create, update: if signedIn() && request.auth.uid == uid

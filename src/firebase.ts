@@ -11,7 +11,7 @@ export const configured=e.VITE_DEMO!=='true'&&Object.values(config).every(Boolea
 const app=configured?initializeApp(config):null;
 export const auth=app?getAuth(app):null;
 if(auth)auth.languageCode='es';
-const db=app?getFirestore(app):null;
+export const db=app?getFirestore(app):null;
 export async function login(){
  if(!auth)throw new Error('La demo no inicia sesión. Desactiva VITE_DEMO para conectar con Firebase.');
  try{return await signInWithPopup(auth,new GoogleAuthProvider());}
