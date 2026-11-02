@@ -64,3 +64,9 @@ Proyecto independiente techradar-4f238, Firestore Madrid, dominio autorizado rco
 En iOS/iPadOS 16.4 o posterior: Safari → Compartir → Añadir a pantalla de inicio → abrir PWA → Google → Ajustes → Activar avisos. HTTPS, app instalada y permiso concedido mediante un gesto del usuario. Concentración, batería y red pueden retrasar o impedir avisos. Cerrar sesión no revoca por sí solo el registro de notificaciones del dispositivo.
 
 Updates y Eventos mantienen scripts/curated.json como origen editorial de anuncios oficiales; no infieren versiones ni fechas de rumores. La interfaz se almacena para abrir sin conexión; recargar noticias requiere acceso a Firebase.
+
+## Compartir y retomar la lectura
+
+Cada noticia ofrece un botón discreto para compartir su enlace original. En móviles compatibles abre el menú del sistema; en el resto copia el enlace y, si el navegador bloquea el portapapeles, permite copiarlo manualmente. Cancelar el menú no copia ni envía nada.
+
+La sección, fecha, categoría, tarjetas ampliadas y posición de lectura se recuerdan localmente por cuenta y dispositivo. Se guardan al desplazarse, abrir una fuente o salir de la app y se recuperan cuando los datos han terminado de cargar. Un enlace explícito a otra edición tiene prioridad; una edición nueva de Hoy empieza desde arriba. Guardadas sigue sincronizándose con Firebase.
