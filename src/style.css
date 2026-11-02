@@ -31,4 +31,10 @@
 .news-search input:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.section-title>div{flex-wrap:wrap}
 @media(max-width:700px){.news-card{padding:22px}.news-card h3{font-size:21px}.news-card p{font-size:14px}.section-title select{max-width:48%;font-size:12px}}
 
-.save-news{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:44px;margin-top:12px;padding:8px 10px;border-radius:12px;font-size:11px;color:var(--secondary);background:var(--surface)}.save-news svg{width:16px;height:16px}.save-news.is-saved{color:var(--accent);background:var(--accent-soft)}.save-news.is-saved svg{fill:currentColor}.news-card:has(.save-news) h3{margin-top:12px}
+
+/* Quiet bookmark control in the metadata row, with a full touch target. */
+.news-card .card-top{gap:8px;min-height:44px}.card-top .tag{margin-right:auto}.card-top time{max-width:90px}
+.save-news{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:44px;height:44px;min-height:44px;margin:-7px -10px -7px 0;padding:0;border:0;border-radius:50%;color:var(--secondary);background:transparent}
+.save-news svg{width:18px;height:18px}.save-news.is-saved{color:var(--accent)}.save-news.is-saved svg{fill:currentColor}.save-news[aria-busy="true"] svg{fill:none}
+.save-news:hover:not(:disabled){color:var(--accent);background:var(--accent-soft)}.news-card h3{margin-top:16px}
+.news-card p{text-align:justify;text-align-last:start;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3;text-wrap:wrap;overflow-wrap:break-word}
