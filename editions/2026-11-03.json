@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-03",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "apple-q4-2026-iphone-sales-record",
+      "category": "Apple",
+      "title": "Apple logra un récord de ingresos del iPhone pese a limitar la renovación a modelos Pro",
+      "sentences": [
+        "Apple ha comunicado un aumento del 17 % en los ingresos del iPhone durante su último trimestre fiscal, alcanzando un récord para ese periodo.",
+        "La compañía consiguió ese resultado sin lanzar un nuevo iPhone estándar en la renovación de este año.",
+        "Las cifras ya son resultados presentados por Apple, no previsiones de analistas.",
+        "El dato muestra la fortaleza comercial de sus modelos de gama alta, aunque no garantiza que el ritmo de crecimiento continúe."
+      ],
+      "sources": [
+        {
+          "name": "The Verge",
+          "url": "https://www.theverge.com/tech/1024748/apple-q4-2026-iphone-sales-earnings",
+          "publishedAt": "2026-11-02T22:02:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "eu-court-adviser-google-ai-publisher-copyright-2026",
+      "category": "Inteligencia artificial",
+      "title": "Un asesor judicial europeo cuestiona el uso de noticias por la IA de Google",
+      "sentences": [
+        "Un abogado general del Tribunal de Justicia de la Unión Europea ha respaldado argumentos de editores de prensa en un litigio sobre el uso de sus contenidos por el chatbot de Google.",
+        "Su opinión considera que determinadas formas de utilización de artículos periodísticos podrían vulnerar las normas europeas de derechos de autor.",
+        "El dictamen no es todavía una sentencia definitiva y los jueces no están obligados a seguirlo.",
+        "El caso puede influir en las condiciones bajo las que los servicios de IA reutilizan noticias y compensan a sus autores."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/googles-use-press-by-ai-chatbot-may-infringe-copyright-rules-eu-court-adviser-2026-11-03/",
+          "publishedAt": "2026-11-03"
+        }
+      ]
+    },
+    {
+      "storyKey": "baidu-apollo-world-robotaxi-simulation-2026",
+      "category": "Inteligencia artificial",
+      "title": "Baidu presenta Apollo World para entrenar robotaxis con escenarios simulados",
+      "sentences": [
+        "Baidu ha lanzado Apollo World, un modelo de inteligencia artificial que simula entornos de circulación y su evolución para entrenar vehículos autónomos.",
+        "Según la empresa, la tecnología puede generar hasta 100.000 kilómetros de conducción simulada al día.",
+        "El sistema busca reducir la dependencia de pruebas físicas y permitir ensayar situaciones difíciles de reproducir en carretera.",
+        "Esa capacidad es una afirmación del fabricante y no equivale a una validación independiente de la seguridad de los robotaxis."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/technology/chinas-baidu-launches-ai-model-simulating-road-environment-robotaxis-2026-11-03/",
+          "publishedAt": "2026-11-03"
+        }
+      ]
+    },
+    {
+      "storyKey": "schwarz-digits-bull-european-ai-cloud-agreement-2026",
+      "category": "Tecnología",
+      "title": "Schwarz Digits y Bull preparan una nube de IA bajo jurisdicción europea",
+      "sentences": [
+        "Schwarz Digits, la división tecnológica del propietario de Lidl, y el fabricante francés Bull han firmado un acuerdo preliminar para desarrollar servicios de computación de IA en Europa.",
+        "La plataforma STACKIT ofrecería la capacidad de nube mientras Bull fabricaría los equipos y colaboraría en el diseño de servidores.",
+        "La propuesta está orientada a empresas y administraciones que buscan mantener sus cargas de trabajo bajo jurisdicción europea.",
+        "Todavía no se han comunicado condiciones económicas ni un calendario definitivo de disponibilidad."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/retail-consumer/schwarz-digits-bull-partner-up-build-european-ai-computing-services-2026-11-03/",
+          "publishedAt": "2026-11-03T13:07:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "uk-ncsc-ai-ransomware-critical-infrastructure-2028-warning",
+      "category": "Seguridad",
+      "title": "Reino Unido alerta del riesgo de ransomware con IA contra infraestructuras críticas",
+      "sentences": [
+        "El Centro Nacional de Ciberseguridad británico considera muy probable que antes de 2028 se utilice malware impulsado por IA en ataques de ransomware contra infraestructuras críticas.",
+        "Su evaluación abarca servicios como hospitales, aeropuertos, energía y transporte.",
+        "La agencia advierte de que la IA puede facilitar la búsqueda de vulnerabilidades y la preparación de ataques, aunque también ayuda a los defensores.",
+        "Se trata de una previsión de riesgo y no de la confirmación de que ya se haya producido un ataque de ese tipo."
+      ],
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2026/nov/03/ai-powered-malware-artificial-intelligence-hacking-critical-uk-infrastructure",
+          "publishedAt": "2026-11-03"
+        }
+      ]
+    },
+    {
+      "storyKey": "google-cloud-root-in-cloud-bounty-250k-november-2026",
+      "category": "Seguridad",
+      "title": "Google eleva a 250.000 dólares la recompensa por fallos críticos de su nube",
+      "sentences": [
+        "Google ha añadido una recompensa máxima de 250.000 dólares a su programa de búsqueda de vulnerabilidades en Google Cloud.",
+        "La categoría Root-in-Cloud premia fallos que permitan obtener control administrativo completo de organizaciones o proyectos ajenos sin acceso previo.",
+        "La empresa exige pruebas controladas y prohíbe utilizar credenciales robadas, ingeniería social o sistemas reales de clientes para demostrar el problema.",
+        "El cambio busca incentivar el descubrimiento responsable de fallos graves de aislamiento entre clientes y servicios."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/google/google-adds-new-250-000-cloud-vrp-reward-for-root-in-cloud-bugs/",
+          "publishedAt": "2026-11-03"
+        }
+      ]
+    }
+  ]
+}
