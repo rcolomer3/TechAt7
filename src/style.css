@@ -37,7 +37,7 @@
 .save-news{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:44px;height:44px;min-height:44px;margin:-7px -10px -7px 0;padding:0;border:0;border-radius:50%;color:var(--secondary);background:transparent}
 .save-news svg{width:18px;height:18px}.save-news.is-saved{color:var(--accent)}.save-news.is-saved svg{fill:currentColor}.save-news[aria-busy="true"] svg{fill:none}
 .save-news:hover:not(:disabled){color:var(--accent);background:var(--accent-soft)}.news-card h3{margin-top:16px}
-.news-card p{text-align:left;text-align-last:auto;text-justify:auto;hyphens:manual;-webkit-hyphens:manual;text-wrap:wrap;overflow-wrap:break-word}
+.news-card p{text-align:justify;text-align-last:left;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3;text-wrap:wrap;overflow-wrap:break-word}
 
 /* Give reading space to both the preview and the expanded summary. */
 .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
@@ -54,3 +54,6 @@
 
 /* Keep the two article actions together without squeezing the metadata. */
 .news-card .card-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;position:relative}.card-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px;min-width:0}.card-meta .tag{margin-right:0;max-width:100%;overflow-wrap:anywhere;line-height:1.5}.card-actions{display:flex;align-items:center;flex-shrink:0;gap:0;margin-right:-10px}.card-actions .save-news{margin:0}.card-actions .share-feedback{top:calc(100% + 6px);bottom:auto;left:auto;right:0;max-width:min(240px,100%)}
+
+/* Justify card headlines as well as their summaries, keeping the last line natural. */
+.news-card h3{text-align:justify;text-align-last:left;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3;text-wrap:wrap}
