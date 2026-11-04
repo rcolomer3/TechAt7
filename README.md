@@ -14,7 +14,7 @@ La tarea de ChatGPT debe poder usar el plugin GitHub y publicar en rcolomer3/Tec
 
 ## Horario
 
-A las **19:00 Europe/Madrid** GitHub publica la edición que haya entregado ChatGPT. Si un commit llega antes, guarda un borrador privado hasta esa hora. Si ChatGPT termina después de las 19:00, el commit activa la publicación inmediatamente. Los horarios de GitHub y ChatGPT pueden sufrir retrasos.
+A partir de las **19:00 Europe/Madrid** GitHub publica la edición que haya entregado ChatGPT. El workflow programado hace un primer intento a las **19:05** y un reintento de seguridad a las **19:20** para evitar incidencias del programador de GitHub en el cambio de hora. Si un commit llega antes, guarda un borrador privado; si ChatGPT termina después de las 19:00, ese commit activa la publicación inmediatamente. Los reintentos son idempotentes y no deben duplicar avisos.
 
 No existe publicación si falta el archivo o falla una comprobación. En ese caso Actions muestra el error, conserva el historial y no envía un aviso falso. Revisa que ChatGPT haya terminado su edición; no se rellena con titulares, noticias antiguas o contenido inventado.
 
