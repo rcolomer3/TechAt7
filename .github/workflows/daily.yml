@@ -4,7 +4,11 @@ on:
     branches: [main]
     paths: ['editions/*.json']
   schedule:
-    - cron: '0 19 * * *'
+    # Avoid the top-of-hour GitHub Actions scheduling peak.
+    # The first run publishes shortly after 19:00; the second is a safe retry.
+    - cron: '5 19 * * *'
+      timezone: Europe/Madrid
+    - cron: '20 19 * * *'
       timezone: Europe/Madrid
   workflow_dispatch:
     inputs:
