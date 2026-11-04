@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-04",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "apple-siri-third-party-app-skills-ios-27-3",
+      "category": "Apple",
+      "title": "Apple abre las nuevas acciones de Siri a aplicaciones de terceros",
+      "sentences": [
+        "La versión preliminar de iOS 27.3 permite a los desarrolladores integrar nuevas capacidades de Siri en sus aplicaciones.",
+        "La función App Skills agrupa varias operaciones para que el asistente pueda ejecutarlas mediante una petición en lenguaje natural.",
+        "Siri también podrá aprovechar el contexto personal y lo que aparece en pantalla para comprender la acción solicitada.",
+        "Apple ejemplifica el cambio con la posibilidad de modificar el punto de recogida de un viaje mientras se sigue su actividad en directo."
+      ],
+      "sources": [
+        {
+          "name": "The Verge",
+          "url": "https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps",
+          "publishedAt": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "storyKey": "google-school-search-ai-opt-in-november-2026",
+      "category": "Inteligencia artificial",
+      "title": "Google vincula el acceso a Search en colegios a la activación de funciones de IA",
+      "sentences": [
+        "Google ha anunciado que los centros escolares de enseñanza obligatoria que no habiliten sus herramientas de IA perderán también el acceso a Google Search con esas cuentas.",
+        "La compañía sostiene que el buscador y sus funciones de inteligencia artificial están demasiado integrados para separarlos completamente.",
+        "Los administradores podrán activar o desactivar los servicios admitidos, pero no conservar el buscador tradicional sin las funciones de IA integradas.",
+        "La decisión ha recibido críticas de responsables públicos estadounidenses por limitar las opciones de los colegios."
+      ],
+      "sources": [
+        {
+          "name": "The Verge",
+          "url": "https://www.theverge.com/tech/1025411/google-turn-off-search-ai-features",
+          "publishedAt": "2026-11-03"
+        }
+      ]
+    },
+    {
+      "storyKey": "ios-android-apt29-watering-hole-n-day-november-2026",
+      "category": "Seguridad",
+      "title": "Detectan ataques sin interacción contra móviles iOS y Android desde webs comprometidas",
+      "sentences": [
+        "Investigadores de Sekoia han identificado una campaña que utilizaba páginas legítimas comprometidas y dominios falsos para atacar a visitantes de iOS y Android.",
+        "El código identificaba el dispositivo y el navegador para seleccionar vulnerabilidades conocidas sin requerir pulsaciones adicionales del usuario.",
+        "En algunos casos, los atacantes buscaban extraer cookies, credenciales y datos de aplicaciones de mensajería.",
+        "Los investigadores vinculan la operación con confianza moderada o alta al grupo APT29 y señalan que Apple y Google ya han corregido las vulnerabilidades utilizadas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-use-n-day-exploits-in-zero-click-attacks-on-ios-android-devices/",
+          "publishedAt": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "storyKey": "tencent-hy4-defensive-cyber-ai-model-november-2026",
+      "category": "Inteligencia artificial",
+      "title": "Tencent presenta Hy4, un modelo de IA centrado en ciberseguridad defensiva",
+      "sentences": [
+        "Tencent ha lanzado Hy4, un modelo de inteligencia artificial entrenado con datos de ciberseguridad seleccionados para tareas defensivas.",
+        "La empresa afirma que excluyó contenidos sobre creación de herramientas de intrusión y técnicas de explotación ofensiva.",
+        "Según sus pruebas internas, el modelo no mostró un aumento de capacidades para ejecutar ciberataques o eludir protecciones.",
+        "Tencent prevé publicar los pesos del modelo y un informe de seguridad, aunque esas evaluaciones todavía no equivalen a una auditoría independiente."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/legal/litigation/tencent-rolls-out-ai-model-trained-with-limited-cybersecurity-data-amid-hacking-2026-11-04/",
+          "publishedAt": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "storyKey": "us-occ-first-ai-bank-examiner-guidance-2026",
+      "category": "Tecnología",
+      "title": "El regulador bancario estadounidense fija sus primeras pautas de supervisión de IA",
+      "sentences": [
+        "La Oficina del Contralor de la Moneda de Estados Unidos ha publicado sus primeras orientaciones para inspectores sobre el uso de inteligencia artificial en bancos.",
+        "El documento no es vinculante y recomienda evaluar las consecuencias de los errores más que la complejidad técnica de cada modelo.",
+        "Un agente sencillo capaz de iniciar transferencias puede requerir más controles que un sistema avanzado utilizado solo para análisis internos.",
+        "La guía propone ajustar la supervisión humana y los límites de autonomía al riesgo real de cada aplicación."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/finance/us-bank-regulator-issues-first-ever-ai-guidance-examiners-2026-11-04/",
+          "publishedAt": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "storyKey": "india-i4c-ai-financial-cyberattacks-advisory-november-2026",
+      "category": "Seguridad",
+      "title": "India advierte a bancos y fintech del riesgo de ataques automatizados con IA",
+      "sentences": [
+        "El centro de coordinación contra el cibercrimen de India ha alertado a entidades financieras sobre ataques que emplean agentes de inteligencia artificial.",
+        "La advertencia señala riesgos en software sin actualizar, sistemas mal configurados y API de pagos o desembolsos automáticos.",
+        "Entre las medidas recomendadas figuran límites diarios y por operación, verificación de beneficiarios y detección de transferencias anormalmente rápidas.",
+        "Se trata de un aviso preventivo ante incidentes recientes, no de la confirmación de que todos esos ataques hayan utilizado IA."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/legal/government/india-cybercrime-agency-warns-financial-firms-ai-attacks-2026-11-04/",
+          "publishedAt": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "storyKey": "siltronic-ai-chip-demand-diverts-capacity-2026",
+      "category": "Tecnología",
+      "title": "La demanda de chips para IA reduce la capacidad disponible para móviles y ordenadores",
+      "sentences": [
+        "El consejero delegado de Siltronic afirma que los fabricantes de semiconductores están priorizando pedidos destinados a centros de datos de inteligencia artificial.",
+        "Esa asignación estaría limitando la oferta para otros mercados, incluidos teléfonos móviles y ordenadores personales.",
+        "Según el fabricante de obleas, los servidores de IA utilizan aproximadamente entre tres y cuatro veces más superficie de silicio que los servidores tradicionales.",
+        "Siltronic ha elevado su previsión anual de ventas, pero advierte de que la situación puede frenar el crecimiento de sectores ajenos a la IA."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/ai-boom-draws-chip-supply-other-end-markets-siltronic-ceo-says-2026-11-04/",
+          "publishedAt": "2026-11-04"
+        }
+      ]
+    }
+  ]
+}
