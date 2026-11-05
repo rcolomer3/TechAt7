@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-05",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "spain-tdt-uhd-first-phase-november-2026",
+      "category": "Tecnología",
+      "title": "La TDT española inicia su salto al 4K y obliga a resintonizar los canales",
+      "sentences": [
+        "España ha iniciado este 5 de noviembre la primera fase de ampliación de la televisión digital terrestre en Ultra Alta Definición.",
+        "La 1 UHD, La 2 UHD, Antena 3 UHD y Telecinco UHD han comenzado a emitir dentro del múltiple RGE2, según la información publicada por Xataka.",
+        "También se incorpora La Séptima en HD y algunos canales cambian de frecuencia, por lo que conviene resintonizar el televisor.",
+        "Esta fase no elimina los canales existentes y la transición general al sistema DVB-T2 todavía no tiene una fecha definitiva."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/internet-y-television/hoy-cambia-tdt-como-resintonizar-tu-televisor-para-ver-nuevos-canales-uhd-septima/amp",
+          "publishedAt": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "storyKey": "apple-macbook-pro-m6-xataka-review-2026",
+      "category": "Apple",
+      "title": "Las primeras pruebas del MacBook Pro M6 muestran avances con matices",
+      "sentences": [
+        "Xataka ha probado el MacBook Pro con chip M6 y destaca especialmente su rendimiento en tareas de un solo núcleo.",
+        "En sus mediciones, el equipo obtuvo 3.966 puntos en Geekbench 7.1 de un núcleo y 20.049 en multinúcleo.",
+        "El análisis advierte de que las cifras promocionales de Apple proceden de configuraciones concretas y no representan necesariamente al modelo básico.",
+        "La valoración es positiva, pero recuerda que la mejora real depende de las aplicaciones utilizadas y del Mac desde el que se actualice."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/analisis/macbook-pro-m6-analisis-portatil-estupendo-que-exige-responder-dos-preguntas-antes-comprarlo/amp",
+          "publishedAt": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "storyKey": "android-ghostmap-malformed-apk-boot-loop-2026",
+      "category": "Seguridad",
+      "title": "GhostMap puede bloquear un móvil Android tras instalar una aplicación maliciosa",
+      "sentences": [
+        "Investigadores de Bitdefender han documentado GhostMap, un fallo que puede provocar un bucle continuo de reinicios en Android.",
+        "Su prueba utiliza una aplicación manipulada que no solicita permisos ni necesita abrirse después de instalarla.",
+        "El problema se produce por diferencias en la interpretación de archivos comprimidos y puede afectar a un proceso esencial del sistema.",
+        "Bitdefender afirma que Google conocía el informe desde agosto, pero no consta todavía una corrección confirmada; evitar instalar APK de origen dudoso reduce la exposición."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/ghostmap-android-flaw-lets-malicious-app-trigger-persistent-boot-loop/",
+          "publishedAt": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "storyKey": "digicert-archived-customer-records-exposed-2026",
+      "category": "Seguridad",
+      "title": "DigiCert reconoce una filtración de datos de clientes y documentos de identidad",
+      "sentences": [
+        "DigiCert ha comunicado que un sistema interno quedó expuesto a Internet tras una migración y permitió acceder a registros archivados de clientes.",
+        "Los datos afectados incluyen nombres, contactos profesionales y, en algunos casos, pasaportes, permisos de conducir u otros documentos identificativos.",
+        "La compañía confirmó accesos no autorizados a información entre finales de junio y principios de julio, aunque descubrió su alcance en octubre.",
+        "Según DigiCert, las credenciales de acceso de clientes y los certificados emitidos no resultaron comprometidos, y ya está avisando a las personas afectadas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/digicert-data-breach-exposes-customer-information-identity-documents/",
+          "publishedAt": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "storyKey": "apple-imac-m6-verge-review-november-2026",
+      "category": "Apple",
+      "title": "El iMac M6 mejora la conectividad, pero conserva casi todo su diseño",
+      "sentences": [
+        "The Verge ha publicado su análisis del iMac de 2026 equipado con el chip M6 y una pantalla de 24 pulgadas con resolución 4,5K.",
+        "La actualización incorpora Wi-Fi 7 y Bluetooth 6, mientras mantiene prácticamente sin cambios la pantalla, los altavoces y la cámara.",
+        "El medio destaca la sencillez de instalación y el rendimiento cotidiano, aunque señala que el ventilador puede hacerse audible con cargas exigentes.",
+        "Su principal crítica es el precio de partida de 1.499 dólares en Estados Unidos y la falta de cambios importantes en el diseño."
+      ],
+      "sources": [
+        {
+          "name": "The Verge",
+          "url": "https://www.theverge.com/tech/1027177/2026-imac-m6-review",
+          "publishedAt": "2026-11-05"
+        }
+      ]
+    }
+  ]
+}
