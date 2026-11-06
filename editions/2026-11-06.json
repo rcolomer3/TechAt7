@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "apple-bond-issuance-7-5-billion-november-2026",
+      "category": "Apple",
+      "title": "Apple recurre a los bonos para captar miles de millones de dólares",
+      "sentences": [
+        "Apple ha acudido al mercado de deuda con una emisión de bonos de alrededor de 7.500 millones de dólares, según la documentación examinada por Reuters.",
+        "La operación se divide en siete tramos con distintos vencimientos y tipos de interés.",
+        "La compañía se suma a otras grandes tecnológicas que están captando financiación mientras crecen las inversiones en infraestructura de inteligencia artificial.",
+        "La información publicada en España también señala la recompra de acciones entre los posibles destinos de los fondos, por lo que no todo el dinero debe atribuirse a proyectos de IA."
+      ],
+      "sources": [
+        {
+          "name": "Cinco Días",
+          "url": "https://cincodias.elpais.com/companias/2026-11-05/apple-se-une-a-la-ola-financiera-de-las-big-tech-con-una-emision-de-bonos-de-7000-millones-de-dolares.html",
+          "publishedAt": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "storyKey": "metr-anthropic-ai-model-development-acceleration-2026",
+      "category": "Inteligencia artificial",
+      "title": "Un estudio independiente observa que los modelos de Anthropic mejoran casi el doble de rápido",
+      "sentences": [
+        "La organización independiente METR ha estudiado la evolución de los modelos de Anthropic con acceso a datos internos y sistemas todavía no publicados.",
+        "Su evaluación estima que el ritmo de mejora en tareas de referencia es aproximadamente 1,9 veces superior al del periodo anterior.",
+        "Los investigadores consideran probable que el uso de inteligencia artificial en el propio desarrollo haya contribuido a acelerar ese progreso.",
+        "METR advierte de una incertidumbre considerable y no sostiene que los modelos ya puedan realizar de forma autónoma las tareas más importantes de investigación."
+      ],
+      "sources": [
+        {
+          "name": "Infobae",
+          "url": "https://www.infobae.com/tecno/2026/11/06/anthropic-no-ha-puesto-freno-a-la-ia-y-ahora-sus-modelos-avanzan-al-doble-de-velocidad-que-antes-revela-estudio/",
+          "publishedAt": "2026-11-06"
+        }
+      ]
+    },
+    {
+      "storyKey": "openssh-musl-alpine-sshole-authentication-bypass-2026",
+      "category": "Seguridad",
+      "title": "OpenSSH corrige un fallo grave que afecta a servidores Alpine Linux",
+      "sentences": [
+        "Un fallo de autenticación permite acceder a determinadas cuentas sin contraseña en servidores OpenSSH que utilizan la biblioteca musl y no emplean PAM.",
+        "La vulnerabilidad afecta a configuraciones como las utilizadas por Alpine Linux cuando está habilitada la autenticación mediante contraseña.",
+        "OpenSSH publicó el 5 de noviembre la versión 10.6p2 y Alpine distribuyó paquetes corregidos para sus versiones afectadas.",
+        "Los administradores deben instalar las actualizaciones y reiniciar el servicio SSH; los sistemas basados en glibc no están afectados por este problema concreto."
+      ],
+      "sources": [
+        {
+          "name": "CIBERSEGURIDAD.blog",
+          "url": "https://ciberseguridad.blog/sshole-openssh-musl-alpine-explotacion/",
+          "publishedAt": "2026-11-06"
+        }
+      ]
+    },
+    {
+      "storyKey": "chainalysis-customer-credentials-tokens-breach-november-2026",
+      "category": "Seguridad",
+      "title": "Chainalysis admite que una intrusión expuso credenciales de todos sus clientes",
+      "sentences": [
+        "Chainalysis ha comunicado que un ataque a sus sistemas dejó expuestos nombres de usuario, hashes de contraseñas y tokens activos de sus clientes.",
+        "La empresa había descrito inicialmente un alcance menor, pero amplió su evaluación tras descubrir nuevos indicios de acceso indebido.",
+        "Como precaución, suspendió varios servicios y está exigiendo restablecer contraseñas y renovar claves de acceso antes de recuperar determinadas funciones.",
+        "La compañía afirma que no ha encontrado pruebas de acceso a los datos de investigaciones ni de alteraciones en sus registros de atribución de transacciones."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/chainalysis-says-breach-exposed-credentials-for-all-customers/amp/",
+          "publishedAt": "2026-11-06"
+        }
+      ]
+    },
+    {
+      "storyKey": "dlink-dgs3130-discovery-protocol-unpatched-flaws-2026",
+      "category": "Seguridad",
+      "title": "D-Link advierte de fallos sin parche en sus switches DGS-3130",
+      "sentences": [
+        "D-Link ha publicado medidas de mitigación para varias vulnerabilidades todavía sin corregir en switches gestionables de la serie DGS-3130.",
+        "Los problemas afectan al protocolo de descubrimiento y a mecanismos de seguridad que podrían permitir cambios no autorizados o la extracción de información sensible.",
+        "La compañía sigue investigando el alcance en otras versiones y aún no ha publicado identificadores CVE para estos fallos.",
+        "Mientras prepara el firmware, recomienda desactivar el protocolo DDP y limitar el acceso administrativo a redes y equipos de confianza."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/d-link-warns-of-multiple-zero-days-in-dgs-3130-series-switches/amp/",
+          "publishedAt": "2026-11-06"
+        }
+      ]
+    },
+    {
+      "storyKey": "fake-openai-spacex-anthropic-events-microsoft-google-phishing-2026",
+      "category": "Seguridad",
+      "title": "Falsos eventos de empresas de IA intentan robar cuentas de Google y Microsoft",
+      "sentences": [
+        "Investigadores de Push Security han detectado páginas que suplantan eventos de OpenAI, SpaceX y Anthropic para atraer a trabajadores con supuestos regalos.",
+        "Los formularios ofrecen iniciar sesión con cuentas corporativas de Google o Microsoft y redirigen a servicios de phishing especializados.",
+        "Los atacantes buscan capturar credenciales, códigos de autorización o sesiones ya autenticadas, por lo que algunas víctimas pueden quedar expuestas incluso con doble factor.",
+        "Conviene verificar el organizador y evitar introducir códigos de inicio de sesión facilitados por páginas de eventos desconocidas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/fake-openai-spacex-events-used-to-steal-microsoft-google-accounts/",
+          "publishedAt": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "storyKey": "ai-chip-advanced-packaging-capacity-investment-2026",
+      "category": "Tecnología",
+      "title": "El empaquetado avanzado se convierte en un cuello de botella para los chips de IA",
+      "sentences": [
+        "La demanda de procesadores de inteligencia artificial está impulsando nuevas inversiones en tecnologías que integran varios chips y memorias en un mismo conjunto.",
+        "Reuters señala que la capacidad de empaquetado avanzado, dominada en buena medida por TSMC, limita la velocidad a la que algunos fabricantes pueden ampliar la producción.",
+        "Empresas como AMD, Broadcom y Nvidia buscan alternativas y más capacidad en sus proveedores para reducir esa dependencia.",
+        "Según previsiones de Yole Group recogidas por Reuters, el gasto de capital del sector se aproxima a los 28.000 millones de dólares este año, aunque se trata de una estimación."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/asia-pacific/ai-boom-turns-chip-packaging-into-next-battleground-semiconductors-2026-11-06/",
+          "publishedAt": "2026-11-06"
+        }
+      ]
+    }
+  ]
+}
