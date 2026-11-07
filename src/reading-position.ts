@@ -5,6 +5,7 @@ export function useReadingPosition({uid,enabled,day,feedReady,savedReady}:{uid:s
  const key='techradar-reading-v1:'+uid;
  const [view,setView]=useState(defaultView),[expanded,setExpanded]=useState<string[]>([]),[loadedKey,setLoadedKey]=useState('');
  const pending=useRef<ReadingRecord|null>(null),restored=useRef(false),jumpToTop=useRef(false);
+ const tabScrollFrame=useRef(0);
  const ready=enabled&&loadedKey===key;
  const contentReady=view.tab==='Guardadas'?savedReady:view.tab==='Ajustes'?true:feedReady;
  useEffect(()=>{
@@ -13,6 +14,7 @@ export function useReadingPosition({uid,enabled,day,feedReady,savedReady}:{uid:s
   let raw=null;try{raw=localStorage.getItem(key);}catch{}
   const record=readPosition(raw,day,new URLSearchParams(location.search).get('edition'));
   pending.current=record;setView(record.view);setExpanded(record.expanded);setLoadedKey(key);
+  return()=>cancelAnimationFrame(tabScrollFrame.current);
  },[key,enabled,day]);
  const capture=useCallback(()=>{
   if(!ready||!contentReady||!restored.current)return;
@@ -44,8 +46,26 @@ export function useReadingPosition({uid,enabled,day,feedReady,savedReady}:{uid:s
   return()=>{clearTimeout(timer);window.removeEventListener('scroll',scroll);window.removeEventListener('pagehide',save);document.removeEventListener('visibilitychange',hidden);};
  },[capture]);
  function update(patch:Partial<ReadingView>){
-  const url=new URL(location.href);url.searchParams.delete('edition');history.replaceState(history.state,'',url);
-  restored.current=true;jumpToTop.current=true;setExpanded([]);setView(current=>({...current,...patch}));
+  function applyView(){
+   const url=new URL(location.href);url.searchParams.delete('edition');history.replaceState(history.state,'',url);
+   restored.current=true;jumpToTop.current=true;setExpanded([]);setView(current=>({...current,...patch}));
+  }
+  if(patch.tab===undefined){applyView();return;}
+  cancelAnimationFrame(tabScrollFrame.current);
+  const startY=window.scrollY;
+  if(startY<=0||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+   applyView();
+   return;
+  }
+  // Scroll the current page first so a shorter destination cannot cut the animation short.
+  const start=performance.now();
+  function scrollFrame(now:number){
+   const progress=Math.min((now-start)/300,1);
+   window.scrollTo({top:startY*(1-progress)**3,behavior:'instant'});
+   if(progress<1)tabScrollFrame.current=requestAnimationFrame(scrollFrame);
+   else applyView();
+  }
+  tabScrollFrame.current=requestAnimationFrame(scrollFrame);
  }
  function toggleExpanded(id:string){setExpanded(current=>current.includes(id)?current.filter(key=>key!==id):[...current,id]);}
  return {view,ready,expanded,update,toggleExpanded,capture};
