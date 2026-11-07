@@ -12,6 +12,7 @@ const scheduled=!dry&&!date&&!archive&&process.env.GITHUB_EVENT_NAME==='schedule
 const plan=planPublication(now,{date,archive,scheduled});
 
 let firebase;
+const completedNotifications=[];
 async function connectFirebase(){
  if(!process.env.FIREBASE_SERVICE_ACCOUNT)throw new Error('Falta el secreto FIREBASE_SERVICE_ACCOUNT.');
  const [{initializeApp,cert},{getFirestore},{getMessaging}]=await Promise.all([import('firebase-admin/app'),import('firebase-admin/firestore'),import('firebase-admin/messaging')]);
@@ -40,6 +41,19 @@ async function publish({date,archive,prepare,optional},report){
 
  const {db,messaging}=await (firebase??=connectFirebase());
  const ref=db.doc('digests/'+date);
+ const notificationRun=archive||prepare?null:db.doc('notificationRuns/'+date);
+ if(notificationRun&&(await notificationRun.get()).data()?.contentHash===contentHash){
+  report.status='already-notified';
+  console.log('Avisos ya completados:',date);
+  return;
+ }
+ if(scheduled&&archive){
+  const existing=(await ref.get()).data();
+  if(existing?.status==='published'&&existing.contentHash===contentHash){
+   report.status='already-published';
+   return;
+  }
+ }
  const recent=await db.collection('digests').orderBy('date','desc').limit(14).get();
  if(!recent.docs.some(d=>d.id===date&&d.data().contentHash===contentHash)){
   rejectRepeats(edition.articles,recent.docs.filter(d=>d.id!==date).flatMap(d=>d.data().articles||[]));
@@ -64,7 +78,7 @@ async function publish({date,archive,prepare,optional},report){
  });
  report.status='published';
  report.notifications={accepted:0,skipped:0,invalid:0,uncertain:0};
- if(!archive){
+ if(notificationRun){
   const tokens=await db.collectionGroup('tokens').limit(501).get();
   if(tokens.size>500)throw new Error('Más de 500 dispositivos: se requiere paginación antes de notificar.');
   for(const tokenDoc of tokens.docs){
@@ -72,6 +86,9 @@ async function publish({date,archive,prepare,optional},report){
    report.notifications[result]++;
   }
   if(report.notifications.uncertain)throw new Error('Resultado incierto de un envío; no se reintenta automáticamente para evitar duplicados.');
+  if(report.notifications.accepted+report.notifications.skipped>0){
+   completedNotifications.push({ref:notificationRun,contentHash});
+  }
  }
  console.log('Edición publicada:',date,edition.articles.length,'noticias. Avisos aceptados:',report.notifications.accepted);
 }
@@ -97,6 +114,9 @@ try{
   const {db}=await firebase;
   const curated=validateCurated(JSON.parse(await readFile(new URL('./curated.json',import.meta.url),'utf8')));
   for(const kind of ['updates','events'])for(const item of curated[kind])await db.collection(kind).doc(hash(item.url)).set(item);
+ }
+ for(const {ref,contentHash} of completedNotifications){
+  await ref.set({contentHash,completedAt:new Date().toISOString()});
  }
 }catch(error){
  report.status='failed';

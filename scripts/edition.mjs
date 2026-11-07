@@ -65,7 +65,13 @@ export async function deliverOnce({db,messaging,tokenDoc,date,articles}){
  // Backwards compatibility with the former scheduled/manual split.
  if((await db.doc(`deliveries/${date}-scheduled-${hash(tokenDoc.ref.path)}`).get()).exists)return 'skipped';
  try{await delivery.create({state:'claimed',claimedAt:new Date().toISOString()});}
- catch(error){if(error.code===6||error.code==='already-exists')return 'skipped';throw error;}
+ catch(error){
+  if(error.code!==6&&error.code!=='already-exists')throw error;
+  const state=(await delivery.get()).data()?.state;
+  if(state==='accepted')return 'skipped';
+  if(state==='invalid')return 'invalid';
+  return 'uncertain';
+ }
  try{
   await messaging.send({token:tokenDoc.data().token,data:{title:'Tu TechRadar está listo',body:`${articles} noticias resumidas en español. Abre la edición.`,date},webpush:{headers:{TTL:'86400',Urgency:'normal'}}});
  }catch(error){

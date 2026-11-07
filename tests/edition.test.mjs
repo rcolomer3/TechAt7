@@ -46,7 +46,7 @@ test('push and manual modes preserve draft preparation and explicit archive date
   {date:'2026-11-05',archive:true,prepare:false}
  ]);
 });
-function memoryStore(){const docs=new Map();return {doc:path=>({get:async()=>({exists:docs.has(path)}),create:async value=>{if(docs.has(path))throw {code:6};docs.set(path,value);},set:async value=>docs.set(path,value)}),docs};}
+function memoryStore(){const docs=new Map();return {doc:path=>({get:async()=>({exists:docs.has(path),data:()=>docs.get(path)}),create:async value=>{if(docs.has(path))throw {code:6};docs.set(path,value);},set:async value=>docs.set(path,value)}),docs};}
 const tokenDoc={ref:{path:'users/test/tokens/device',delete:async()=>{}},data:()=>({token:'private-test-token'})};
 test('retries and concurrent runs send only once per device and edition',async()=>{
  const db=memoryStore();let sends=0;const args={db,tokenDoc,date:'2026-11-01',articles:5,messaging:{send:async()=>{sends++;}}};
@@ -54,5 +54,5 @@ test('retries and concurrent runs send only once per device and edition',async()
 });
 test('ambiguous FCM errors never cause an automatic duplicate',async()=>{
  const db=memoryStore();let sends=0;const args={db,tokenDoc,date:'2026-11-01',articles:5,messaging:{send:async()=>{sends++;throw {code:'messaging/server-unavailable'};}}};
- assert.equal(await deliverOnce(args),'uncertain');assert.equal(await deliverOnce(args),'skipped');assert.equal(sends,1);
+ assert.equal(await deliverOnce(args),'uncertain');assert.equal(await deliverOnce(args),'uncertain');assert.equal(sends,1);
 });

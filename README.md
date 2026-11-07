@@ -16,7 +16,7 @@ La tarea de ChatGPT debe poder usar el plugin GitHub y publicar en rcolomer3/Tec
 
 A partir de las **19:00 Europe/Madrid** GitHub publica la edición que haya entregado ChatGPT. Si el commit activa el publicador entre las **18:00 y las 19:00**, la propia ejecución espera hasta las 19:00 y publica la última revisión disponible en `main`. Antes de las 18:00, valida y guarda un borrador privado. Si el publicador arranca a partir de las 19:00, intenta publicar directamente.
 
-Los intentos programados de las **19:05** y **19:20** sirven de respaldo. Los intentos de publicar la misma edición comparten el registro de avisos por dispositivo.
+Los intentos programados de las **19:05, 19:20, 19:45, 20:15, 20:40 y 21:05** sirven de respaldo. Al completar los avisos con al menos un envío aceptado por Firebase y sin resultados inciertos, el publicador guarda un registro para esa edición. Los siguientes intentos terminan sin volver a consultar los dispositivos ni enviar avisos.
 
 Cada ejecución programada revisa también la edición del día anterior. Si arranca entre medianoche y las 02:00 de Madrid, todavía puede publicar y enviar el aviso de esa edición. A partir de las 02:00 la recupera en Anteriores sin enviar un aviso atrasado. Desde las 19:00 comprueba ambas fechas.
 
