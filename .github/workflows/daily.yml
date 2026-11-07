@@ -4,8 +4,7 @@ on:
     branches: [main]
     paths: ['editions/*.json']
   schedule:
-    # Avoid the top-of-hour GitHub Actions scheduling peak.
-    # The first run publishes shortly after 19:00; the second is a safe retry.
+    # Backups for editions pushed early and for publication retries.
     - cron: '5 19 * * *'
       timezone: Europe/Madrid
     - cron: '20 19 * * *'
@@ -28,9 +27,22 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: ${{ github.event_name == 'push' && 70 || 10 }}
     steps:
+      - name: Esperar a las 19:00 si la edición llega durante la última hora
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          IFS=: read -r hour minute second <<< "$(TZ=Europe/Madrid date +%H:%M:%S)"
+          remaining=$((19 * 3600 - 10#$hour * 3600 - 10#$minute * 60 - 10#$second))
+          if (( remaining > 0 && remaining <= 3600 )); then
+            echo "Publicación a las 19:00 de Madrid en $remaining segundos."
+            sleep "$remaining"
+          fi
       - uses: actions/checkout@v4
+        with:
+          # A newer editorial revision may have arrived during the wait.
+          ref: ${{ github.event_name == 'push' && github.ref || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
