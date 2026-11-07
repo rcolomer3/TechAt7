@@ -1,5 +1,18 @@
 import {franc} from 'franc-min';
-import {canonical,hash,titleKey,plain} from './core.mjs';
+import {canonical,hash,titleKey,plain,madridDate} from './core.mjs';
+
+export function planPublication(now,{date,archive=false,scheduled=false}={}){
+ const today=madridDate(now);
+ const hour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Madrid',hour:'2-digit',hourCycle:'h23'}).format(now));
+ if(scheduled&&!date&&!archive){
+  // Use the calendar date in Madrid, including on daylight saving changes.
+  const previousDay=new Date(today+'T12:00:00Z');
+  previousDay.setUTCDate(previousDay.getUTCDate()-1);
+  const recovery={date:madridDate(previousDay),archive:hour>=2,optional:hour>=19};
+  return hour<19?[recovery]:[recovery,{date:today,archive:false}];
+ }
+ return [{date:date||today,archive,prepare:(date||today)===today&&hour<19}];
+}
 
 export const categories=['Apple','Inteligencia artificial','Tecnología','Lanzamientos','Seguridad'];
 export function sentenceCount(text){
@@ -54,7 +67,7 @@ export async function deliverOnce({db,messaging,tokenDoc,date,articles}){
  try{await delivery.create({state:'claimed',claimedAt:new Date().toISOString()});}
  catch(error){if(error.code===6||error.code==='already-exists')return 'skipped';throw error;}
  try{
-  await messaging.send({token:tokenDoc.data().token,data:{title:'Tu TechRadar está listo',body:`${articles} noticias resumidas en español. Abre la edición de hoy.`,date},webpush:{headers:{TTL:'86400',Urgency:'normal'}}});
+  await messaging.send({token:tokenDoc.data().token,data:{title:'Tu TechRadar está listo',body:`${articles} noticias resumidas en español. Abre la edición.`,date},webpush:{headers:{TTL:'86400',Urgency:'normal'}}});
  }catch(error){
   const invalid=['messaging/registration-token-not-registered','messaging/invalid-registration-token'].includes(error.code);
   await delivery.set({state:invalid?'invalid':'uncertain',code:error.code||'transport-error'},{merge:true});

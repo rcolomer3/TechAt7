@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {validateEdition,rejectRepeats,deliverOnce} from '../scripts/edition.mjs';
+import {validateEdition,rejectRepeats,deliverOnce,planPublication} from '../scripts/edition.mjs';
 const sentences=['El fabricante ha publicado una actualización de seguridad para sus teléfonos móviles.','La nueva versión corrige un fallo que permitía acceder a datos privados del usuario.','El cambio protege las cuentas almacenadas en el dispositivo frente a ese acceso.','La actualización ya se puede descargar desde los ajustes del sistema del teléfono.'];
 const input=()=>({schemaVersion:1,date:'2026-11-01',language:'es',producer:'chatgpt',articles:Array.from({length:5},(_,i)=>({title:'Una actualización protege los datos de los teléfonos '+i,storyKey:'fabricante correccion seguridad '+i,category:'Seguridad',sentences,sources:[{name:'Fuente '+i,url:`https://medio${i%3}.example/noticia-${i}`,publishedAt:'2026-10-31T12:00:00Z'}]}))});
 test('accepts a complete Spanish edition and preserves the full summary',()=>{const edition=validateEdition(input(),'2026-11-01');assert.equal(edition.articles.length,5);assert.equal(edition.articles[0].summary,sentences.join(' '));});
@@ -18,6 +18,33 @@ test('rejects duplicate topics, homepages and insufficient source diversity',()=
 });
 test('rejects previously published stories, including a differently titled source URL',()=>{
  const edition=validateEdition(input(),'2026-11-01');assert.throws(()=>rejectRepeats(edition.articles,[{...edition.articles[0],title:'Un titular distinto'}]),/ya publicada/);
+});
+test('scheduled runs delayed past midnight use the previous Madrid date and can still notify',()=>{
+ const delayed=new Date('2026-11-06T23:14:17Z');
+ assert.deepEqual(planPublication(delayed,{scheduled:true}),[
+  {date:'2026-11-06',archive:false,optional:false}
+ ]);
+});
+test('scheduled runs recover older editions silently and also publish the current edition when due',()=>{
+ assert.deepEqual(planPublication(new Date('2026-11-07T01:00:00Z'),{scheduled:true}),[
+  {date:'2026-11-06',archive:true,optional:false}
+ ]);
+ assert.deepEqual(planPublication(new Date('2026-11-07T18:05:00Z'),{scheduled:true}),[
+  {date:'2026-11-06',archive:true,optional:true},
+  {date:'2026-11-07',archive:false}
+ ]);
+});
+test('scheduled recovery uses the local calendar across the start of daylight saving time',()=>{
+ assert.deepEqual(planPublication(new Date('2026-03-29T22:30:00Z'),{scheduled:true}),[
+  {date:'2026-03-29',archive:false,optional:false}
+ ]);
+});
+test('push and manual modes preserve draft preparation and explicit archive dates',()=>{
+ const now=new Date('2026-11-06T17:46:31Z');
+ assert.deepEqual(planPublication(now),[{date:'2026-11-06',archive:false,prepare:true}]);
+ assert.deepEqual(planPublication(now,{date:'2026-11-05',archive:true}),[
+  {date:'2026-11-05',archive:true,prepare:false}
+ ]);
 });
 function memoryStore(){const docs=new Map();return {doc:path=>({get:async()=>({exists:docs.has(path)}),create:async value=>{if(docs.has(path))throw {code:6};docs.set(path,value);},set:async value=>docs.set(path,value)}),docs};}
 const tokenDoc={ref:{path:'users/test/tokens/device',delete:async()=>{}},data:()=>({token:'private-test-token'})};
