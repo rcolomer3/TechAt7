@@ -57,3 +57,19 @@
 
 /* Justify card headlines as well as their summaries, keeping the last line natural. */
 .news-card h3{text-align:justify;text-align-last:left;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3;text-wrap:wrap}
+
+.archive-groups {
+ display: grid;
+ gap: 32px;
+}
+.archive-date {
+ color: var(--text);
+ font-size: 16px;
+ font-weight: 650;
+ border-bottom: 1px solid var(--border);
+ padding-bottom: 10px;
+ margin-bottom: 16px;
+}
+.publication-time {
+ white-space: nowrap;
+}
