@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-08",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "iris-ohyama-iris-plaza-cloud-breach-7-7m-2026",
+      "category": "Seguridad",
+      "title": "Iris Ohyama investiga una filtración que podría afectar a 7,7 millones de clientes",
+      "sentences": [
+        "El fabricante japonés Iris Ohyama investiga un acceso no autorizado a un servicio en la nube utilizado por su tienda Iris Plaza.",
+        "La empresa calcula que los datos potencialmente expuestos corresponden a hasta 5,8 millones de usuarios registrados y 1,9 millones de compradores no registrados.",
+        "La información afectada puede incluir nombres, direcciones, teléfonos, correos y, en algunos casos, contraseñas que la compañía afirma almacenar cifradas.",
+        "Iris Ohyama asegura que las tarjetas bancarias no estaban almacenadas en ese servicio y que, hasta el 5 de noviembre, no había recibido denuncias de uso indebido."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/iris-ohyama-data-cloud-breach-exposes-info-of-77-million-customers/",
+          "publishedAt": "2026-11-08"
+        }
+      ]
+    },
+    {
+      "storyKey": "credit-mutuel-arkea-service-provider-cyber-fraud-nov-2026",
+      "category": "Seguridad",
+      "title": "Un proveedor abre la puerta a un fraude millonario contra el banco francés Arkéa",
+      "sentences": [
+        "Crédit Mutuel Arkéa reconoce un ataque que llegó a su red a través de la plataforma de un proveedor de servicios.",
+        "Los atacantes utilizaron una cuenta del propio banco para ordenar transferencias fraudulentas y convertir fondos en criptomonedas.",
+        "Un investigador estima el importe en hasta 118 millones de euros, pero la entidad solo confirma que la cantidad es importante y no valida esa cifra exacta.",
+        "Arkéa asegura que los activos de sus clientes no se han visto afectados, aunque algunas transferencias sufrieron retrasos y advierte de posibles intentos de phishing."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-pull-off-133-million-french-bank-heist-via-service-provider/",
+          "publishedAt": "2026-11-07"
+        }
+      ]
+    },
+    {
+      "storyKey": "openai-chatgpt-spain-usage-information-search-2026",
+      "category": "Inteligencia artificial",
+      "title": "Buscar información gana peso entre los usos de ChatGPT en España",
+      "sentences": [
+        "Un análisis de los datos de uso publicados por OpenAI muestra un cambio en la forma en que los españoles utilizan ChatGPT.",
+        "Según la compañía, las consultas para buscar información han pasado de representar aproximadamente el 19 % de la actividad en julio de 2024 a superar el 25 %.",
+        "La redacción de textos ha perdido peso relativo y ronda ahora el 18 %, mientras que las peticiones de orientación práctica alcanzan aproximadamente el 30 %.",
+        "Los resultados proceden de cuentas individuales y de una clasificación automatizada de mensajes anonimizados, por lo que describen tendencias de uso según la metodología de OpenAI."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/robotica-e-ia/creiamos-que-ia-iba-a-escribir-nosotros-donde-chagpt-esta-creciendo-espana-como-buscador/amp",
+          "publishedAt": "2026-11-07"
+        }
+      ]
+    },
+    {
+      "storyKey": "wood-mackenzie-ai-data-centers-copper-aluminum-demand-2026",
+      "category": "Tecnología",
+      "title": "La expansión de los centros de datos de IA aumenta la presión sobre los metales",
+      "sentences": [
+        "Un análisis de Wood Mackenzie examina cómo la construcción de centros de datos y redes eléctricas eleva la demanda de cobre, aluminio y otros materiales.",
+        "Según las estimaciones recogidas por Xataka, la cartera mundial de proyectos de centros de datos supera los 250 gigavatios.",
+        "El informe señala que las redes, subestaciones e instalaciones eléctricas asociadas pueden requerir varias veces más metales básicos que el propio centro de datos.",
+        "Se trata de proyecciones sectoriales, no de consumo ya realizado, y la capacidad de ampliar el suministro depende de nuevas inversiones."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/energia/fiebre-ia-esta-creando-otro-problema-necesitamos-toneladas-metal-para-poder-darle-electricidad/amp",
+          "publishedAt": "2026-11-07"
+        }
+      ]
+    },
+    {
+      "storyKey": "bsh-zaragoza-induction-factory-25-million-2026",
+      "category": "Tecnología",
+      "title": "Una fábrica de Zaragoza concentra una quinta parte de las placas de inducción del mundo",
+      "sentences": [
+        "La planta de BSH en Montañana, Zaragoza, ha alcanzado el hito de fabricar su placa de inducción número 25 millones.",
+        "Según los responsables de la instalación, allí se produce aproximadamente una de cada cinco placas de inducción vendidas en todo el mundo.",
+        "La fábrica combina ocho líneas de placas con automatización industrial y más de cien robots, además de personal especializado.",
+        "BSH prepara una nueva línea para junio de 2027, pero todavía no ha detallado qué producto fabricará."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/empresas-y-economia/zaragoza-se-fabrica-cada-cinco-placas-induccion-mundo-he-visitado-fabrica-donde-empezo-todo/amp",
+          "publishedAt": "2026-11-07"
+        }
+      ]
+    },
+    {
+      "storyKey": "brazil-stolen-rtx5090-resale-serial-number-nov-2026",
+      "category": "Tecnología",
+      "title": "Una RTX 5090 robada en Brasil podría haber reaparecido en una web de segunda mano",
+      "sentences": [
+        "Una tarjeta gráfica RTX 5090 anunciada en la plataforma brasileña OLX se ha relacionado con un cargamento desaparecido en el aeropuerto de Guarulhos.",
+        "La posible conexión se basa en un número de serie que coincidiría con una unidad importada por la distribuidora Oderço.",
+        "El anuncio, que pedía 32.000 reales, fue retirado y el vendedor fue detenido antes de quedar en libertad.",
+        "La coincidencia todavía no demuestra que el vendedor participara en el robo y el resto de las tarjetas continúa sin localizarse."
+      ],
+      "sources": [
+        {
+          "name": "Genbeta",
+          "url": "https://www.genbeta.com/actualidad/rtx-5090-robada-atraco-montacargas-aeropuerto-brasil-aparece-supuestamente-mercado-segunda-mano-5-600-euros-resto-sigue-desaparecido/amp",
+          "publishedAt": "2026-11-07"
+        }
+      ]
+    }
+  ]
+}
