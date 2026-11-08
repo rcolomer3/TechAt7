@@ -67,7 +67,7 @@ Proyecto independiente techradar-4f238, Firestore Madrid, dominio autorizado rco
 
 En iOS/iPadOS 16.4 o posterior: Safari → Compartir → Añadir a pantalla de inicio → abrir PWA → Google → Ajustes → Activar avisos. HTTPS, app instalada y permiso concedido mediante un gesto del usuario. Concentración, batería y red pueden retrasar o impedir avisos. Cerrar sesión no revoca por sí solo el registro de notificaciones del dispositivo.
 
-Updates y Eventos mantienen scripts/curated.json como origen editorial de anuncios oficiales; no infieren versiones ni fechas de rumores. La interfaz se almacena para abrir sin conexión; recargar noticias requiere acceso a Firebase.
+Los eventos proceden de noticias de la edición diaria y se publican junto con ella cuando tienen fecha futura y enlace al anuncio oficial. Si el mismo evento vuelve a aparecer, su identificador permite actualizarlo. Los anuncios de software proceden de scripts/curated.json. La interfaz se almacena para abrir sin conexión. Recargar noticias requiere acceso a Firebase.
 
 ## Compartir y retomar la lectura
 

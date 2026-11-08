@@ -2,7 +2,7 @@ import {initializeApp} from 'firebase/app';
 import {getAuth,GoogleAuthProvider,signInWithPopup,signOut} from 'firebase/auth';
 import {getFirestore,collection,getDocsFromServer,getDocFromServer,query,orderBy,limit,where,doc,setDoc,deleteDoc,serverTimestamp} from 'firebase/firestore';
 import {getMessaging,getToken,deleteToken,isSupported,onMessage} from 'firebase/messaging';
-import type {RadarData,Digest,Update,LaunchEvent} from './models';
+import {madridDate,type RadarData,type Digest,type Update,type LaunchEvent} from './models';
 import {firebaseConfig,webPushPublicKey} from './firebase-config';
 const e=import.meta.env;
 const vapidKey=e.VITE_FIREBASE_VAPID_KEY||webPushPublicKey;
@@ -30,7 +30,11 @@ export async function login(){
 export const logout=()=>auth?signOut(auth):Promise.resolve();
 async function queryRadar():Promise<RadarData>{
  if(!db)throw new Error('Falta configuración de Firebase.');
- const [d,u,v]=await Promise.all([getDocsFromServer(query(collection(db,'digests'),where('status','==','published'),orderBy('date','desc'))),getDocsFromServer(query(collection(db,'updates'),orderBy('publishedAt','desc'),limit(40))),getDocsFromServer(query(collection(db,'events'),where('confirmed','==',true),orderBy('date','asc'),limit(40)))]);
+ const [d,u,v]=await Promise.all([
+  getDocsFromServer(query(collection(db,'digests'),where('status','==','published'),orderBy('date','desc'))),
+  getDocsFromServer(query(collection(db,'updates'),orderBy('publishedAt','desc'),limit(40))),
+  getDocsFromServer(query(collection(db,'events'),where('confirmed','==',true),where('date','>=',madridDate()),orderBy('date','asc'),limit(40)))
+ ]);
  return {digests:d.docs.map(x=>({...x.data(),id:x.id} as Digest)),updates:u.docs.map(x=>({...x.data(),id:x.id} as Update)),events:v.docs.map(x=>({...x.data(),id:x.id} as LaunchEvent))};
 }
 export async function loadRadar():Promise<RadarData>{

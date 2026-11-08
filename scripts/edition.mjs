@@ -25,6 +25,34 @@ function sourceURL(value){
  if(url.pathname==='/'&&!url.search)throw new Error('La fuente debe enlazar el artículo, no solo la portada.');
  return url.href;
 }
+
+function validateEditionEvents(items,storyKeys,editionDate){
+ if(!Array.isArray(items))throw new Error('Los eventos de la edición deben ser una lista.');
+ const seen=new Set();
+ return items.map(event=>{
+  if(!event||event.confirmed!==true||!storyKeys.has(titleKey(event.storyKey))){
+   throw new Error('Cada evento debe estar confirmado y vinculado a una noticia de esta edición.');
+  }
+  const {eventKey,date}=event;
+  if(typeof eventKey!=='string'||!/^[a-z0-9]+(?:-[a-z0-9]+)+$/.test(eventKey)||eventKey.length>120||seen.has(eventKey)){
+   throw new Error('Cada evento necesita un identificador estable y único en la edición.');
+  }
+  const timestamp=new Date(date+'T12:00:00Z');
+  if(typeof date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isFinite(timestamp.getTime())
+   ||timestamp.toISOString().slice(0,10)!==date||date<=editionDate){
+   throw new Error('La fecha del evento debe ser posterior a la de la edición.');
+  }
+  const title=plain(event.title),summary=plain(event.summary);
+  if(!title||title.length>180||!summary||summary.length>600){
+   throw new Error('Cada evento necesita un título y una descripción breve.');
+  }
+  const url=sourceURL(event.url);
+  if(new URL(url).hostname!==event.officialHost)throw new Error('El evento necesita un enlace al anuncio oficial.');
+  seen.add(eventKey);
+  return {eventKey,storyKey:titleKey(event.storyKey),title,summary,date,url,confirmed:true};
+ });
+}
+
 export function validateEdition(input,expectedDate){
  if(input?.schemaVersion!==1||input.language!=='es'||input.producer!=='chatgpt')throw new Error('La edición debe proceder de ChatGPT y estar en español.');
  if(!/^\d{4}-\d{2}-\d{2}$/.test(input.date)||input.date!==expectedDate||new Date(input.date+'T12:00:00Z').toISOString().slice(0,10)!==input.date)throw new Error('Fecha de edición incorrecta.');
@@ -52,14 +80,17 @@ export function validateEdition(input,expectedDate){
   return {id:hash(url),title,summary,category:item.category,source:sources.map(s=>s.name).join(' · '),url,publishedAt:sources[0].publishedAt,sources,topicKey};
  });
  if(domains.size<3)throw new Error('Se necesitan al menos tres fuentes diferentes en la edición.');
- return {date:input.date,language:'es',editorialVersion:2,summaryMethod:'chatgpt-researched',articles};
+ const events=validateEditionEvents(input.events===undefined?[]:input.events,topics,input.date);
+ return {date:input.date,language:'es',editorialVersion:2,summaryMethod:'chatgpt-researched',articles,...(events.length?{events}:{})};
 }
 export function rejectRepeats(articles,previous){
  for(const a of articles){
   if(previous.some(old=>old.topicKey===a.topicKey||titleKey(old.title)===titleKey(a.title)||(old.url&&canonical(old.url)===a.url)||(old.sources||[]).some(s=>a.sources.some(n=>canonical(s.url)===n.url))))throw new Error('Noticia ya publicada en una edición anterior: '+a.title);
  }
 }
-export function editionHash(digest){return hash(JSON.stringify({date:digest.date,articles:digest.articles}));}
+export function editionHash({date,articles,events}){
+ return hash(JSON.stringify({date,articles,...(events?.length?{events}:{})}));
+}
 export async function deliverOnce({db,messaging,tokenDoc,date,articles}){
  const delivery=db.doc(`deliveries/${date}-${hash(tokenDoc.ref.path)}`);
  // Backwards compatibility with the former scheduled/manual split.

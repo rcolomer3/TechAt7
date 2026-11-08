@@ -33,6 +33,7 @@ async function publish({date,archive,prepare,optional},report){
  }
  const edition=validateEdition(input,date),contentHash=editionHash(edition);
  report.articles=edition.articles.length;
+ report.events=edition.events?.length??0;
  if(dry){
   report.status='validated';
   console.log('Edición validada:',date,edition.articles.length,'noticias completas en español.');
@@ -66,15 +67,23 @@ async function publish({date,archive,prepare,optional},report){
  }
 
  const digest={...edition,contentHash,status:'published',publishedAt:now.toISOString()};
+ const events=(edition.events??[]).filter(event=>event.date>=today);
+ const eventRefs=events.map(event=>db.doc('events/'+hash(event.eventKey)));
  await db.runTransaction(async tx=>{
   const existing=await tx.get(ref);
+  if(existing.data()?.contentHash===contentHash)return;
+  if(existing.data()?.editorialVersion===2)throw new Error('La edición ya publicada es inmutable. No se sobrescribe ni reenvía.');
+  const previousEvents=eventRefs.length?await tx.getAll(...eventRefs):[];
   if(existing.exists){
-   if(existing.data().contentHash===contentHash)return;
-   if(existing.data().editorialVersion===2)throw new Error('La edición ya publicada es inmutable. No se sobrescribe ni reenvía.');
    // Keep legacy excerpts intact as a revision when correcting the former format.
    tx.set(db.doc('digestRevisions/'+date+'-legacy'),existing.data());
   }
   tx.set(ref,digest);
+  for(const [index,event] of events.entries()){
+   // A late edition cannot replace a more recent confirmation.
+   const previousDate=previousEvents[index].data()?.editionDate;
+   if(!previousDate||previousDate<=date)tx.set(eventRefs[index],{...event,editionDate:date});
+  }
  });
  report.status='published';
  report.notifications={accepted:0,skipped:0,invalid:0,uncertain:0};
@@ -113,7 +122,7 @@ try{
  if(reports.some(entry=>entry.status==='ready'||entry.status==='published')){
   const {db}=await firebase;
   const curated=validateCurated(JSON.parse(await readFile(new URL('./curated.json',import.meta.url),'utf8')));
-  for(const kind of ['updates','events'])for(const item of curated[kind])await db.collection(kind).doc(hash(item.url)).set(item);
+  for(const item of curated.updates)await db.collection('updates').doc(hash(item.url)).set(item);
  }
  for(const {ref,contentHash} of completedNotifications){
   await ref.set({contentHash,completedAt:new Date().toISOString()});

@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {validateEdition,rejectRepeats,deliverOnce,planPublication} from '../scripts/edition.mjs';
+import {validateEdition,rejectRepeats,deliverOnce,planPublication,editionHash} from '../scripts/edition.mjs';
+import {hash} from '../scripts/core.mjs';
 const sentences=['El fabricante ha publicado una actualización de seguridad para sus teléfonos móviles.','La nueva versión corrige un fallo que permitía acceder a datos privados del usuario.','El cambio protege las cuentas almacenadas en el dispositivo frente a ese acceso.','La actualización ya se puede descargar desde los ajustes del sistema del teléfono.'];
 const input=()=>({schemaVersion:1,date:'2026-11-01',language:'es',producer:'chatgpt',articles:Array.from({length:5},(_,i)=>({title:'Una actualización protege los datos de los teléfonos '+i,storyKey:'fabricante correccion seguridad '+i,category:'Seguridad',sentences,sources:[{name:'Fuente '+i,url:`https://medio${i%3}.example/noticia-${i}`,publishedAt:'2026-10-31T12:00:00Z'}]}))});
 test('accepts a complete Spanish edition and preserves the full summary',()=>{const edition=validateEdition(input(),'2026-11-01');assert.equal(edition.articles.length,5);assert.equal(edition.articles[0].summary,sentences.join(' '));});
@@ -18,6 +19,30 @@ test('rejects duplicate topics, homepages and insufficient source diversity',()=
 });
 test('rejects previously published stories, including a differently titled source URL',()=>{
  const edition=validateEdition(input(),'2026-11-01');assert.throws(()=>rejectRepeats(edition.articles,[{...edition.articles[0],title:'Un titular distinto'}]),/ya publicada/);
+});
+const event={
+ eventKey:'organizador-presentacion-2026',storyKey:'fabricante correccion seguridad 0',
+ title:'Presentación de ejemplo',summary:'El organizador ha anunciado la fecha de su presentación.',
+ date:'2026-11-18',url:'https://organizador.example/eventos/presentacion-2026?utm_source=prueba',
+ officialHost:'organizador.example',confirmed:true
+};
+test('links confirmed events to the edition without changing hashes of older editions',()=>{
+ const previous=validateEdition(input(),'2026-11-01');
+ assert.equal(editionHash(previous),hash(JSON.stringify({date:previous.date,articles:previous.articles})));
+ const edition=validateEdition({...input(),events:[event]},'2026-11-01');
+ assert.equal(edition.events[0].eventKey,event.eventKey);
+ assert.equal(edition.events[0].storyKey,edition.articles[0].topicKey);
+ assert.equal(edition.events[0].url,'https://organizador.example/eventos/presentacion-2026');
+ assert.notEqual(editionHash(edition),editionHash(previous));
+});
+test('rejects events that are unconfirmed, unrelated, past, invalid or duplicated',()=>{
+ const validate=events=>validateEdition({...input(),events},'2026-11-01');
+ assert.throws(()=>validate([{...event,confirmed:false}]),/confirmado/);
+ assert.throws(()=>validate([{...event,storyKey:'otra noticia'}]),/vinculado/);
+ assert.throws(()=>validate([{...event,date:'2026-10-31'}]),/fecha/);
+ assert.throws(()=>validate([{...event,date:'2026-11-31'}]),/fecha/);
+ assert.throws(()=>validate([{...event,officialHost:'otro.example'}]),/enlace/);
+ assert.throws(()=>validate([event,event]),/identificador/);
 });
 test('scheduled runs delayed past midnight use the previous Madrid date and can still notify',()=>{
  const delayed=new Date('2026-11-06T23:14:17Z');

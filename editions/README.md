@@ -38,6 +38,29 @@ La edición publicada es inmutable. No cambiarla o reutilizar su fecha para forz
 
 La tarea programada debe tener acceso de escritura a rcolomer3/TechRadar y capacidad de usar el plugin GitHub. Una conexión disponible en un chat no demuestra por sí sola que una tarea programada pueda usarla: comprobar una ejecución real.
 
+## Eventos de la edición
+
+Después de elegir las noticias, revisa si alguna menciona un evento futuro con fecha concreta confirmada por el organizador. Inclúyelo en la lista opcional `events` del mismo JSON. Consulta el anuncio original para verificar el día y vincula el evento al `storyKey` de la noticia incluida en `articles`. Si ninguna noticia cumple esas condiciones, omite `events` o deja la lista vacía.
+
+```json
+{
+  "events": [
+    {
+      "eventKey": "organizador-presentacion-2026",
+      "storyKey": "identificador-estable-del-acontecimiento",
+      "title": "Presentación de ejemplo",
+      "summary": "Qué se celebrará y por qué es relevante.",
+      "date": "AAAA-MM-DD",
+      "url": "https://organizador.example/eventos/presentacion-2026",
+      "officialHost": "organizador.example",
+      "confirmed": true
+    }
+  ]
+}
+```
+
+Usa una fecha posterior a la de la edición y la URL HTTPS del anuncio concreto del organizador. El título y el resumen se escriben en español. Mantén el mismo `eventKey` en los seguimientos o cambios de fecha del mismo evento. El identificador debe distinguir distintas ediciones del evento sin depender del día anunciado.
+
 ## Importaciones históricas literales
 
 Un archivo con `archiveImport.mode = "verbatim"` conserva una edición antigua de una tarea de ChatGPT por petición expresa del usuario. Puede tener menos noticias o frases que el contrato de ediciones nuevas: no se añaden noticias, no se reescriben los textos y no se vuelve a investigar para sustituir esa selección. Sus artículos usan `title` y `summary` originales. Se importa de forma controlada y sin avisos, conservando la revisión anterior. El publicador normal mantiene los mínimos de 5–8 noticias y 4–5 frases para las ediciones nuevas. Al deduplicar, también debes consultar estos archivos y sus `storyKey`.
