@@ -73,4 +73,4 @@ Updates y Eventos mantienen scripts/curated.json como origen editorial de anunci
 
 Cada noticia ofrece un botón discreto para compartir su enlace original. En móviles compatibles abre el menú del sistema; en el resto copia el enlace y, si el navegador bloquea el portapapeles, permite copiarlo manualmente. Cancelar el menú no copia ni envía nada.
 
-La sección, fecha, categoría, tarjetas ampliadas y posición de lectura se recuerdan localmente por cuenta y dispositivo. Se guardan al desplazarse, abrir una fuente o salir de la app y se recuperan cuando los datos han terminado de cargar. Un enlace explícito a otra edición tiene prioridad; una edición nueva de Hoy empieza desde arriba. Guardadas sigue sincronizándose con Firebase.
+TechRadar conserva la sección, los filtros, las tarjetas ampliadas y la posición de lectura mientras la app sigue abierta. Una apertura nueva empieza arriba en Hoy. Los enlaces directos abren la edición indicada y Guardadas se sincroniza con Firebase.

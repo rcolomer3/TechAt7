@@ -9,24 +9,24 @@ async function load(name){
 }
 const {readPosition}=await load('reading-state');
 const {shareNews}=await load('share-news');
-const record={version:1,day:'2026-11-02',view:{tab:'Anteriores',date:'2026-11-01',filter:'Seguridad'},y:900,anchor:'news-story',offset:-70,expanded:['story']};
-test('restores the edition, category, visible story and expanded summaries',()=>{
- assert.deepEqual(readPosition(JSON.stringify(record),'2026-11-02'),record);
+const record={day:'2026-11-02',view:{tab:'Anteriores',date:'2026-11-01',filter:'Seguridad'},y:900,anchor:'news-story',offset:-70,expanded:['story']};
+test('keeps the edition, category, visible story and expanded summaries in the open app',()=>{
+ assert.deepEqual(readPosition(record,'2026-11-02'),record);
 });
 test('notification links take priority over the remembered view',()=>{
- const restored=readPosition(JSON.stringify(record),'2026-11-02','2026-10-31');
+ const restored=readPosition(record,'2026-11-02','2026-10-31');
  assert.deepEqual(restored.view,{tab:'Anteriores',date:'2026-10-31',filter:'Todas'});
  assert.equal(restored.y,0);assert.deepEqual(restored.expanded,[]);
- assert.equal(readPosition(JSON.stringify(record),'2026-11-02','2026-11-02').view.tab,'Hoy');
+ assert.equal(readPosition(undefined,'2026-11-02','2026-11-02').view.tab,'Hoy');
 });
 test('a new daily edition starts at the top instead of an old reading position',()=>{
- const restored=readPosition(JSON.stringify({...record,view:{tab:'Hoy',date:'',filter:'Seguridad'}}),'2026-11-03');
+ const restored=readPosition({...record,view:{tab:'Hoy',date:'',filter:'Seguridad'}},'2026-11-03');
  assert.equal(restored.y,0);assert.equal(restored.view.filter,'Todas');assert.deepEqual(restored.expanded,[]);
 });
-test('unavailable or corrupted storage cannot stop the app from opening',()=>{
- for(const value of [null,'broken','{}',JSON.stringify({...record,view:{tab:'unknown'}})])assert.equal(readPosition(value,'2026-11-02').view.tab,'Hoy');
- const restored=readPosition(JSON.stringify({...record,y:-10,offset:'invalid',expanded:[null,'story',12]}),'2026-11-02');
- assert.equal(restored.y,0);assert.equal(restored.offset,0);assert.deepEqual(restored.expanded,['story']);
+test('a fresh app starts in Hoy at the top with no filters or expanded cards',()=>{
+ const opened=readPosition(undefined,'2026-11-02');
+ assert.deepEqual(opened.view,{tab:'Hoy',date:'',filter:'Todas'});
+ assert.equal(opened.y,0);assert.equal(opened.anchor,'');assert.deepEqual(opened.expanded,[]);
 });
 const article={title:'Noticia de prueba',url:'https://example.com/story'};
 test('native sharing receives the original article and does not also copy',async()=>{

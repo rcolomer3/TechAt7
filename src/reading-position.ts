@@ -2,26 +2,25 @@ import {useCallback,useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {defaultView,readPosition,type ReadingRecord,type ReadingView} from './reading-state';
 export const readingId=(key:string)=>'news-'+encodeURIComponent(key);
 export function useReadingPosition({uid,enabled,day,feedReady,savedReady}:{uid:string;enabled:boolean;day:string;feedReady:boolean;savedReady:boolean}){
- const key='techradar-reading-v1:'+uid;
- const [view,setView]=useState(defaultView),[expanded,setExpanded]=useState<string[]>([]),[loadedKey,setLoadedKey]=useState('');
+ const [view,setView]=useState(defaultView),[expanded,setExpanded]=useState<string[]>([]),[loadedUid,setLoadedUid]=useState('');
+ const positions=useRef(new Map<string,ReadingRecord>());
  const pending=useRef<ReadingRecord|null>(null),restored=useRef(false),jumpToTop=useRef(false);
  const tabScrollFrame=useRef(0);
- const ready=enabled&&loadedKey===key;
+ const ready=enabled&&loadedUid===uid;
  const contentReady=view.tab==='Guardadas'?savedReady:view.tab==='Ajustes'?true:feedReady;
  useEffect(()=>{
   restored.current=false;
-  if(!enabled){setLoadedKey('');return;}
-  let raw=null;try{raw=localStorage.getItem(key);}catch{}
-  const record=readPosition(raw,day,new URLSearchParams(location.search).get('edition'));
-  pending.current=record;setView(record.view);setExpanded(record.expanded);setLoadedKey(key);
+  if(!enabled){setLoadedUid('');return;}
+  const record=readPosition(positions.current.get(uid),day,new URLSearchParams(location.search).get('edition'));
+  pending.current=record;setView(record.view);setExpanded(record.expanded);setLoadedUid(uid);
   return()=>cancelAnimationFrame(tabScrollFrame.current);
- },[key,enabled,day]);
+ },[uid,enabled,day]);
  const capture=useCallback(()=>{
   if(!ready||!contentReady||!restored.current)return;
   const anchor=Array.from(document.querySelectorAll<HTMLElement>('.news-card[id]')).find(card=>card.getBoundingClientRect().bottom>0);
-  const record:ReadingRecord={version:1,day,view,y:window.scrollY,anchor:anchor?.id||'',offset:anchor?.getBoundingClientRect().top||0,expanded};
-  try{localStorage.setItem(key,JSON.stringify(record));}catch{}
- },[ready,contentReady,day,view,expanded,key]);
+  const record:ReadingRecord={day,view,y:window.scrollY,anchor:anchor?.id||'',offset:anchor?.getBoundingClientRect().top||0,expanded};
+  positions.current.set(uid,record);
+ },[ready,contentReady,day,view,expanded,uid]);
  useLayoutEffect(()=>{
   if(!ready||!contentReady)return;
   if(jumpToTop.current){jumpToTop.current=false;window.scrollTo({top:0,behavior:'instant'});capture();return;}
