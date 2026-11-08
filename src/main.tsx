@@ -33,7 +33,8 @@ function App(){
  const visible=newsDigests(data.digests,today,tab,archiveDate);
  const allArticles=tab==='Guardadas'?[...saved.items].sort((a,b)=>b.editionDate.localeCompare(a.editionDate)):visible.flatMap(d=>d.articles.map(a=>({...a,editionDate:d.date})));
  const activeFilter=filter;
- const categories=['Todas',...new Set(allArticles.map(a=>a.category))];
+ const articleCategories=[...new Set(allArticles.map(article=>article.category))];
+ const categories=['Todas',...articleCategories.sort((a,b)=>a.localeCompare(b,'es'))];
  const articles=allArticles.filter(a=>activeFilter==='Todas'||a.category===activeFilter);
  const todayEdition=tab==='Hoy'?visible[0]:undefined;
  const publicationTime=formatPublicationTimeES(todayEdition?.publishedAt);
