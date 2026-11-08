@@ -37,16 +37,15 @@ function App(){
  const archiveDate=archive.some(d=>d.date===date)?date:'';
  const visible=newsDigests(data.digests,today,tab,archiveDate);
  const allArticles=tab==='Guardadas'?[...saved.items].sort((a,b)=>b.editionDate.localeCompare(a.editionDate)):visible.flatMap(d=>d.articles.map(a=>({...a,editionDate:d.date})));
- const activeFilter=filter;
- const articleCategories=[...new Set(allArticles.map(article=>article.category))];
- const categories=['Todas',...articleCategories.sort((a,b)=>a.localeCompare(b,'es'))];
  const searchTerms=tab==='Anteriores'?searchable(archiveQuery).trim().split(/\s+/).filter(Boolean):[];
- const articles=allArticles.filter(article=>{
-  if(activeFilter!=='Todas'&&article.category!==activeFilter)return false;
-  if(!searchTerms.length)return true;
+ const matchingArticles=searchTerms.length?allArticles.filter(article=>{
   const text=searchable([article.title,article.summary,article.source].join(' '));
   return searchTerms.every(term=>text.includes(term));
- });
+ }):allArticles;
+ const articleCategories=[...new Set(matchingArticles.map(article=>article.category))];
+ const categories=['Todas',...articleCategories.sort((a,b)=>a.localeCompare(b,'es'))];
+ const activeFilter=categories.includes(filter)?filter:'Todas';
+ const articles=activeFilter==='Todas'?matchingArticles:matchingArticles.filter(article=>article.category===activeFilter);
  const todayEdition=tab==='Hoy'?visible[0]:undefined;
  const publicationTime=formatPublicationTimeES(todayEdition?.publishedAt);
  const groupArchive=tab==='Anteriores'&&!archiveDate;
