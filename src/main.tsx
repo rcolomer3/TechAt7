@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useRef,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {onAuthStateChanged,type User} from 'firebase/auth';
 import {auth,configured,loadRadar,login} from './firebase';
@@ -9,7 +9,7 @@ import {useAppearance,AppearanceSettings} from './appearance';
 import {AccountSettings} from './account-settings';
 import {formatDateES,formatEditionDateES,formatPublicationTimeES} from './date-format';
 import {NotificationSettings} from './notifications';
-import {newsDigests,brief} from './news';
+import {newsDigests,brief,searchable} from './news';
 import {useSavedNews,savedKey,type SavedArticle} from './saved-news';
 import {useReadingPosition,readingId} from './reading-position';
 import {readingTabs} from './reading-state';
@@ -19,6 +19,8 @@ const tabs=readingTabs;
 function App(){
  const [appearance,setAppearance]=useAppearance();
  const [authReady,setAuthReady]=useState(!configured);
+ const [archiveQuery,setArchiveQuery]=useState('');
+ const archiveSearch=useRef<HTMLInputElement>(null);
  useEffect(()=>{const receive=(event:MessageEvent)=>{if(event.data?.type==='radar-digest')window.dispatchEvent(new Event('radar-digest'));};navigator.serviceWorker?.addEventListener('message',receive);return()=>navigator.serviceWorker?.removeEventListener('message',receive);},[]);
  const [data,setData]=useState<RadarData>(configured?{digests:[],updates:[],events:[]}:demo),[loading,setLoading]=useState(true),[error,setError]=useState(''),[notice,setNotice]=useState(''),[user,setUser]=useState<User|null>(null),[busy,setBusy]=useState(false),[online,setOnline]=useState(navigator.onLine);
  async function refresh():Promise<boolean>{if(configured&&!auth?.currentUser)return false;setLoading(true);setError('');try{setData(configured?await loadRadar():demo);return true;}catch(e){setError((e as Error).message);return false;}finally{setLoading(false);}}
@@ -28,6 +30,9 @@ function App(){
  const today=madridDate();
  const reading=useReadingPosition({uid:configured?user?.uid||'signed-out':'demo',enabled:authReady&&(!configured||!!user),day:today,feedReady:!loading&&!error,savedReady:saved.ready&&!saved.error});
  const {tab,date,filter}=reading.view;
+ useEffect(()=>{
+  if(tab!=='Anteriores')setArchiveQuery('');
+ },[tab]);
  const archive=newsDigests(data.digests,today,'Anteriores');
  const archiveDate=archive.some(d=>d.date===date)?date:'';
  const visible=newsDigests(data.digests,today,tab,archiveDate);
@@ -35,7 +40,13 @@ function App(){
  const activeFilter=filter;
  const articleCategories=[...new Set(allArticles.map(article=>article.category))];
  const categories=['Todas',...articleCategories.sort((a,b)=>a.localeCompare(b,'es'))];
- const articles=allArticles.filter(a=>activeFilter==='Todas'||a.category===activeFilter);
+ const searchTerms=tab==='Anteriores'?searchable(archiveQuery).trim().split(/\s+/).filter(Boolean):[];
+ const articles=allArticles.filter(article=>{
+  if(activeFilter!=='Todas'&&article.category!==activeFilter)return false;
+  if(!searchTerms.length)return true;
+  const text=searchable([article.title,article.summary,article.source].join(' '));
+  return searchTerms.every(term=>text.includes(term));
+ });
  const todayEdition=tab==='Hoy'?visible[0]:undefined;
  const publicationTime=formatPublicationTimeES(todayEdition?.publishedAt);
  const groupArchive=tab==='Anteriores'&&!archiveDate;
@@ -68,13 +79,25 @@ function App(){
     {todayEdition&&<> · {articles.length} {articles.length===1?'noticia':'noticias'} · {publicationTime
      ?<time className="publication-time" dateTime={todayEdition.publishedAt}>Publicado a las {publicationTime}</time>
      :'Edición publicada'}</>}
-   </span>:<span>{tab==='Anteriores'?`${articles.length} noticias anteriores a hoy`:tab==='Guardadas'?`${articles.length} ${articles.length===1?'noticia guardada':'noticias guardadas'}`:'Fechas anunciadas oficialmente'}</span>}
+   </span>:tab==='Anteriores'?<span aria-live="polite">{searchTerms.length
+    ?`${articles.length} ${articles.length===1?'resultado':'resultados'}`
+    :`${articles.length} noticias anteriores a hoy`}</span>
+   :<span>{tab==='Guardadas'?`${articles.length} ${articles.length===1?'noticia guardada':'noticias guardadas'}`:'Fechas anunciadas oficialmente'}</span>}
   </div>
   {tab==='Anteriores'&&<select aria-label="Fecha de las noticias" value={archiveDate} onChange={e=>reading.update({date:e.target.value,filter:'Todas'})}>
    <option value="">Todas las fechas</option>
    {archive.map(d=><option key={d.id} value={d.date}>{formatDateES(d.date)}</option>)}
   </select>}
  </div>
+ {tab==='Anteriores'&&<div className="archive-search" role="search" aria-label="Archivo de noticias">
+  <Icon name="search"/>
+  <input ref={archiveSearch} type="search" value={archiveQuery} onChange={event=>setArchiveQuery(event.target.value)}
+   aria-label="Buscar en Anteriores" placeholder="Buscar en Anteriores"/>
+  {archiveQuery&&<button type="button" aria-label="Borrar búsqueda" onClick={()=>{
+   setArchiveQuery('');
+   archiveSearch.current?.focus();
+  }}>×</button>}
+ </div>}
  {(tab==='Hoy'||tab==='Anteriores'||tab==='Guardadas')&&<div className="filters">{categories.map(c=><button aria-pressed={c===activeFilter} className={c===activeFilter?'chosen':''} key={c} onClick={()=>reading.update({filter:c})}>{c}</button>)}</div>}
  {tab==='Guardadas'&&saved.error?<div className="empty" role="alert"><h3>No hemos podido cargar tus guardadas</h3><p>{saved.error}</p><button onClick={saved.reload}>Reintentar</button></div>
  :tab==='Guardadas'&&!saved.ready?<div className="empty" role="status">Sincronizando tus guardadas…</div>
@@ -90,7 +113,9 @@ function App(){
   :tab==='Hoy'?todayEdition
    ?<Empty title="Sin noticias en esta categoría" text="Elige otra categoría para ver más noticias de hoy."/>
    :<Empty title="La edición de hoy aún no está disponible" text="Se publica a partir de las 19:00, hora de Madrid. Mientras tanto, puedes consultar Anteriores."/>
-  :tab==='Anteriores'?<Empty title="Sin noticias anteriores" text="Aquí encontrarás las noticias publicadas antes de hoy. Prueba otra fecha o categoría."/>
+  :tab==='Anteriores'?searchTerms.length
+   ?<Empty title="No encontramos coincidencias" text="Prueba con otras palabras o cambia la fecha o la categoría."/>
+   :<Empty title="Sin noticias anteriores" text="Aquí encontrarás las noticias publicadas antes de hoy. Prueba otra fecha o categoría."/>
   :<Empty title="Nada guardado todavía" text="Pulsa el marcador de una noticia para guardarla aquí y leerla cuando quieras."/>
  :upcoming.length?upcoming.map(e=><article className="list-card" key={e.id}><span className="tag">{formatDateES(e.date)} · Confirmado</span><h3>{e.title}</h3><p>{e.summary}</p><a onClick={reading.capture} onAuxClick={reading.capture} href={e.url} target="_blank" rel="noopener noreferrer">Ver anuncio oficial ↗</a></article>):<Empty title="Sin eventos confirmados" text="Los eventos y lanzamientos aparecerán aquí cuando tengan una fecha anunciada oficialmente."/>}</>}</main></div></>;
 }
