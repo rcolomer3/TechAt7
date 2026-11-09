@@ -1,3 +1,4 @@
+import {readFileSync} from 'node:fs';
 import {franc} from 'franc-min';
 import {canonical,hash,titleKey,plain,madridDate} from './core.mjs';
 
@@ -14,7 +15,8 @@ export function planPublication(now,{date,archive=false,scheduled=false}={}){
  return [{date:date||today,archive,prepare:(date||today)===today&&hour<19}];
 }
 
-export const categories=['Apple','Inteligencia artificial','Tecnología','Lanzamientos','Seguridad'];
+const categoryCatalog=JSON.parse(readFileSync(new URL('../src/categories.json',import.meta.url),'utf8'));
+export const categories=categoryCatalog.categories.map(category=>category.name);
 export function sentenceCount(text){
  const normalized=text.replace(/EE\.\s?UU\./g,'Estados Unidos').replace(/p\.\s?ej\./gi,'por ejemplo');
  return [...new Intl.Segmenter('es',{granularity:'sentence'}).segment(normalized)].filter(s=>s.segment.trim()).length;

@@ -1,0 +1,104 @@
+{
+  "categories": [
+    {
+      "name": "Apple",
+      "description": "iPhone, Mac, iPad, servicios y decisiones de Apple."
+    },
+    {
+      "name": "Android",
+      "description": "Teléfonos, tabletas y novedades del ecosistema Android."
+    },
+    {
+      "name": "Google",
+      "description": "Búsqueda, servicios, plataformas y anuncios de Google."
+    },
+    {
+      "name": "Microsoft",
+      "description": "Windows, Office, Azure y el resto del ecosistema Microsoft."
+    },
+    {
+      "name": "Inteligencia artificial",
+      "description": "Modelos, herramientas y avances en IA."
+    },
+    {
+      "name": "Tecnología",
+      "description": "Innovación, industria y tendencias que no encajan en otro tema."
+    },
+    {
+      "name": "Lanzamientos",
+      "description": "Productos y servicios que llegan al mercado."
+    },
+    {
+      "name": "Hardware",
+      "description": "Chips, dispositivos, componentes y equipos."
+    },
+    {
+      "name": "Desarrollo",
+      "description": "Herramientas, lenguajes, frameworks y plataformas para crear software."
+    },
+    {
+      "name": "Web y privacidad",
+      "description": "Navegadores, estándares web y protección de datos."
+    },
+    {
+      "name": "Seguridad",
+      "description": "Vulnerabilidades, ciberataques y defensa digital."
+    },
+    {
+      "name": "Ciencia",
+      "description": "Investigación, espacio y descubrimientos con impacto tecnológico."
+    },
+    {
+      "name": "Videojuegos",
+      "description": "Consolas, estudios, juegos y tecnología para jugar."
+    },
+    {
+      "name": "Empresas",
+      "description": "Movimientos, resultados y estrategia de compañías tecnológicas."
+    },
+    {
+      "name": "Movilidad",
+      "description": "Coches conectados, transporte y movilidad eléctrica."
+    },
+    {
+      "name": "Criptomonedas",
+      "description": "Blockchain, activos digitales y finanzas descentralizadas."
+    },
+    {
+      "name": "Regulación",
+      "description": "Leyes, organismos y decisiones que afectan a la tecnología."
+    },
+    {
+      "name": "Redes sociales",
+      "description": "Plataformas sociales, creadores y comunidades."
+    },
+    {
+      "name": "Startups",
+      "description": "Nuevas empresas, inversión y emprendimiento tecnológico."
+    },
+    {
+      "name": "Cloud",
+      "description": "Servicios en la nube, infraestructura y centros de datos."
+    },
+    {
+      "name": "Open source",
+      "description": "Proyectos, licencias y comunidades de código abierto."
+    },
+    {
+      "name": "Realidad virtual",
+      "description": "Visores, experiencias inmersivas y realidad aumentada."
+    },
+    {
+      "name": "Domótica",
+      "description": "Hogar conectado, asistentes y dispositivos inteligentes."
+    },
+    {
+      "name": "Audio y vídeo",
+      "description": "Altavoces, auriculares, televisores y streaming."
+    },
+    {
+      "name": "Fotografía",
+      "description": "Cámaras, lentes, edición y captura de imagen."
+    }
+  ]
+}

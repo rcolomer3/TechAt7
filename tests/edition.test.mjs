@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {validateEdition,rejectRepeats,deliverOnce,planPublication,editionHash} from '../scripts/edition.mjs';
+import {readFile} from 'node:fs/promises';
+import {validateEdition,rejectRepeats,deliverOnce,planPublication,editionHash,categories} from '../scripts/edition.mjs';
 import {hash} from '../scripts/core.mjs';
 const sentences=['El fabricante ha publicado una actualización de seguridad para sus teléfonos móviles.','La nueva versión corrige un fallo que permitía acceder a datos privados del usuario.','El cambio protege las cuentas almacenadas en el dispositivo frente a ese acceso.','La actualización ya se puede descargar desde los ajustes del sistema del teléfono.'];
 const input=()=>({schemaVersion:1,date:'2026-11-01',language:'es',producer:'chatgpt',articles:Array.from({length:5},(_,i)=>({title:'Una actualización protege los datos de los teléfonos '+i,storyKey:'fabricante correccion seguridad '+i,category:'Seguridad',sentences,sources:[{name:'Fuente '+i,url:`https://medio${i%3}.example/noticia-${i}`,publishedAt:'2026-10-31T12:00:00Z'}]}))});
@@ -16,6 +17,15 @@ test('rejects duplicate topics, homepages and insufficient source diversity',()=
  const x=input();x.articles[1].storyKey=x.articles[0].storyKey;assert.throws(()=>validateEdition(x,x.date),/repetidos/);
  const y=input();y.articles[0].sources[0].url='https://example.com/';assert.throws(()=>validateEdition(y,y.date),/portada/);
  const z=input();z.articles.forEach((a,i)=>a.sources[0].url='https://example.com/article-'+i);assert.throws(()=>validateEdition(z,z.date),/tres fuentes/);
+});
+test('uses the expanded category catalog and rejects unknown topics',()=>{
+ assert.equal(new Set(categories).size,categories.length);
+ for(const name of ['Android','Google','Microsoft','Hardware','Desarrollo','Web y privacidad','Ciencia','Videojuegos','Empresas','Movilidad','Criptomonedas','Regulación','Redes sociales','Startups','Cloud','Open source','Realidad virtual','Domótica','Audio y vídeo','Fotografía']){
+  assert.ok(categories.includes(name));
+  const edition=input();edition.articles[0].category=name;
+  assert.equal(validateEdition(edition,edition.date).articles[0].category,name);
+ }
+ const unknown=input();unknown.articles[0].category='Cocina';assert.throws(()=>validateEdition(unknown,unknown.date),/categoría/);
 });
 test('rejects previously published stories, including a differently titled source URL',()=>{
  const edition=validateEdition(input(),'2026-11-01');assert.throws(()=>rejectRepeats(edition.articles,[{...edition.articles[0],title:'Un titular distinto'}]),/ya publicada/);
@@ -80,4 +90,16 @@ test('retries and concurrent runs send only once per device and edition',async()
 test('ambiguous FCM errors never cause an automatic duplicate',async()=>{
  const db=memoryStore();let sends=0;const args={db,tokenDoc,date:'2026-11-01',articles:5,messaging:{send:async()=>{sends++;throw {code:'messaging/server-unavailable'};}}};
  assert.equal(await deliverOnce(args),'uncertain');assert.equal(await deliverOnce(args),'uncertain');assert.equal(sends,1);
+});
+test('Firestore rules allow exactly the canonical category catalog',async()=>{
+ const [rules,catalogFile]=await Promise.all([
+  readFile(new URL('../firestore.rules',import.meta.url),'utf8'),
+  readFile(new URL('../src/categories.json',import.meta.url),'utf8'),
+ ]);
+ const catalog=JSON.parse(catalogFile).categories.map(category=>category.name);
+ const block=rules.match(/function allowedCategories\(\)\s*\{\s*return \[([\s\S]*?)\];/);
+ assert.ok(block,'allowedCategories() not found in firestore.rules');
+ const allowed=[...block[1].matchAll(/'([^']*)'/g)].map(match=>match[1]);
+ assert.deepEqual(allowed,catalog);
+ assert.deepEqual(categories,catalog);
 });

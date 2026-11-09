@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import ts from 'typescript';
 const source=await readFile(new URL('../src/news.ts',import.meta.url),'utf8');
 const {outputText}=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}});
-const {newsDigests,brief,searchable}=await import('data:text/javascript;base64,'+Buffer.from(outputText).toString('base64'));
+const {newsDigests,brief,searchable,limitPerEdition}=await import('data:text/javascript;base64,'+Buffer.from(outputText).toString('base64'));
 const digests=['2026-11-02','2026-11-03','2026-10-31','2026-11-01'].map(date=>({date}));
 test('archive excludes today and future and defaults to all past dates newest first',()=>{
  assert.deepEqual(newsDigests(digests,'2026-11-02','Anteriores').map(d=>d.date),['2026-11-01','2026-10-31']);
@@ -23,4 +23,15 @@ test('brief uses a complete first sentence and caps very long sentences',()=>{
  assert.ok(brief('palabra '.repeat(100)).length<=240);
  assert.equal(brief(''),'');
  assert.equal(searchable('TECNOLOGÍA'),searchable('tecnologia'));
+});
+test('the daily limit applies to each edition independently',()=>{
+ const items=[
+  {id:'a',editionDate:'2026-11-03'},{id:'b',editionDate:'2026-11-03'},{id:'c',editionDate:'2026-11-03'},
+  {id:'d',editionDate:'2026-11-02'},{id:'e',editionDate:'2026-11-02'},
+ ];
+ assert.deepEqual(limitPerEdition(items,2).map(item=>item.id),['a','b','d','e']);
+ assert.deepEqual(limitPerEdition(items,1).map(item=>item.id),['a','d']);
+ assert.deepEqual(limitPerEdition(items,0).map(item=>item.id),['a','b','c','d','e']);
+ assert.deepEqual(limitPerEdition(items,-1).map(item=>item.id),['a','b','c','d','e']);
+ assert.deepEqual(limitPerEdition([],3),[]);
 });

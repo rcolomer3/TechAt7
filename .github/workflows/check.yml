@@ -15,7 +15,7 @@ jobs:
       - run: npm test
       - run: npm run build
 
-  saved-rules:
+  firestore-rules:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,5 +28,5 @@ jobs:
           distribution: temurin
           java-version: 21
       - run: npm ci --no-audit --no-fund
-      - name: Probar privacidad de Guardadas en emuladores
+      - name: Probar privacidad de Guardadas y preferencias en emuladores
         run: npx --yes firebase-tools@14.17.0 emulators:exec --only firestore,auth --project demo-techradar "node --test tests/firestore/*.test.mjs"

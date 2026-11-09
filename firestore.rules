@@ -2,6 +2,9 @@ rules_version = '2';
 service cloud.firestore {
  match /databases/{database}/documents {
   function signedIn() { return request.auth != null; }
+  function allowedCategories() {
+   return ['Apple','Android','Google','Microsoft','Inteligencia artificial','Tecnología','Lanzamientos','Hardware','Desarrollo','Web y privacidad','Seguridad','Ciencia','Videojuegos','Empresas','Movilidad','Criptomonedas','Regulación','Redes sociales','Startups','Cloud','Open source','Realidad virtual','Domótica','Audio y vídeo','Fotografía'];
+  }
   match /digests/{date} { allow read: if resource.data.status == 'published'; allow write: if false; }
   match /updates/{id} { allow read: if true; allow write: if false; }
   match /events/{id} { allow read: if resource.data.confirmed == true; allow write: if false; }
@@ -21,6 +24,22 @@ service cloud.firestore {
     && request.resource.data.article.category is string && request.resource.data.article.category.size() <= 256
     && request.resource.data.article.publishedAt is string && request.resource.data.article.publishedAt.size() <= 64
     && request.resource.data.article.editionDate is string && request.resource.data.article.editionDate.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
+  }
+  match /users/{uid}/preferences/{id} {
+   allow read: if signedIn() && request.auth.uid == uid;
+   allow create, update: if signedIn() && request.auth.uid == uid
+    && id == 'radar'
+    && request.resource.data.keys().hasAll(['categories','dailyLimit','updatedAt'])
+    && request.resource.data.keys().hasOnly(['categories','dailyLimit','updatedAt'])
+    && request.resource.data.categories is list
+    && request.resource.data.categories.size() <= 25
+    && request.resource.data.categories.toSet().size() == request.resource.data.categories.size()
+    && request.resource.data.categories.hasOnly(allowedCategories())
+    && request.resource.data.dailyLimit is int
+    && request.resource.data.dailyLimit >= 0
+    && request.resource.data.dailyLimit <= 50
+    && request.resource.data.updatedAt == request.time;
+   allow delete: if signedIn() && request.auth.uid == uid;
   }
   match /users/{uid}/tokens/{id} {
    allow read, delete: if signedIn() && request.auth.uid == uid;
