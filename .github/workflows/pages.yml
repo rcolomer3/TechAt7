@@ -11,12 +11,11 @@ concurrency:
   group: pages
   cancel-in-progress: true
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      artifact_name: ${{ steps.pages-artifact.outputs.name }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,9 +27,23 @@ jobs:
       - run: npm run build -- --base=/TechRadar/
       # Las reglas se validan en Check y se publican desde Firebase Console.
       - uses: actions/configure-pages@v5
+      - name: Nombrar el archivo de Pages
+        id: pages-artifact
+        run: echo "name=github-pages-$GITHUB_RUN_ATTEMPT" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
+          name: ${{ steps.pages-artifact.outputs.name }}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Publicar
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ needs.build.outputs.artifact_name }}
