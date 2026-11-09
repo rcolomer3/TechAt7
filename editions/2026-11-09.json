@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "apple-intelligence-china-tablets-laptops-regulatory-registration-nov-2026",
+      "category": "Apple",
+      "title": "China registra Apple Intelligence para su uso en iPad y Mac",
+      "sentences": [
+        "El regulador de internet de Shanghái ha anunciado el registro de Apple Intelligence para tabletas y ordenadores portátiles en China.",
+        "El trámite supone un avance regulatorio para que Apple pueda ofrecer su servicio de inteligencia artificial en esas categorías de dispositivos.",
+        "La comunicación no especifica cuándo estará disponible para el público ni qué funciones se activarán inicialmente.",
+        "Por tanto, el registro no debe confundirse con un lanzamiento comercial confirmado."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/retail-consumer/apple-intelligence-ai-service-registers-with-chinese-regulator-use-tablets-2026-11-09/",
+          "publishedAt": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "storyKey": "google-tpu-8tx-8imax-ai-infrastructure-nov-2026",
+      "category": "Lanzamientos",
+      "title": "Google presenta dos sistemas TPU para IA privada y tareas de gran contexto",
+      "sentences": [
+        "Google ha presentado TPU 8tx y TPU 8i Max, dos nuevas configuraciones de su octava generación de aceleradores para inteligencia artificial.",
+        "TPU 8tx está orientado a gobiernos y empresas que necesitan proteger datos sensibles incluso durante el procesamiento.",
+        "TPU 8i Max combina dos chips TPU 8i para ampliar la memoria y la capacidad de cálculo en trabajos con grandes volúmenes de información.",
+        "Google afirma que esta última configuración duplica determinados recursos respecto a TPU 8i, pero todavía no ha concretado precios ni disponibilidad comercial."
+      ],
+      "sources": [
+        {
+          "name": "Rankia",
+          "url": "https://www.rankia.com/blog/bolsa-al-dia/7544837-google-lanza-dos-chips-tpu-planta-cara-nvidia",
+          "publishedAt": "2026-11-09"
+        },
+        {
+          "name": "Google",
+          "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/",
+          "publishedAt": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "storyKey": "norway-statnett-pauses-datacenter-grid-capacity-nov-2026",
+      "category": "Tecnología",
+      "title": "Noruega frena nuevas reservas eléctricas para centros de datos",
+      "sentences": [
+        "El operador eléctrico noruego Statnett ha suspendido temporalmente nuevas reservas de capacidad para centros de datos mientras se prepara un sistema de licencias.",
+        "El Gobierno quiere priorizar instalaciones vinculadas a servicios críticos como sanidad, defensa y emergencias.",
+        "Según las autoridades, los centros de datos concentran el 75 % de los 26.000 megavatios de nueva capacidad solicitados este año.",
+        "La medida refleja la presión que la expansión de la IA está ejerciendo sobre las redes eléctricas, aunque Noruega todavía dispone de excedente energético."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/energy/norways-statnett-pauses-new-grid-capacity-data-centres-protect-power-system-2026-11-09/",
+          "publishedAt": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "storyKey": "ukraine-germany-crypto-investment-scam-network-arrests-nov-2026",
+      "category": "Seguridad",
+      "title": "Desmantelan una red de falsas inversiones que robó más de 4,3 millones de euros",
+      "sentences": [
+        "La policía ucraniana ha detenido a cuatro sospechosos vinculados a una red de centros de llamadas dedicada a estafas de inversión.",
+        "Según la investigación, la organización engañó a 135 víctimas alemanas y les hizo transferir dinero a plataformas fraudulentas de criptomonedas y otros activos.",
+        "Los operadores ganaban la confianza de sus víctimas mediante llamadas y mensajes y, en algunos casos, obtenían acceso a sus cuentas bancarias.",
+        "La investigación contó con la colaboración de autoridades alemanas y los detenidos permanecen en prisión preventiva."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/ukraine-dismantles-crypto-scam-network-that-stole-43-million/",
+          "publishedAt": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "storyKey": "former-fbi-agent-crypto-theft-guilty-plea-nov-2026",
+      "category": "Seguridad",
+      "title": "Un exagente del FBI admite haber robado criptomonedas de investigaciones",
+      "sentences": [
+        "Un antiguo agente del FBI se ha declarado culpable de fraude electrónico y blanqueo de capitales por apropiarse de criptomonedas relacionadas con investigaciones oficiales.",
+        "Según el Departamento de Justicia, realizó alrededor de cien transferencias fraudulentas utilizando credenciales de 35 investigaciones diferentes.",
+        "El importe obtenido ilícitamente asciende a aproximadamente 2,47 millones de dólares.",
+        "El caso pone de relieve el riesgo de que personas con acceso legítimo a claves y datos de investigaciones puedan abusar de esos privilegios."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/fbi-agent-stole-25-million-in-crypto-from-hackers-fraud-victims/",
+          "publishedAt": "2026-11-09"
+        }
+      ]
+    }
+  ]
+}
