@@ -1,11 +1,6 @@
 name: Firestore rules
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'firestore.rules'
-      - '.github/workflows/firestore-rules.yml'
   workflow_dispatch:
 
 permissions:

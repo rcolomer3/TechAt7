@@ -2,6 +2,7 @@ import {useEffect,useRef,useState} from 'react';
 import {collection,deleteDoc,doc,onSnapshot,serverTimestamp,setDoc} from 'firebase/firestore';
 import {db,configured} from './firebase';
 import type {Article} from './models';
+import {PREFERENCES_DOC_ID} from './preferences-doc';
 export type SavedArticle=Article&{editionDate:string};
 export const savedKey=(a:SavedArticle)=>JSON.stringify([a.editionDate,a.id]);
 const demoKey='techradar-demo-saved-v1';
@@ -12,7 +13,7 @@ export function useSavedNews(uid:string|undefined){
   setItems([]);setError('');setReady(!configured);locks.current.clear();setPending([]);
   if(!configured){try{const saved=JSON.parse(localStorage.getItem(demoKey)||'[]');if(Array.isArray(saved))setItems(saved);}catch{setError('No se pudieron recuperar las noticias guardadas de demostración.');}return;}
   if(!uid||!db)return;
-  return onSnapshot(collection(db,'users',uid,'saved'),snapshot=>{setItems(snapshot.docs.map(d=>d.data().article as SavedArticle));setReady(true);setError('');},()=>{setReady(false);setError('No se pudieron sincronizar tus guardadas. Comprueba la conexión y vuelve a intentarlo.');});
+  return onSnapshot(collection(db,'users',uid,'saved'),snapshot=>{setItems(snapshot.docs.filter(d=>d.id!==PREFERENCES_DOC_ID&&d.data().article?.id!==PREFERENCES_DOC_ID).map(d=>d.data().article as SavedArticle));setReady(true);setError('');},()=>{setReady(false);setError('No se pudieron sincronizar tus guardadas. Comprueba la conexión y vuelve a intentarlo.');});
  },[uid,retry]);
  async function toggle(article:SavedArticle){
   const key=savedKey(article),startOwner=uid;

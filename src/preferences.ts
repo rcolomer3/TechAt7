@@ -2,6 +2,7 @@ import {useEffect,useRef,useState} from 'react';
 import {doc,getDocFromServer,serverTimestamp,setDoc} from 'firebase/firestore';
 import {db,configured} from './firebase';
 import {newsCategories,normalizeCategorySelection} from './categories';
+import {PREFERENCES_DOC_ID} from './preferences-doc';
 
 export const dailyLimitOptions=[0,3,5,8,12,20] as const;
 
@@ -38,6 +39,60 @@ function writeLocal(uid:string,preferences:RadarPreferences){
 
 const isLocalOnly=(uid:string)=>!configured||!db||uid==='demo'||uid==='signed-out';
 
+type Transport='preferences'|'saved';
+
+const preferencesRef=(uid:string)=>doc(db!,'users',uid,'preferences','radar');
+const savedRef=(uid:string)=>doc(db!,'users',uid,'saved',PREFERENCES_DOC_ID);
+const savedArticle=(preferences:RadarPreferences)=>({
+ id:PREFERENCES_DOC_ID,
+ title:'Preferencias de TechRadar',
+ summary:JSON.stringify(preferences),
+ url:'',
+ source:'TechRadar',
+ publishedAt:'1970-01-01T00:00:00Z',
+ category:'Sistema',
+ editionDate:'1970-01-01',
+});
+
+function permissionDenied(error:unknown):boolean{
+ return typeof error==='object'&&error!==null&&'code' in error&&(error as {code?:unknown}).code==='permission-denied';
+}
+
+/** Reads the clean preferences document or the reserved saved document. */
+async function readRemote(uid:string):Promise<{preferences:RadarPreferences|null;transport:Transport}>{
+ try{
+  const snapshot=await getDocFromServer(preferencesRef(uid));
+  return {preferences:snapshot.exists()?normalizePreferences(snapshot.data()):null,transport:'preferences'};
+ }catch(error){
+  if(!permissionDenied(error))throw error;
+ }
+ const snapshot=await getDocFromServer(savedRef(uid));
+ if(!snapshot.exists())return {preferences:null,transport:'saved'};
+ const article=snapshot.data()?.article as {summary?:unknown}|undefined;
+ if(typeof article?.summary!=='string')return {preferences:null,transport:'saved'};
+ try{
+  return {preferences:normalizePreferences(JSON.parse(article.summary)),transport:'saved'};
+ }catch{
+  return {preferences:null,transport:'saved'};
+ }
+}
+
+/** Writes to preferences, falling back to the reserved saved document if rules deny it. */
+async function writeRemote(uid:string,preferences:RadarPreferences,transport:Transport):Promise<Transport>{
+ if(transport==='saved'){
+  await setDoc(savedRef(uid),{article:savedArticle(preferences),savedAt:serverTimestamp()});
+  return 'saved';
+ }
+ try{
+  await setDoc(preferencesRef(uid),{categories:preferences.categories,dailyLimit:preferences.dailyLimit,updatedAt:serverTimestamp()});
+  return 'preferences';
+ }catch(error){
+  if(!permissionDenied(error))throw error;
+  await setDoc(savedRef(uid),{article:savedArticle(preferences),savedAt:serverTimestamp()});
+  return 'saved';
+ }
+}
+
 export function useRadarPreferences(uid:string){
  const [preferences,setPreferences]=useState<RadarPreferences>(()=>readLocal(uid));
  const [readyUid,setReadyUid]=useState<string|null>(()=>isLocalOnly(uid)?uid:null);
@@ -49,11 +104,13 @@ export function useRadarPreferences(uid:string){
  const dirty=useRef(false);
  const owner=useRef(uid);
  const prefsUid=useRef(uid);
+ const transport=useRef<Transport>('preferences');
 
  useEffect(()=>{
   owner.current=uid;
   dirty.current=false;
   prefsUid.current=uid;
+  transport.current='preferences';
   const local=readLocal(uid);
   setPreferences(local);
   setError('');
@@ -68,19 +125,19 @@ export function useRadarPreferences(uid:string){
   let cancelled=false;
   void (async()=>{
    try{
-    const reference=doc(db!,'users',uid,'preferences','radar');
-    const snapshot=await getDocFromServer(reference);
+    const remote=await readRemote(uid);
     if(cancelled||owner.current!==uid)return;
-    if(snapshot.exists()){
+    transport.current=remote.transport;
+    if(remote.preferences){
      if(dirty.current)return;
-     const remote=normalizePreferences(snapshot.data());
-     synced.current=JSON.stringify(remote);
+     synced.current=JSON.stringify(remote.preferences);
      prefsUid.current=uid;
-     setPreferences(remote);
-     writeLocal(uid,remote);
+     setPreferences(remote.preferences);
+     writeLocal(uid,remote.preferences);
     }else if(!dirty.current){
-     await setDoc(reference,{categories:local.categories,dailyLimit:local.dailyLimit,updatedAt:serverTimestamp()});
+     const used=await writeRemote(uid,local,remote.transport);
      if(cancelled||owner.current!==uid)return;
+     transport.current=used;
      synced.current=JSON.stringify(local);
     }
    }catch{
@@ -113,8 +170,8 @@ export function useRadarPreferences(uid:string){
   const timer=window.setTimeout(async()=>{
    setSaving(true);
    try{
-    await setDoc(doc(db!,'users',uid,'preferences','radar'),{categories:preferences.categories,dailyLimit:preferences.dailyLimit,updatedAt:serverTimestamp()});
-    if(!cancelled&&owner.current===uid){synced.current=serialized;setError('');}
+    const used=await writeRemote(uid,preferences,transport.current);
+    if(!cancelled&&owner.current===uid){transport.current=used;synced.current=serialized;setError('');}
    }catch{
     if(!cancelled)setError('No se pudieron guardar tus preferencias en Firebase.');
    }finally{

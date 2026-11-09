@@ -52,6 +52,17 @@ test('radar preferences are private, validated and removable by their owner',asy
 
   await deleteDoc(doc(alice.db,...path));
   assert.equal((await getDoc(doc(alice.db,...path))).exists(),false);
+
+  const fallbackId='b43f13c4422f1504fe26c2874dca6eb9ba48d60bd79e1d9ddb68ac46f8dd3151';
+  const fallbackPreferences={categories:['Apple','Android'],dailyLimit:3};
+  const savedPath=['users',alice.uid,'saved',fallbackId];
+  await setDoc(doc(alice.db,...savedPath),{
+   article:{id:fallbackId,title:'Preferencias de TechRadar',summary:JSON.stringify(fallbackPreferences),url:'',source:'TechRadar',publishedAt:'1970-01-01T00:00:00Z',category:'Sistema',editionDate:'1970-01-01'},
+   savedAt:serverTimestamp(),
+  });
+  const fallback=(await getDoc(doc(alice.db,...savedPath))).data();
+  assert.deepEqual(JSON.parse(fallback.article.summary),fallbackPreferences);
+  await assert.rejects(getDoc(doc(bob.db,...savedPath)),e=>e.code==='permission-denied');
  }finally{
   await Promise.all(apps.map(async app=>{await terminate(getFirestore(app));await deleteApp(app);}));
  }
