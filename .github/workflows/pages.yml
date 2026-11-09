@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 concurrency:
@@ -32,6 +33,19 @@ jobs:
         with:
           path: dist
           name: github-pages-${{ github.run_attempt }}
+      - name: Esperar a que GitHub indexe el archivo de Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PAGES_ARTIFACT: github-pages-${{ github.run_attempt }}
+        run: |
+          for attempt in {1..15}; do
+            if count=$(gh api --method GET "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" -f "name=$PAGES_ARTIFACT" --jq '.total_count') && [[ "$count" == 1 ]]; then
+              exit 0
+            fi
+            sleep 4
+          done
+          echo "::error::El archivo de Pages no apareció en GitHub Actions."
+          exit 1
       - name: Publicar
         id: deployment
         uses: actions/deploy-pages@v4
