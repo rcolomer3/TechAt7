@@ -18,11 +18,11 @@ export async function login(){
  catch(error){
   const code=(error as {code?:string}).code;
   const messages:Record<string,string>={
-   'auth/unauthorized-domain':'Este dominio todavía no está autorizado en Firebase. Abre la dirección oficial de TechRadar.',
+   'auth/unauthorized-domain':'Este dominio todavía no está autorizado en Firebase. Abre la dirección oficial de TechAt7.',
    'auth/operation-not-allowed':'El proveedor Google aún no está habilitado en Firebase Authentication.',
-   'auth/popup-blocked':'El navegador ha bloqueado Google. Permite ventanas emergentes para TechRadar y vuelve a pulsar Entrar.',
+   'auth/popup-blocked':'El navegador ha bloqueado Google. Permite ventanas emergentes para TechAt7 y vuelve a pulsar Entrar.',
    'auth/popup-closed-by-user':'No se ha terminado el acceso con Google. Puedes volver a intentarlo.',
-   'auth/network-request-failed':'No se pudo conectar con Google. Revisa Internet y abre TechRadar en Safari o Chrome.',
+   'auth/network-request-failed':'No se pudo conectar con Google. Revisa Internet y abre TechAt7 en Safari o Chrome.',
   };
   if(code&&messages[code])throw new Error(messages[code]);throw error;
  }
@@ -39,7 +39,7 @@ async function queryRadar():Promise<RadarData>{
 }
 export async function loadRadar():Promise<RadarData>{
  try{return await queryRadar();}catch(error){
-  console.warn('TechRadar: no se pudo consultar Firestore', error);
+  console.warn('TechAt7: no se pudo consultar Firestore', error);
   const code=(error as {code?:string}).code;
   if(code==='failed-precondition')throw new Error('Estamos terminando de preparar el radar. Vuelve a intentarlo dentro de unos minutos.');
   if(code==='unavailable')throw new Error('No se pudo conectar con el radar. Comprueba tu conexión y vuelve a intentarlo.');

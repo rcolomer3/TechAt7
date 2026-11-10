@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "TechRadar · Tu dosis diaria",
-  "short_name": "TechRadar",
+  "name": "TechAt7 · Tu dosis diaria",
+  "short_name": "TechAt7",
   "description": "Tu resumen tecnológico diario con fuentes verificables",
   "lang": "es",
   "start_url": "./",
@@ -12,8 +12,8 @@
   "background_color": "#f5f5f7",
   "theme_color": "#0e1a33",
   "icons": [
-    { "src": "icon-192-v5.png?v=5", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512-v5.png?v=5", "sizes": "512x512", "type": "image/png" },
-    { "src": "icon-maskable-512-v5.png?v=5", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "icon-192-v6.png?v=6", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512-v6.png?v=6", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512-v6.png?v=6", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }

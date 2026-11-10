@@ -26,4 +26,4 @@ export function PlatformIcon({platform}:{platform:string}){
 }
 export function GoogleIcon(){return <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M44 24.5c0-1.5-.1-2.7-.4-4.1H24v7.8h11.3a9.7 9.7 0 0 1-4.2 6.3v5.2h6.7c4-3.7 6.2-9 6.2-15.2"/><path fill="#34A853" d="M24 45c5.6 0 10.3-1.9 13.8-5.3l-6.7-5.2c-1.9 1.3-4.3 2.1-7.1 2.1-5.5 0-10.2-3.7-11.9-8.7H5.2v5.4A20.9 20.9 0 0 0 24 45"/><path fill="#FBBC05" d="M12.1 27.9a12.6 12.6 0 0 1 0-7.8v-5.4H5.2a21 21 0 0 0 0 18.6z"/><path fill="#EA4335" d="M24 11.4c3 0 5.6 1 7.7 3l5.8-5.8A20.1 20.1 0 0 0 24 3 20.9 20.9 0 0 0 5.2 14.7l6.9 5.4c1.7-5 6.4-8.7 11.9-8.7"/></svg>}
 
-export function AppIcon({className}:{className?:string}){return <img className={className} src={import.meta.env.BASE_URL+'icon-v3.svg'} alt="" aria-hidden="true" draggable={false}/>;}
+export function AppIcon({className}:{className?:string}){return <img className={className} src={import.meta.env.BASE_URL+'icon-v6.svg'} alt="" aria-hidden="true" draggable={false}/>;}

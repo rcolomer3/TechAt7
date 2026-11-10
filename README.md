@@ -1,10 +1,10 @@
-# TechRadar
+# TechAt7
 
 PWA personal React/Vite con Google Authentication, Firestore, notificaciones FCM y GitHub Pages. Conserva el diseño, la apariencia, Updates, Eventos y el historial.
 
 ## Flujo de publicación
 
-**ChatGPT busca y resume → escribe editions/AAAA-MM-DD.json en GitHub → GitHub Actions valida y guarda en Firebase → TechRadar lee Firebase.**
+**ChatGPT busca y resume → escribe editions/AAAA-MM-DD.json en GitHub → GitHub Actions valida y guarda en Firebase → TechAt7 lee Firebase.**
 
 No se utiliza Gemini, Ollama ni una API de IA de pago. GitHub no genera noticias. El antiguo extractor RSS se ha retirado del proceso de publicación para impedir que un solo titular en inglés se presente como edición diaria.
 
@@ -73,7 +73,7 @@ Los eventos proceden de noticias de la edición diaria y se publican junto con e
 
 Cada noticia ofrece un botón discreto para compartir su enlace original. En móviles compatibles abre el menú del sistema; en el resto copia el enlace y, si el navegador bloquea el portapapeles, permite copiarlo manualmente. Cancelar el menú no copia ni envía nada.
 
-TechRadar conserva la sección, los filtros, las tarjetas ampliadas y la posición de lectura mientras la app sigue abierta. Una apertura nueva empieza arriba en Hoy. Los enlaces directos abren la edición indicada y Guardadas se sincroniza con Firebase.
+TechAt7 conserva la sección, los filtros, las tarjetas ampliadas y la posición de lectura mientras la app sigue abierta. Una apertura nueva empieza arriba en Hoy. Los enlaces directos abren la edición indicada y Guardadas se sincroniza con Firebase.
 
 ## Categorías y preferencias
 

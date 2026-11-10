@@ -106,7 +106,7 @@ export async function deliverOnce({db,messaging,tokenDoc,date,articles}){
   return 'uncertain';
  }
  try{
-  await messaging.send({token:tokenDoc.data().token,data:{title:'Tu TechRadar está listo',body:`${articles} noticias resumidas en español. Abre la edición.`,date},webpush:{headers:{TTL:'86400',Urgency:'normal'}}});
+  await messaging.send({token:tokenDoc.data().token,data:{title:'Tu TechAt7 está listo',body:`${articles} noticias resumidas en español. Abre la edición.`,date},webpush:{headers:{TTL:'86400',Urgency:'normal'}}});
  }catch(error){
   const invalid=['messaging/registration-token-not-registered','messaging/invalid-registration-token'].includes(error.code);
   await delivery.set({state:invalid?'invalid':'uncertain',code:error.code||'transport-error'},{merge:true});
