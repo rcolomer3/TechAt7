@@ -67,7 +67,7 @@ jobs:
         if: always()
         run: |
           if test -f work/publication-report.json; then
-            echo '### TechRadar' >> "$GITHUB_STEP_SUMMARY"
+            echo '### TechAt7' >> "$GITHUB_STEP_SUMMARY"
             echo '```json' >> "$GITHUB_STEP_SUMMARY"
             cat work/publication-report.json >> "$GITHUB_STEP_SUMMARY"
             echo '```' >> "$GITHUB_STEP_SUMMARY"

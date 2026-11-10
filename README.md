@@ -10,7 +10,7 @@ No se utiliza Gemini, Ollama ni una API de IA de pago. GitHub no genera noticias
 
 El contrato de edición y las instrucciones editoriales están en [editions/README.md](editions/README.md). Se requieren 5–8 noticias, 4–5 frases en español por tarjeta, fuentes verificables al artículo concreto, al menos tres dominios de fuentes y ausencia de repeticiones. Los controles de idioma, estructura, fechas y duplicados son automáticos. La comprobación de hechos corresponde a la tarea de ChatGPT: estos validadores no certifican por sí solos la veracidad del contenido.
 
-La tarea de ChatGPT debe poder usar el plugin GitHub y publicar en rcolomer3/TechRadar. El repositorio ya está autorizado para escritura en ChatGPT Codex Connector. Hay que validar también una ejecución real de la tarea programada; la autorización de un chat no demuestra esa capacidad por sí sola.
+La tarea de ChatGPT debe poder usar el plugin GitHub y publicar en rcolomer3/TechAt7. El repositorio ya está autorizado para escritura en ChatGPT Codex Connector. Hay que validar también una ejecución real de la tarea programada; la autorización de un chat no demuestra esa capacidad por sí sola.
 
 ## Horario
 
