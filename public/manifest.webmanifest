@@ -1,1 +1,19 @@
-{"id":"./","name":"TechRadar · Tu dosis diaria","short_name":"TechRadar","description":"Tu resumen tecnológico diario con fuentes verificables","lang":"es","start_url":"./","scope":"./","display":"standalone","background_color":"#f5f5f7","theme_color":"#0e1a33","icons":[{"src":"icon-maskable-512-v4.png","sizes":"512x512","type":"image/png","purpose":"maskable"},{"src":"icon-maskable-192-v4.png","sizes":"192x192","type":"image/png","purpose":"maskable"},{"src":"icon-512-v4.png","sizes":"512x512","type":"image/png","purpose":"any"},{"src":"icon-192-v4.png","sizes":"192x192","type":"image/png","purpose":"any"}]}
+{
+  "id": "./",
+  "name": "TechRadar · Tu dosis diaria",
+  "short_name": "TechRadar",
+  "description": "Tu resumen tecnológico diario con fuentes verificables",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "categories": ["news"],
+  "background_color": "#f5f5f7",
+  "theme_color": "#0e1a33",
+  "icons": [
+    { "src": "icon-192-v5.png?v=5", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512-v5.png?v=5", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512-v5.png?v=5", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

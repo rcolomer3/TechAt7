@@ -7,7 +7,7 @@ export function useAppearance(){
  const [appearance,setAppearance]=useState<Appearance>(savedAppearance);
  useLayoutEffect(()=>{
   const media=matchMedia('(prefers-color-scheme: dark)');
-  const apply=()=>{const dark=appearance==='dark'||(appearance==='system'&&media.matches);document.documentElement.dataset.theme=dark?'dark':'light';document.documentElement.style.colorScheme=dark?'dark':'light';document.querySelector('meta[name="theme-color"]')?.setAttribute('content',dark?'#101114':'#f5f5f7');};
+  const apply=()=>{const dark=appearance==='dark'||(appearance==='system'&&media.matches);document.documentElement.dataset.theme=dark?'dark':'light';document.documentElement.style.colorScheme=dark?'dark':'light';document.querySelector('meta[name="theme-color"]')?.setAttribute('content',dark?'#080d1c':'#0e1a33');};
   apply();try{localStorage.setItem(KEY,appearance);}catch{/* The choice still works when storage is unavailable. */}
   media.addEventListener('change',apply);return()=>media.removeEventListener('change',apply);
  },[appearance]);
