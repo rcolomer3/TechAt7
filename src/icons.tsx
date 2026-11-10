@@ -17,7 +17,7 @@ const paths:Record<IconName,React.ReactNode>={
  updates:<><rect x="4" y="3" width="16" height="18" rx="4"/><path d="m8 11 4-4 4 4m-4-4v10"/></>,
  calendar:<><rect x="3" y="4" width="18" height="17" rx="4"/><path d="M7 2v4m10-4v4M3 10h18m-9 3 .9 1.9L15 15l-1.5 1.5.4 2.1-1.9-1-1.9 1 .4-2.1L9 15l2.1-.1z"/></>,
  settings:<><path d="m9 3-.6 2.2-2 .9-2-.6-2 3.5L4 10.6v2.8l-1.6 1.6 2 3.5 2-.6 2 .9L9 21h4l.6-2.2 2-.9 2 .6 2-3.5-1.6-1.6v-2.8L19.6 9l-2-3.5-2 .6-2-.9L13 3z"/><circle cx="11" cy="12" r="3"/></>,
- refresh:<><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.2 7a7 7 0 0 1 11.6-1L20 9M4 15l2.2 3A7 7 0 0 0 17.8 17"/></>
+ refresh:<><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></>
 };
 export function Icon({name,...props}:SVGProps<SVGSVGElement>&{name:IconName}){return <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>{paths[name]}</svg>}
 export function PlatformIcon({platform}:{platform:string}){
