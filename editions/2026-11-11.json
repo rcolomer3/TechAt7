@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-11",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "apple-spain-holiday-returns-extended-january-2027",
+      "category": "Apple",
+      "title": "Apple amplía hasta enero las devoluciones de compras navideñas en España",
+      "sentences": [
+        "Apple ha ampliado temporalmente su política de devoluciones para las compras navideñas realizadas en su tienda española.",
+        "Según la información publicada por Applesfera, los productos recibidos entre el 6 de noviembre de 2026 y el 6 de enero de 2027 podrán devolverse hasta el 20 de enero de 2027.",
+        "La medida permite comprar o regalar un iPhone, iPad o Mac con más tiempo para decidir si se conserva.",
+        "El plazo especial no significa que desaparezcan las demás condiciones de devolución, que conviene comprobar antes de comprar."
+      ],
+      "sources": [
+        {
+          "name": "Applesfera",
+          "url": "https://www.applesfera.com/apple-1/para-regalar-probar-apple-alarga-plazo-devolucion-ano-que-viene",
+          "publishedAt": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "storyKey": "fractile-series-c-720-million-ai-inference-chips-nov-2026",
+      "category": "Hardware",
+      "title": "La británica Fractile capta 720 millones de dólares para chips de inteligencia artificial",
+      "sentences": [
+        "La empresa británica Fractile ha conseguido 720 millones de dólares en una ronda de financiación de serie C, según Reuters.",
+        "La operación valora la compañía en unos 7.000 millones de dólares y cuenta con inversores como Thrive Capital y Founders Fund.",
+        "Fractile desarrolla procesadores orientados a la inferencia, es decir, a ejecutar modelos de IA cuando generan respuestas.",
+        "La empresa sostiene que su diseño puede reducir consumo y costes, pero esas ventajas aún deben demostrarse comercialmente.",
+        "Su primer chip comercial está previsto para 2027, por lo que todavía no es un producto disponible."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/legal/transactional/uk-backed-ai-chip-startup-fractile-hits-7-billion-valuation-funding-round-2026-11-11/",
+          "publishedAt": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "storyKey": "antifox-ai-agents-aws-credential-theft-nov-2026",
+      "category": "Seguridad",
+      "title": "Detectan ataques que usan agentes de IA para robar credenciales de AWS",
+      "sentences": [
+        "Investigadores de Arctic Wolf han vinculado servidores que ejecutan AntiFox, una herramienta de pruebas de seguridad con agentes de IA, con intrusiones reales.",
+        "Los atacantes utilizaron infraestructura alojada en Alibaba Cloud para explorar servicios expuestos, desplegar puertas traseras y buscar secretos de AWS.",
+        "En algunos incidentes emplearon identidades válidas de AWS y consiguieron acceder a credenciales de producción o a objetos almacenados en S3.",
+        "La investigación no implica que todos los usuarios de AntiFox sean atacantes ni que el programa explote automáticamente cualquier entorno.",
+        "Los defensores deberían revisar accesos anómalos, revocar sesiones comprometidas y renovar las claves expuestas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-use-antifox-ai-agents-in-aws-credential-theft-attacks/",
+          "publishedAt": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "storyKey": "microsoft-november-2026-patch-tuesday-outlook-zero-day",
+      "category": "Seguridad",
+      "title": "Microsoft corrige un fallo de Outlook explotado en ataques y cientos de vulnerabilidades",
+      "sentences": [
+        "Microsoft ha publicado las actualizaciones de seguridad de noviembre con correcciones para 1.235 vulnerabilidades, según el recuento de BleepingComputer.",
+        "Entre ellas figura CVE-2026-124194, un fallo de suplantación en Outlook que ya se había utilizado en ataques.",
+        "La explotación puede revelar información de autenticación NTLM cuando una víctima abre un archivo especialmente preparado y existe conectividad con el servidor del atacante.",
+        "El paquete también incluye decenas de correcciones clasificadas como críticas en distintos productos de Microsoft.",
+        "Conviene instalar las actualizaciones correspondientes y extremar las precauciones con archivos adjuntos desconocidos."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-november-2026-patch-tuesday-fixes-1-235-flaws-outlook-zero-day/",
+          "publishedAt": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "storyKey": "microsoft-windows-usb-audio-fix-november-2026",
+      "category": "Microsoft",
+      "title": "Windows corrige los problemas de audio USB provocados por actualizaciones anteriores",
+      "sentences": [
+        "Microsoft afirma que las actualizaciones acumulativas de noviembre solucionan los fallos de audio USB introducidos por parches de septiembre.",
+        "El problema afectaba a determinados dispositivos USB Audio Class 1.0 y podía impedir que arrancaran o reprodujeran sonido.",
+        "Algunos usuarios observaban el error Código 10 en el Administrador de dispositivos, mientras otros tenían problemas con audio multicanal.",
+        "La corrección llega a sistemas Windows 10, Windows 11 y versiones compatibles de Windows Server mediante sus actualizaciones correspondientes.",
+        "Microsoft recomienda instalar el último parche de seguridad; cambiar temporalmente a dos canales solo había ayudado a algunos afectados."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-usb-audio-issues-caused-by-september-security-updates/",
+          "publishedAt": "2026-11-11"
+        }
+      ]
+    }
+  ]
+}
