@@ -4,11 +4,11 @@ import {db,configured} from './firebase';
 import {newsCategories,normalizeCategorySelection} from './categories';
 import {PREFERENCES_DOC_ID} from './preferences-doc';
 
-export const dailyLimitOptions=[0,3,5,8,12,20] as const;
+export const dailyLimitOptions=[0,3,5,8,10,12,15,20] as const;
 
 export type RadarPreferences={categories:string[];dailyLimit:number};
 
-export const defaultPreferences=():RadarPreferences=>({categories:[...newsCategories],dailyLimit:0});
+export const defaultPreferences=():RadarPreferences=>({categories:[...newsCategories],dailyLimit:15});
 
 /** 0 means "all stories"; any other value caps each edition. */
 export function normalizeDailyLimit(value:unknown):number{
@@ -17,7 +17,7 @@ export function normalizeDailyLimit(value:unknown):number{
 
 export function normalizePreferences(value:unknown):RadarPreferences{
  const stored=value&&typeof value==='object'?value as Record<string,unknown>:{};
- return {categories:normalizeCategorySelection(stored.categories),dailyLimit:normalizeDailyLimit(stored.dailyLimit)};
+ return {categories:normalizeCategorySelection(stored.categories),dailyLimit:stored.dailyLimit===undefined?defaultPreferences().dailyLimit:normalizeDailyLimit(stored.dailyLimit)};
 }
 
 const storageKey=(uid:string)=>`techradar-preferences-v2:${uid}`;

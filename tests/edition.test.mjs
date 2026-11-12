@@ -4,10 +4,11 @@ import {readFile} from 'node:fs/promises';
 import {validateEdition,rejectRepeats,deliverOnce,planPublication,editionHash,categories} from '../scripts/edition.mjs';
 import {hash} from '../scripts/core.mjs';
 const sentences=['El fabricante ha publicado una actualización de seguridad para sus teléfonos móviles.','La nueva versión corrige un fallo que permitía acceder a datos privados del usuario.','El cambio protege las cuentas almacenadas en el dispositivo frente a ese acceso.','La actualización ya se puede descargar desde los ajustes del sistema del teléfono.'];
-const input=()=>({schemaVersion:1,date:'2026-11-01',language:'es',producer:'chatgpt',articles:Array.from({length:5},(_,i)=>({title:'Una actualización protege los datos de los teléfonos '+i,storyKey:'fabricante correccion seguridad '+i,category:'Seguridad',sentences,sources:[{name:'Fuente '+i,url:`https://medio${i%3}.example/noticia-${i}`,publishedAt:'2026-10-31T12:00:00Z'}]}))});
-test('accepts a complete Spanish edition and preserves the full summary',()=>{const edition=validateEdition(input(),'2026-11-01');assert.equal(edition.articles.length,5);assert.equal(edition.articles[0].summary,sentences.join(' '));});
+const input=()=>({schemaVersion:1,date:'2026-11-01',language:'es',producer:'chatgpt',articles:Array.from({length:10},(_,i)=>({title:'Una actualización protege los datos de los teléfonos '+i,storyKey:'fabricante correccion seguridad '+i,category:'Seguridad',sentences,sources:[{name:'Fuente '+i,url:`https://medio${i%3}.example/noticia-${i}`,publishedAt:'2026-10-31T12:00:00Z'}]}))});
+test('accepts a complete Spanish edition and preserves the full summary',()=>{const edition=validateEdition(input(),'2026-11-01');assert.equal(edition.articles.length,10);assert.equal(edition.articles[0].summary,sentences.join(' '));});
 test('rejects the old one-headline English edition, wrong dates and short snippets',()=>{
- const x=input();x.articles=x.articles.slice(0,1);assert.throws(()=>validateEdition(x,x.date),/5–8/);
+ const x=input();x.articles=x.articles.slice(0,1);assert.throws(()=>validateEdition(x,x.date),/10–20/);
+ const tooMany=input();tooMany.articles=Array.from({length:21},(_,i)=>({...input().articles[0],title:'Una actualización protege los datos de los teléfonos '+i,storyKey:'fabricante correccion seguridad '+i,sources:[{...input().articles[0].sources[0],url:`https://extra.example/noticia-${i}`}]}));assert.throws(()=>validateEdition(tooMany,tooMany.date),/10–20/);
  assert.throws(()=>validateEdition(input(),'2026-11-02'),/Fecha/);
  const y=input();y.articles[0].title='Announcing new builds for all users';assert.throws(()=>validateEdition(y,y.date),/español/);
  const z=input();z.articles[0].sentences=['Un extracto breve.'];assert.throws(()=>validateEdition(z,z.date),/4–5/);

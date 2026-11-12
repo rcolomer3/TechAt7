@@ -58,7 +58,7 @@ function validateEditionEvents(items,storyKeys,editionDate){
 export function validateEdition(input,expectedDate){
  if(input?.schemaVersion!==1||input.language!=='es'||input.producer!=='chatgpt')throw new Error('La edición debe proceder de ChatGPT y estar en español.');
  if(!/^\d{4}-\d{2}-\d{2}$/.test(input.date)||input.date!==expectedDate||new Date(input.date+'T12:00:00Z').toISOString().slice(0,10)!==input.date)throw new Error('Fecha de edición incorrecta.');
- if(!Array.isArray(input.articles)||input.articles.length<5||input.articles.length>8)throw new Error('Se necesitan 5–8 noticias completas; no se publica una edición incompleta.');
+ if(!Array.isArray(input.articles)||input.articles.length<10||input.articles.length>20)throw new Error('Se necesitan 10–20 noticias completas; no se publica una edición incompleta.');
  const urls=new Set(),topics=new Set(),titles=new Set(),domains=new Set();
  const articles=input.articles.map(item=>{
   const title=plain(item.title),topicKey=titleKey(item.storyKey);
