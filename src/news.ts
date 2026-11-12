@@ -13,6 +13,16 @@ export function brief(summary:string){
 }
 export const searchable=(text:string)=>text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es');
 
+/** Newest edition already available for the given Madrid date. */
+export function latestDigest<T extends {date:string}>(digests:T[],today:string):T|undefined{
+ return digests.filter(d=>d.date<=today).sort((a,b)=>b.date.localeCompare(a.date))[0];
+}
+
+/** Changes when a new edition is published, so the app can announce it. */
+export function digestKey(digest:{date:string;contentHash?:string;articles:unknown[]}):string{
+ return `${digest.date}:${digest.contentHash||digest.articles.length}`;
+}
+
 /** Caps how many stories are shown from each edition; 0 or less means no limit. */
 export function limitPerEdition<T extends {editionDate:string}>(articles:T[],limit:number):T[]{
  if(!Number.isInteger(limit)||limit<=0)return articles;

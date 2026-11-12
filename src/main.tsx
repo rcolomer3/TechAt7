@@ -9,7 +9,7 @@ import {useAppearance,AppearanceSettings} from './appearance';
 import {AccountSettings} from './account-settings';
 import {formatDateES,formatEditionDateES,formatPublicationTimeES} from './date-format';
 import {NotificationSettings} from './notifications';
-import {newsDigests,brief,searchable,limitPerEdition} from './news';
+import {newsDigests,brief,searchable,limitPerEdition,latestDigest,digestKey} from './news';
 import {useSavedNews,savedKey,type SavedArticle} from './saved-news';
 import {useRadarPreferences} from './preferences';
 import {CategorySettings} from './category-settings';
@@ -25,17 +25,54 @@ function App(){
  const archiveSearch=useRef<HTMLInputElement>(null);
  useEffect(()=>{const receive=(event:MessageEvent)=>{if(event.data?.type==='radar-digest')window.dispatchEvent(new Event('radar-digest'));};navigator.serviceWorker?.addEventListener('message',receive);return()=>navigator.serviceWorker?.removeEventListener('message',receive);},[]);
  const [data,setData]=useState<RadarData>(configured?{digests:[],updates:[],events:[]}:demo),[loading,setLoading]=useState(true),[error,setError]=useState(''),[notice,setNotice]=useState(''),[user,setUser]=useState<User|null>(null),[busy,setBusy]=useState(false),[online,setOnline]=useState(navigator.onLine);
- async function refresh():Promise<boolean>{if(configured&&!auth?.currentUser)return false;setLoading(true);setError('');try{setData(configured?await loadRadar():demo);return true;}catch(e){setError((e as Error).message);return false;}finally{setLoading(false);}}
- useEffect(()=>{if(!configured)void refresh();const unsub=auth?onAuthStateChanged(auth,next=>{setUser(next);setAuthReady(true);if(next)void refresh();else{setData({digests:[],updates:[],events:[]});setLoading(false);setNotice('');}}):()=>{};const on=()=>setOnline(navigator.onLine);window.addEventListener('online',on);window.addEventListener('offline',on);window.addEventListener('radar-digest',refresh);navigator.serviceWorker?.register(import.meta.env.BASE_URL+'sw.js').catch(()=>setNotice('No se pudo activar el modo sin conexión.'));return()=>{unsub();window.removeEventListener('online',on);window.removeEventListener('offline',on);window.removeEventListener('radar-digest',refresh);};},[]);
+ const [syncing,setSyncing]=useState(false),[lastSync,setLastSync]=useState<number|null>(null),[syncIssue,setSyncIssue]=useState(false),[newEdition,setNewEdition]=useState<string|null>(null);
+ const knownEdition=useRef<string|null>(null);
+ async function refresh(mode:'initial'|'manual'|'auto'='auto'):Promise<boolean>{
+  if(configured&&!auth?.currentUser)return false;
+  if(mode==='initial')setLoading(true);else setSyncing(true);
+  setError('');
+  try{
+   const next=configured?await loadRadar():demo;
+   const latest=latestDigest(next.digests,madridDate());
+   const key=latest?digestKey(latest):'';
+   const found=!!(key&&knownEdition.current&&key!==knownEdition.current);
+   if(found){setNewEdition(latest!.date);setNotice('');}
+   if(key)knownEdition.current=key;
+   setData(next);setLastSync(Date.now());setSyncIssue(false);
+   if(mode==='manual'&&!found)setNotice(key?'Estás al día. No hay noticias nuevas.':'Estás al día.');
+   return true;
+  }catch(e){
+   setSyncIssue(true);
+   if(mode!=='auto')setError((e as Error).message);
+   return false;
+  }finally{setLoading(false);setSyncing(false);}
+ }
+ useEffect(()=>{if(!configured)void refresh('initial');const unsub=auth?onAuthStateChanged(auth,next=>{setUser(next);setAuthReady(true);if(next)void refresh('initial');else{knownEdition.current=null;setNewEdition(null);setLastSync(null);setSyncIssue(false);setData({digests:[],updates:[],events:[]});setLoading(false);setNotice('');}}):()=>{};const on=()=>setOnline(navigator.onLine);const receive=()=>void refresh('auto');window.addEventListener('online',on);window.addEventListener('offline',on);window.addEventListener('radar-digest',receive);navigator.serviceWorker?.register(import.meta.env.BASE_URL+'sw.js').catch(()=>setNotice('No se pudo activar el modo sin conexión.'));return()=>{unsub();window.removeEventListener('online',on);window.removeEventListener('offline',on);window.removeEventListener('radar-digest',receive);};},[]);
+ useEffect(()=>{
+  if(!configured||!user)return;
+  let timer:number|undefined;
+  const stop=()=>{if(timer!==undefined){window.clearInterval(timer);timer=undefined;}};
+  const start=()=>{stop();timer=window.setInterval(()=>{if(document.visibilityState==='visible'&&navigator.onLine)void refresh('auto');},300000);};
+  const onVisibility=()=>{if(document.visibilityState==='visible'){void refresh('auto');start();}else stop();};
+  const onFocus=()=>{if(document.visibilityState==='visible'&&navigator.onLine)void refresh('auto');};
+  const onOnline=()=>{void refresh('auto');start();};
+  start();
+  document.addEventListener('visibilitychange',onVisibility);
+  window.addEventListener('focus',onFocus);
+  window.addEventListener('online',onOnline);
+  return()=>{stop();document.removeEventListener('visibilitychange',onVisibility);window.removeEventListener('focus',onFocus);window.removeEventListener('online',onOnline);};
+ },[user?.uid]);
  async function action(fn:()=>Promise<unknown>,message=''){setBusy(true);try{await fn();setNotice(message);}catch(e){setNotice((e as Error).message);}finally{setBusy(false);}}
  const saved=useSavedNews(user?.uid);
  const categoryPrefs=useRadarPreferences(configured?user?.uid||'signed-out':'demo');
  const today=madridDate();
  const reading=useReadingPosition({uid:configured?user?.uid||'signed-out':'demo',enabled:authReady&&(!configured||!!user),day:today,feedReady:!loading&&!error,savedReady:saved.ready&&!saved.error});
  const {tab,date,filter}=reading.view;
+ const syncLabel=syncing?'Sincronizando…':!online?'Sin conexión':syncIssue?'No se pudo sincronizar':lastSync?`Al día · ${formatPublicationTimeES(new Date(lastSync).toISOString())??''}`:'';
  useEffect(()=>{
   if(tab!=='Anteriores')setArchiveQuery('');
  },[tab]);
+ useEffect(()=>{if(tab==='Hoy'&&newEdition)setNewEdition(null);},[tab,newEdition]);
  const archive=newsDigests(data.digests,today,'Anteriores');
  const archiveDate=archive.some(d=>d.date===date)?date:'';
  const visible=newsDigests(data.digests,today,tab,archiveDate);
@@ -106,7 +143,7 @@ function App(){
    </main>
   </div>;
  }
- return <div className="shell"><aside className="navigation"><a className="navigation-brand" href={import.meta.env.BASE_URL} aria-label="TechAt7 inicio"><AppIcon/><span>TechAt7<small>Resumen diario</small></span></a><nav className="navigation-tabs" aria-label="Principal">{tabs.map(t=><button key={t} aria-current={tab===t?'page':undefined} className={tab===t?'active':''} onClick={()=>changeTab(t)}><span className="nav-icon"><Icon name={t==='Hoy'?'today':t==='Anteriores'?'archive':t==='Guardadas'?'bookmark':t==='Eventos'?'calendar':'settings'}/></span><span className="nav-label">{t}</span></button>)}</nav></aside><main><section className="heading"><div><h1 className={tab==='Eventos'?'heading-long-title':undefined}>{tab==='Hoy'?'El mundo tech, al día':tab==='Anteriores'?'El mundo tech, día a día':tab==='Guardadas'?'Tus noticias, a tu ritmo':tab==='Eventos'?'Lo próximo en el mundo tech':'Ajustes'}</h1></div>{tab!=='Ajustes'&&<button className="refresh" aria-label="Actualizar contenido" title="Actualizar contenido" onClick={refresh} disabled={loading}><Icon name="refresh" className={loading?'spinning':''}/><span>Actualizar</span></button>}</section>{!online&&<div className="banner">Sin conexión. La interfaz está disponible; los datos en vivo requieren internet.</div>}{!configured&&<div className="banner"><b>VISTA DE DEMOSTRACIÓN</b><span>Tarjetas de ejemplo, sin noticias inventadas. Conecta Firebase para recibir tu resumen real.</span></div>}{saved.error&&tab!=='Guardadas'&&<div className="banner" role="alert">{saved.error}<button onClick={saved.reload}>Reintentar</button></div>}{notice&&<div role="status" className="banner notice">{notice}<button aria-label="Cerrar aviso" onClick={()=>setNotice('')}>×</button></div>}{tab==='Ajustes'?<div className="settings-layout"><AppearanceSettings value={appearance} onChange={setAppearance}/><CategorySettings selected={categoryPrefs.categories} onToggle={categoryPrefs.toggle} onSetCategories={categoryPrefs.setCategories} dailyLimit={categoryPrefs.dailyLimit} onDailyLimit={categoryPrefs.setDailyLimit} saving={categoryPrefs.saving} error={categoryPrefs.error} cloud={configured}/><NotificationSettings user={user} onNotice={setNotice}/><AccountSettings user={user} busy={busy} onAction={action} onRefresh={refresh}/></div>:<><div className="section-title">
+ return <div className="shell"><aside className="navigation"><a className="navigation-brand" href={import.meta.env.BASE_URL} aria-label="TechAt7 inicio"><AppIcon/><span>TechAt7<small>Resumen diario</small></span></a><nav className="navigation-tabs" aria-label="Principal">{tabs.map(t=><button key={t} aria-current={tab===t?'page':undefined} className={tab===t?'active':''} onClick={()=>changeTab(t)}><span className="nav-icon"><Icon name={t==='Hoy'?'today':t==='Anteriores'?'archive':t==='Guardadas'?'bookmark':t==='Eventos'?'calendar':'settings'}/>{t==='Hoy'&&newEdition&&tab!=='Hoy'&&<span className="nav-dot" aria-hidden="true"/>}</span><span className="nav-label">{t}</span></button>)}</nav></aside><main><section className="heading"><div><h1 className={tab==='Eventos'?'heading-long-title':undefined}>{tab==='Hoy'?'El mundo tech, al día':tab==='Anteriores'?'El mundo tech, día a día':tab==='Guardadas'?'Tus noticias, a tu ritmo':tab==='Eventos'?'Lo próximo en el mundo tech':'Ajustes'}</h1></div>{tab!=='Ajustes'&&<div className="sync-controls"><span className={'sync-status'+(syncIssue?' is-error':'')} role="status" aria-live="polite">{syncLabel}</span><button className="refresh" aria-label={syncing?'Sincronizando noticias':'Sincronizar noticias'} title="Sincronizar noticias" onClick={()=>void refresh('manual')} disabled={loading||syncing}><Icon name="refresh" className={loading||syncing?'spinning':''}/><span>{syncing?'Sincronizando':'Sincronizar'}</span></button></div>}</section>{newEdition&&tab!=='Hoy'&&<div className="banner new-edition" role="status"><b>NUEVA EDICIÓN</b><span>{newEdition===today?'Ya está disponible la edición de hoy.':`Ya está disponible la edición del ${formatDateES(newEdition)}.`}</span><button type="button" className="new-edition-action" onClick={()=>{setNewEdition(null);changeTab('Hoy');}}>Ver ahora</button><button type="button" className="new-edition-dismiss" aria-label="Descartar aviso" onClick={()=>setNewEdition(null)}>×</button></div>}{!online&&<div className="banner">Sin conexión. La interfaz está disponible; los datos en vivo requieren internet.</div>}{!configured&&<div className="banner"><b>VISTA DE DEMOSTRACIÓN</b><span>Tarjetas de ejemplo, sin noticias inventadas. Conecta Firebase para recibir tu resumen real.</span></div>}{saved.error&&tab!=='Guardadas'&&<div className="banner" role="alert">{saved.error}<button onClick={saved.reload}>Reintentar</button></div>}{notice&&<div role="status" className="banner notice">{notice}<button aria-label="Cerrar aviso" onClick={()=>setNotice('')}>×</button></div>}{tab==='Ajustes'?<div className="settings-layout"><AppearanceSettings value={appearance} onChange={setAppearance}/><CategorySettings selected={categoryPrefs.categories} onToggle={categoryPrefs.toggle} onSetCategories={categoryPrefs.setCategories} dailyLimit={categoryPrefs.dailyLimit} onDailyLimit={categoryPrefs.setDailyLimit} saving={categoryPrefs.saving} error={categoryPrefs.error} cloud={configured}/><NotificationSettings user={user} onNotice={setNotice}/><AccountSettings user={user} busy={busy} onAction={action} onRefresh={refresh}/></div>:<><div className="section-title">
   <div>
    <h2>{tab==='Hoy'?'Tu resumen de hoy':tab==='Anteriores'?'Archivo de noticias':tab==='Guardadas'?'Tus noticias guardadas':'Eventos y lanzamientos'}</h2>
    {tab==='Hoy'?<span>
@@ -137,7 +174,7 @@ function App(){
  {tab==='Guardadas'&&saved.error?<div className="empty" role="alert"><h3>No hemos podido cargar tus guardadas</h3><p>{saved.error}</p><button onClick={saved.reload}>Reintentar</button></div>
  :tab==='Guardadas'&&!saved.ready?<div className="empty" role="status">Sincronizando tus guardadas…</div>
  :loading&&tab!=='Guardadas'?<div className="grid" aria-busy="true" aria-label="Cargando noticias">{[1,2,3,4,5,6].map(n=><div key={n} className="skeleton"/>)}</div>
- :error&&tab!=='Guardadas'?<div className="empty" role="alert"><h3>No hemos podido cargar tu radar</h3><p>{error}</p><button onClick={refresh}>Reintentar</button></div>
+ :error&&tab!=='Guardadas'?<div className="empty" role="alert"><h3>No hemos podido cargar tu radar</h3><p>{error}</p><button onClick={()=>void refresh('manual')}>Reintentar</button></div>
  :noPreferred?<Empty title="Elige tus categorías" text="Activa al menos un tema en Ajustes para ver las noticias que te interesan." action={<button onClick={()=>changeTab('Ajustes')}>Elegir categorías</button>}/>
  :(tab==='Hoy'||tab==='Anteriores'||tab==='Guardadas')?articles.length
   ?groupArchive?<div className="archive-groups">

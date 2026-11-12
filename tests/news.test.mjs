@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import ts from 'typescript';
 const source=await readFile(new URL('../src/news.ts',import.meta.url),'utf8');
 const {outputText}=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}});
-const {newsDigests,brief,searchable,limitPerEdition}=await import('data:text/javascript;base64,'+Buffer.from(outputText).toString('base64'));
+const {newsDigests,brief,searchable,limitPerEdition,latestDigest,digestKey}=await import('data:text/javascript;base64,'+Buffer.from(outputText).toString('base64'));
 const digests=['2026-11-02','2026-11-03','2026-10-31','2026-11-01'].map(date=>({date}));
 test('archive excludes today and future and defaults to all past dates newest first',()=>{
  assert.deepEqual(newsDigests(digests,'2026-11-02','Anteriores').map(d=>d.date),['2026-11-01','2026-10-31']);
@@ -34,4 +34,18 @@ test('the daily limit applies to each edition independently',()=>{
  assert.deepEqual(limitPerEdition(items,0).map(item=>item.id),['a','b','c','d','e']);
  assert.deepEqual(limitPerEdition(items,-1).map(item=>item.id),['a','b','c','d','e']);
  assert.deepEqual(limitPerEdition([],3),[]);
+});
+test('sync detects the newest available edition and changes when a new one arrives',()=>{
+ const editions=[
+  {date:'2026-11-12',articles:[1,2,3]},
+  {date:'2026-11-13',articles:[1,2,3,4]},
+  {date:'2026-11-11',articles:[1]},
+ ];
+ assert.equal(latestDigest(editions,'2026-11-12').date,'2026-11-12');
+ assert.equal(latestDigest(editions,'2026-11-13').date,'2026-11-13');
+ assert.equal(latestDigest(editions,'2026-11-10'),undefined);
+ const before=latestDigest(editions,'2026-11-12'),after=latestDigest(editions,'2026-11-13');
+ assert.notEqual(digestKey(before),digestKey(after));
+ assert.equal(digestKey({date:'2026-11-12',contentHash:'abc',articles:[]}),'2026-11-12:abc');
+ assert.equal(digestKey({date:'2026-11-12',articles:[1,2]}),'2026-11-12:2');
 });
