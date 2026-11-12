@@ -28,7 +28,28 @@ Un registro por fecha/dispositivo se reserva antes de llamar a FCM. Reejecucione
 
 ### Avisos manuales
 
-El workflow **Enviar aviso** (`.github/workflows/notify.yml`) envía una notificación push puntual a todos los dispositivos registrados sin publicar ni modificar ninguna edición. Se lanza desde Actions → Enviar aviso → Run workflow con un identificador único, un título y un texto. El identificador evita duplicados: reejecutar el mismo aviso no vuelve a enviarlo. La opción «Solo contar dispositivos, sin enviar» permite comprobar el alcance. Los avisos manuales abren la app en Hoy.
+El workflow **Enviar aviso** (`.github/workflows/notify.yml`) manda una notificación push puntual a todos los dispositivos registrados sin publicar ni modificar ninguna edición. Se lanza solo a mano: no se repite al actualizar la app ni en las ejecuciones diarias.
+
+| Aviso | Cuándo se envía |
+|---|---|
+| Edición diaria | Automático, sobre las 19:05, cuando se publica una edición nueva |
+| Novedades manuales | Solo al ejecutar **Enviar aviso** |
+
+Para enviar uno:
+
+1. Abrir https://github.com/rcolomer3/TechAt7/actions/workflows/notify.yml
+2. **Run workflow** en la rama `main`.
+3. Escribir un `id` nuevo, por ejemplo `novedades-2026-12-01`.
+4. Revisar el título (máximo 60 caracteres) y el texto (máximo 180).
+5. Ejecutar. La opción «Solo contar dispositivos, sin enviar» comprueba el alcance sin mandar nada.
+
+Reglas:
+
+- El `id` debe ser único por aviso: minúsculas, números y guiones. Repetir un `id` se interpreta como el mismo aviso y no se reenvía a los dispositivos que ya lo recibieron.
+- No hace falta tocar código ni hacer commit para un aviso puntual: los campos se cambian en el formulario. Para cambiar los valores por defecto de `notify.yml` sí hay que editar el archivo y hacer commit.
+- Los avisos manuales abren la app en Hoy.
+- El informe de la ejecución muestra `total`, `accepted`, `skipped` e `invalid`. Si `total` es 0 no hay dispositivos registrados: hay que activar los avisos en Ajustes → Notificaciones.
+- No se publica ni se modifica ninguna edición: el aviso diario y las ediciones siguen su curso normal.
 
 ## Credenciales y coste
 
