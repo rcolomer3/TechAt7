@@ -26,6 +26,10 @@ Las ediciones se guardan completas de forma atómica en digests/AAAA-MM-DD antes
 
 Un registro por fecha/dispositivo se reserva antes de llamar a FCM. Reejecuciones manuales y programadas comparten el mismo registro. Ante un error de transporte ambiguo no se reenvía automáticamente: evita duplicados, pero puede perderse el aviso. FCM aceptado no equivale a entrega física garantizada. La notificación abre directamente ?edition=AAAA-MM-DD, también si se pulsa días después.
 
+### Avisos manuales
+
+El workflow **Enviar aviso** (`.github/workflows/notify.yml`) envía una notificación push puntual a todos los dispositivos registrados sin publicar ni modificar ninguna edición. Se lanza desde Actions → Enviar aviso → Run workflow con un identificador único, un título y un texto. El identificador evita duplicados: reejecutar el mismo aviso no vuelve a enviarlo. La opción «Solo contar dispositivos, sin enviar» permite comprobar el alcance. Los avisos manuales abren la app en Hoy.
+
 ## Credenciales y coste
 
 - FIREBASE_SERVICE_ACCOUNT: secreto cifrado de GitHub Actions, ya configurado. ChatGPT no necesita conocerlo.

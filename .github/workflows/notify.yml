@@ -1,0 +1,48 @@
+name: Enviar aviso
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: 'Identificador único del aviso (minúsculas, números y guiones)'
+        type: string
+        required: true
+        default: 'novedades-2026-11-12'
+      title:
+        description: 'Título de la notificación'
+        type: string
+        required: true
+        default: 'TechAt7 se actualiza'
+      body:
+        description: 'Texto de la notificación'
+        type: string
+        required: true
+        default: 'Sincronización automática, aviso de nuevas ediciones, hasta 20 noticias por edición y nuevo icono.'
+      dry_run:
+        description: 'Solo contar dispositivos, sin enviar'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: notify-techat7
+  cancel-in-progress: false
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - name: Enviar aviso push
+        run: node scripts/notify.mjs
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          NOTIFY_ID: ${{ inputs.id }}
+          NOTIFY_TITLE: ${{ inputs.title }}
+          NOTIFY_BODY: ${{ inputs.body }}
+          NOTIFY_DRY: ${{ inputs.dry_run }}
