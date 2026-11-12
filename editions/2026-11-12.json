@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-12",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "apple-ios-27-2-1-imessage-group-security-fixes-nov-2026",
+      "category": "Apple",
+      "title": "iOS 27.2.1 corrige fallos que exponían conversaciones de iMessage",
+      "sentences": [
+        "Apple publicó el 9 de noviembre iOS 27.2.1 con correcciones para nueve vulnerabilidades de seguridad.",
+        "Según la documentación de la compañía, uno de los fallos podía permitir que un atacante remoto entrara en un grupo de iMessage y recibiera sus mensajes.",
+        "Otro problema permitía consultar mensajes anteriores a la incorporación de un participante al grupo.",
+        "La actualización también aborda problemas en Bluetooth y AirPlay, por lo que conviene instalarla desde los ajustes del iPhone."
+      ],
+      "sources": [
+        {
+          "name": "Applesfera",
+          "url": "https://www.applesfera.com/ios/cuidado-no-actualizar-ios-27-2-1-corrige-fallos-que-afectan-a-imessage-bluetooth",
+          "publishedAt": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "storyKey": "apple-support-community-forums-shutdown-november-20-2026",
+      "category": "Apple",
+      "title": "Apple anuncia el cierre de sus históricos foros de soporte",
+      "sentences": [
+        "Apple ha comunicado que su comunidad de soporte entre usuarios cerrará definitivamente el 20 de noviembre de 2026.",
+        "Los foros, cuyos orígenes se remontan a 1998, dejaron de aceptar nuevas publicaciones el 10 de noviembre.",
+        "Hasta el cierre permanecen en modo de solo lectura para consultar las respuestas existentes.",
+        "La compañía remite a su web oficial de soporte como alternativa y no ha confirmado que mantendrá accesible el archivo histórico."
+      ],
+      "sources": [
+        {
+          "name": "Applesfera",
+          "url": "https://www.applesfera.com/apple-1/que-pena-apple-cierra-foro-donde-hemos-encontrado-ayuda-1988",
+          "publishedAt": "2026-11-12"
+        }
+      ]
+    },
+    {
+      "storyKey": "notion-fireworks-ai-insights-transcripts-exposed-nov-2026",
+      "category": "Seguridad",
+      "title": "Notion reconoce la exposición de conversaciones de su asistente de IA",
+      "sentences": [
+        "Notion ha informado de que una intrusión en su proveedor Fireworks AI expuso transcripciones de chats de Notion AI en algunos espacios de trabajo.",
+        "La compañía atribuye los datos afectados a su función Insights, que utilizaba conversaciones para ofrecer información de uso a administradores.",
+        "Según Notion, el incidente afecta a menos del uno por ciento de sus usuarios y muchas conversaciones no podían asociarse directamente a una persona.",
+        "Notion ha suspendido esa función y recomienda cambiar las credenciales que se hubieran compartido en conversaciones afectadas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/notion-says-fireworks-breach-exposed-customer-ai-chat-transcripts/",
+          "publishedAt": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "storyKey": "windows11-november-2026-kb5132061-installation-errors",
+      "category": "Microsoft",
+      "title": "Microsoft confirma errores al instalar el parche de noviembre en Windows 11",
+      "sentences": [
+        "Microsoft ha reconocido que algunos equipos con Windows 11 no pueden completar la actualización de seguridad KB5132061.",
+        "El problema se concentra en dispositivos que instalaron la actualización preliminar KB5127936 de octubre.",
+        "Los afectados pueden encontrarse con intentos repetidos de instalación o errores como 0x80070306, 0x800f0989 y 0x800f0993.",
+        "La compañía afirma que distribuirá una reparación automática y recomienda contactar con soporte si el problema continúa después del plazo anunciado."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-kb5132061-installation-issues-0x80070306-0x800f0989-0x800f0993-errors/",
+          "publishedAt": "2026-11-12"
+        }
+      ]
+    },
+    {
+      "storyKey": "operation-endgame-gootloader-castlerat-stealc-takedown-nov-2026",
+      "category": "Seguridad",
+      "title": "Una operación internacional desmantela infraestructura de tres redes de malware",
+      "sentences": [
+        "Europol y autoridades de nueve países han intervenido infraestructura vinculada a Gootloader, CastleRAT y StealC.",
+        "La operación conjunta permitió incautar 235 servidores y 257 dominios utilizados en actividades delictivas.",
+        "Los investigadores identificaron 6,4 millones de conjuntos de datos de víctimas en los sistemas intervenidos.",
+        "Las autoridades prevén compartir información con servicios de alerta de credenciales comprometidas para ayudar a las personas afectadas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/police-dismantles-gootloader-castlerat-stealc-malware-infrastructure/",
+          "publishedAt": "2026-11-12"
+        }
+      ]
+    },
+    {
+      "storyKey": "goldman-sachs-us-ai-investment-2027-forecast-nov-2026",
+      "category": "Inteligencia artificial",
+      "title": "Goldman Sachs prevé que la inversión en IA siga creciendo con fuerza en 2027",
+      "sentences": [
+        "Goldman Sachs considera que la inteligencia artificial seguirá siendo el principal motor del crecimiento de la inversión empresarial en Estados Unidos durante 2027.",
+        "La entidad estima que el gasto anualizado en hardware y propiedad intelectual relacionados con IA superará los 900.000 millones de dólares al cierre de 2026.",
+        "Su previsión para finales de 2027 asciende a 1,4 billones de dólares, cerca del cuatro por ciento de la economía estadounidense.",
+        "Son proyecciones del banco y no importes ya invertidos ni resultados garantizados."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/ai-stay-dominant-force-behind-us-business-investment-2027-goldman-says-2026-11-12/",
+          "publishedAt": "2026-11-12"
+        }
+      ]
+    }
+  ]
+}
