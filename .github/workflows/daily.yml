@@ -2,7 +2,9 @@ name: Daily radar
 on:
   push:
     branches: [main]
-    paths: ['editions/*.json']
+    paths:
+      - 'editions/*.json'
+      - '!editions/*-extra.json'
   schedule:
     # Backups for editions pushed early and for publication retries.
     - cron: '5 19 * * *'

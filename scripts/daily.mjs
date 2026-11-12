@@ -1,15 +1,25 @@
 // ChatGPT researches and writes editions/*.json. This publisher never generates news.
-import {readFile,mkdir,writeFile} from 'node:fs/promises';
+import {readFile,readdir,mkdir,writeFile} from 'node:fs/promises';
 import {hash,validateCurated,madridDate} from './core.mjs';
-import {validateEdition,rejectRepeats,editionHash,deliverOnce,planPublication} from './edition.mjs';
+import {validateEdition,rejectRepeats,editionHash,deliverOnce,planPublication,editionFile,digestId} from './edition.mjs';
 
 const now=new Date();
 const today=madridDate(now);
 const dry=process.argv.includes('--dry-run');
 const date=process.env.RADAR_DATE;
 const archive=process.env.RADAR_ARCHIVE==='true';
-const scheduled=!dry&&!date&&!archive&&process.env.GITHUB_EVENT_NAME==='schedule';
-const plan=planPublication(now,{date,archive,scheduled});
+const extra=process.env.RADAR_EXTRA==='true';
+const scheduled=!dry&&!date&&!archive&&!extra&&process.env.GITHUB_EVENT_NAME==='schedule';
+
+/** Extra editions can be added after 19:00 without touching the daily edition. */
+async function extraTargets(only){
+ if(only)return [{date:only,extra:true}];
+ const files=await readdir(new URL('../editions/',import.meta.url));
+ const dates=files.map(file=>/^(\d{4}-\d{2}-\d{2})-extra\.json$/.exec(file)?.[1]).filter(value=>value&&value<=today);
+ return [...new Set(dates)].sort().map(date=>({date,extra:true}));
+}
+
+const plan=extra?await extraTargets(date):planPublication(now,{date,archive,scheduled});
 
 let firebase;
 const completedNotifications=[];
@@ -20,12 +30,12 @@ async function connectFirebase(){
  return {db:getFirestore(app),messaging:getMessaging(app)};
 }
 
-async function publish({date,archive,prepare,optional},report){
+async function publish({date,archive,prepare,optional,extra},report){
  if(!/^\d{4}-\d{2}-\d{2}$/.test(date))throw new Error('Fecha no válida.');
- if(date>today||date<today&&!archive&&!scheduled)throw new Error('Una edición histórica requiere el modo de archivo; no se puede publicar una fecha futura.');
+ if(date>today||date<today&&!archive&&!scheduled&&!extra)throw new Error('Una edición histórica requiere el modo de archivo; no se puede publicar una fecha futura.');
  let input;
  try{
-  input=JSON.parse(await readFile(new URL(`../editions/${date}.json`,import.meta.url),'utf8'));
+  input=JSON.parse(await readFile(new URL(`../editions/${editionFile(date,extra)}`,import.meta.url),'utf8'));
  }catch(error){
   if(error.code!=='ENOENT')throw error;
   if(optional){report.status='missing';return;}
@@ -41,8 +51,8 @@ async function publish({date,archive,prepare,optional},report){
  }
 
  const {db,messaging}=await (firebase??=connectFirebase());
- const ref=db.doc('digests/'+date);
- const notificationRun=archive||prepare?null:db.doc('notificationRuns/'+date);
+ const ref=db.doc('digests/'+digestId(date,extra));
+ const notificationRun=extra||archive||prepare?null:db.doc('notificationRuns/'+date);
  if(notificationRun&&(await notificationRun.get()).data()?.contentHash===contentHash){
   report.status='already-notified';
   console.log('Avisos ya completados:',date);
@@ -56,8 +66,8 @@ async function publish({date,archive,prepare,optional},report){
   }
  }
  const recent=await db.collection('digests').orderBy('date','desc').limit(14).get();
- if(!recent.docs.some(d=>d.id===date&&d.data().contentHash===contentHash)){
-  rejectRepeats(edition.articles,recent.docs.filter(d=>d.id!==date).flatMap(d=>d.data().articles||[]));
+ if(!recent.docs.some(d=>d.id===digestId(date,extra)&&d.data().contentHash===contentHash)){
+  rejectRepeats(edition.articles,recent.docs.filter(d=>d.id!==digestId(date,extra)).flatMap(d=>d.data().articles||[]));
  }
  if(prepare){
   await db.doc('drafts/'+date).set({...edition,contentHash,status:'ready',preparedAt:now.toISOString()});
@@ -66,7 +76,7 @@ async function publish({date,archive,prepare,optional},report){
   return;
  }
 
- const digest={...edition,contentHash,status:'published',publishedAt:now.toISOString()};
+ const digest={...edition,contentHash,status:'published',publishedAt:now.toISOString(),...(extra?{extra:true}:{})};
  const events=(edition.events??[]).filter(event=>event.date>=today);
  const eventRefs=events.map(event=>db.doc('events/'+hash(event.eventKey)));
  await db.runTransaction(async tx=>{
@@ -99,13 +109,13 @@ async function publish({date,archive,prepare,optional},report){
    completedNotifications.push({ref:notificationRun,contentHash});
   }
  }
- console.log('Edición publicada:',date,edition.articles.length,'noticias. Avisos aceptados:',report.notifications.accepted);
+ console.log(extra?'Edición extra publicada:':'Edición publicada:',date,edition.articles.length,'noticias. Avisos aceptados:',report.notifications.accepted);
 }
 
 await mkdir('work',{recursive:true});
 const reports=[];
 for(const target of plan){
- const report={date:target.date,mode:dry?'validation':target.archive?'archive':'publication'};
+ const report={date:target.date,mode:dry?'validation':target.extra?'extra':target.archive?'archive':'publication'};
  reports.push(report);
  try{
   await publish(target,report);

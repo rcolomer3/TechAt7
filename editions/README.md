@@ -36,6 +36,19 @@ Un commit antes de las 19:00 de Madrid guarda un borrador privado. La ejecución
 
 La edición publicada es inmutable. No cambiarla o reutilizar su fecha para forzar otro aviso. Reintentos no reenvían avisos al mismo dispositivo. Si falla una comprobación, no publicar ni rellenar con extractos RSS. Nunca incluir credenciales, tokens o datos de chats privados en esta carpeta.
 
+## Ediciones extra
+
+Si la edición del día ya está publicada y hay más noticias verificadas que merecen publicarse, se puede añadir una edición extra sin tocar la original. El archivo se llama `editions/AAAA-MM-DD-extra.json` y usa exactamente el mismo formato y validaciones que la edición diaria:
+
+- Entre 10 y 20 noticias nuevas, con 4–5 frases y fuentes recientes verificables.
+- No puede repetir `storyKey`, titular, URL ni fuente de la edición diaria de ese día; el publicador lo rechaza.
+- Se publica en un documento aparte (`digests/AAAA-MM-DD-extra`). La edición diaria permanece inmutable.
+- Se publica en cuanto se sube el archivo, sin esperar a las 19:00, y **no envía ningún aviso push automático**. Para avisar, usar el workflow **Enviar aviso**.
+- La app muestra la edición diaria y la extra juntas en Hoy, sin duplicar noticias, y detecta la extra como contenido nuevo al sincronizar.
+- Puede incluir `events` con las mismas reglas que la edición diaria.
+
+No usar la edición extra para saltarse el mínimo de 10 noticias, repetir el día o corregir la edición original: si hay un error en lo ya publicado, la corrección se documenta aparte.
+
 La tarea programada debe tener acceso de escritura a rcolomer3/TechAt7 y capacidad de usar el plugin GitHub. Una conexión disponible en un chat no demuestra por sí sola que una tarea programada pueda usarla: comprobar una ejecución real.
 
 ## Eventos de la edición

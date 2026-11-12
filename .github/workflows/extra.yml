@@ -1,0 +1,43 @@
+name: Publicar edición extra
+on:
+  push:
+    branches: [main]
+    paths: ['editions/*-extra.json']
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Fecha AAAA-MM-DD de la edición extra'
+        type: string
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: daily-radar
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - name: Validar y publicar la edición extra
+        run: node scripts/daily.mjs
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          RADAR_DATE: ${{ inputs.date }}
+          RADAR_EXTRA: 'true'
+      - name: Informe de publicación
+        if: always()
+        run: |
+          if test -f work/publication-report.json; then
+            echo '### TechAt7 · edición extra' >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat work/publication-report.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi

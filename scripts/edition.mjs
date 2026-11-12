@@ -15,6 +15,14 @@ export function planPublication(now,{date,archive=false,scheduled=false}={}){
  return [{date:date||today,archive,prepare:(date||today)===today&&hour<19}];
 }
 
+/** Extra editions live beside the daily edition and never replace it. */
+export function editionFile(date,extra=false){
+ return extra?`${date}-extra.json`:`${date}.json`;
+}
+export function digestId(date,extra=false){
+ return extra?`${date}-extra`:date;
+}
+
 const categoryCatalog=JSON.parse(readFileSync(new URL('../src/categories.json',import.meta.url),'utf8'));
 export const categories=categoryCatalog.categories.map(category=>category.name);
 export function sentenceCount(text){

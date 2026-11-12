@@ -9,7 +9,7 @@ import {useAppearance,AppearanceSettings} from './appearance';
 import {AccountSettings} from './account-settings';
 import {formatDateES,formatEditionDateES,formatPublicationTimeES} from './date-format';
 import {NotificationSettings} from './notifications';
-import {newsDigests,brief,searchable,limitPerEdition,latestDigest,digestKey} from './news';
+import {newsDigests,brief,searchable,limitPerEdition,latestEditionKey,latestEditionDate,uniqueArticles} from './news';
 import {useSavedNews,savedKey,type SavedArticle} from './saved-news';
 import {useRadarPreferences} from './preferences';
 import {CategorySettings} from './category-settings';
@@ -33,10 +33,9 @@ function App(){
   setError('');
   try{
    const next=configured?await loadRadar():demo;
-   const latest=latestDigest(next.digests,madridDate());
-   const key=latest?digestKey(latest):'';
+   const key=latestEditionKey(next.digests,madridDate());
    const found=!!(key&&knownEdition.current&&key!==knownEdition.current);
-   if(found){setNewEdition(latest!.date);setNotice('');}
+   if(found){setNewEdition(latestEditionDate(next.digests,madridDate()));setNotice('');}
    if(key)knownEdition.current=key;
    setData(next);setLastSync(Date.now());setSyncIssue(false);
    if(mode==='manual')setShowAll(true);
@@ -78,7 +77,8 @@ function App(){
  const archive=newsDigests(data.digests,today,'Anteriores');
  const archiveDate=archive.some(d=>d.date===date)?date:'';
  const visible=newsDigests(data.digests,today,tab,archiveDate);
- const allArticles=tab==='Guardadas'?[...saved.items].sort((a,b)=>b.editionDate.localeCompare(a.editionDate)):visible.flatMap(d=>d.articles.map(a=>({...a,editionDate:d.date})));
+ const hasExtra=visible.some(d=>d.extra);
+ const allArticles=tab==='Guardadas'?[...saved.items].sort((a,b)=>b.editionDate.localeCompare(a.editionDate)):uniqueArticles(visible.flatMap(d=>d.articles.map(a=>({...a,editionDate:d.date,editionId:d.id}))));
  const searchTerms=tab==='Anteriores'?searchable(archiveQuery).trim().split(/\s+/).filter(Boolean):[];
  const matchingArticles=searchTerms.length?allArticles.filter(article=>{
   const text=searchable([article.title,article.summary,article.source].join(' '));
@@ -151,7 +151,7 @@ function App(){
    <h2>{tab==='Hoy'?'Tu resumen de hoy':tab==='Anteriores'?'Archivo de noticias':tab==='Guardadas'?'Tus noticias guardadas':'Eventos y lanzamientos'}</h2>
    {tab==='Hoy'?<span>
     {formatDateES(today)}
-    {todayEdition&&<> · {articles.length} {articles.length===1?'noticia':'noticias'}{limitNote} · {publicationTime
+    {todayEdition&&<> · {articles.length} {articles.length===1?'noticia':'noticias'}{limitNote}{hasExtra?' · edición extra':''} · {publicationTime
      ?<time className="publication-time" dateTime={todayEdition.publishedAt}>Publicado a las {publicationTime}</time>
      :'Edición publicada'}</>}
    </span>:tab==='Anteriores'?<span aria-live="polite">{searchTerms.length

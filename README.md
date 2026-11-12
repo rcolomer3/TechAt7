@@ -51,6 +51,10 @@ Reglas:
 - El informe de la ejecución muestra `total`, `accepted`, `skipped` e `invalid`. Si `total` es 0 no hay dispositivos registrados: hay que activar los avisos en Ajustes → Notificaciones.
 - No se publica ni se modifica ninguna edición: el aviso diario y las ediciones siguen su curso normal.
 
+### Ediciones extra
+
+Cuando la edición del día ya está publicada y hay más noticias verificadas, se puede añadir una edición extra sin tocar la original. ChatGPT escribe `editions/AAAA-MM-DD-extra.json` con el mismo formato que la edición diaria y entre 10 y 20 noticias nuevas que no repitan las de ese día. Al subirlo a `main`, el workflow **Publicar edición extra** lo valida y lo publica en `digests/AAAA-MM-DD-extra` inmediatamente, sin esperar a las 19:00 y sin enviar ningún push automático. La app muestra la edición diaria y la extra juntas en Hoy, sin duplicar noticias, y la sincronización la detecta como contenido nuevo. Para avisar por push, ejecutar después **Enviar aviso**. La edición original permanece inmutable. Ver `editions/README.md` para el detalle y las validaciones.
+
 ## Credenciales y coste
 
 - FIREBASE_SERVICE_ACCOUNT: secreto cifrado de GitHub Actions, ya configurado. ChatGPT no necesita conocerlo.
