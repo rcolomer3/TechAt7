@@ -402,14 +402,11 @@ main{max-width:1300px;margin:auto;padding:52px 48px 60px}.heading {
  .category-search{min-height:46px}
 }
 
-/* Sync status and new edition notice */
-.sync-controls{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.sync-status{font-size:11px;color:var(--secondary);white-space:nowrap}
-.sync-status.is-error{color:#c2410c}
+/* New edition notice */
 .nav-icon{position:relative}
 .nav-dot{position:absolute;top:-1px;right:-2px;width:7px;height:7px;border-radius:50%;background:#ff3b30;box-shadow:0 0 0 2px var(--surface)}
 .new-edition{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
 .new-edition span{color:var(--text)}
 .new-edition .new-edition-action{margin-left:auto;border:0;background:var(--accent);color:#fff;border-radius:100px;padding:8px 14px;min-height:34px;font-size:11px;font-weight:600}
 .new-edition .new-edition-dismiss{border:0;background:transparent;color:var(--secondary);min-height:24px;padding:0 4px;font-size:17px}
-@media(max-width:700px){.sync-status{display:none}.new-edition .new-edition-action{margin-left:0}}
+@media(max-width:700px){.new-edition .new-edition-action{margin-left:0}}
