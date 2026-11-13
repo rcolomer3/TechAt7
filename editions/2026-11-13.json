@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "nvidia-jensen-huang-resignation-colette-kress-nov-2026",
+      "category": "Empresas",
+      "title": "Nvidia nombra a Colette Kress directora interina tras la salida de Jensen Huang",
+      "sentences": [
+        "Nvidia ha anunciado la dimisión inmediata de Jensen Huang, cofundador y hasta ahora director ejecutivo de la compañía.",
+        "La responsable financiera Colette Kress asume provisionalmente la dirección mientras el consejo estudia candidatos internos y externos.",
+        "La salida llega después de informaciones sobre relaciones personales de Huang y sospechas de espionaje que siguen sin estar demostradas.",
+        "La empresa asegura que no tiene motivos para creer que se hayan comprometido secretos corporativos y mantiene abierta una investigación interna."
+      ],
+      "sources": [
+        {
+          "name": "AP News",
+          "url": "https://apnews.com/article/nvidia-jensen-huang-resigns-ceo-affairs-314714d463cf578cbb0dbd49de903107",
+          "publishedAt": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "storyKey": "microsoft-365-global-outage-outlook-teams-copilot-nov-2026",
+      "category": "Microsoft",
+      "title": "Una caída de Microsoft 365 afecta a Outlook, Teams y Copilot en varios países",
+      "sentences": [
+        "Una interrupción prolongada de Microsoft 365 ha provocado problemas de acceso y funcionamiento en servicios utilizados por empresas y administraciones.",
+        "Los incidentes han afectado a Outlook, Teams y Copilot, según los avisos de usuarios y la información publicada durante la incidencia.",
+        "Microsoft ha investigado el fallo y ha comunicado avances en las tareas de recuperación, sin que el alcance fuera idéntico para todos los clientes.",
+        "Las organizaciones afectadas deben consultar el estado oficial de Microsoft 365 antes de dar por restablecidas sus aplicaciones."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/technology/microsoft-365-outlook-down-thousands-us-users-downdetector-shows-2026-11-12/",
+          "publishedAt": "2026-11-12T18:32:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "github-wfx-loot-compromised-accounts-actions-secrets-nov-2026",
+      "category": "Seguridad",
+      "title": "Una campaña utiliza miles de cuentas robadas de GitHub para sustraer secretos",
+      "sentences": [
+        "Investigadores de Aikido han identificado una campaña denominada wfx-loot que aprovecha cuentas comprometidas de GitHub para introducir código malicioso.",
+        "Según su investigación, los atacantes utilizaron 4.837 cuentas y comprobaron permisos en 61.764 repositorios.",
+        "El código buscaba credenciales de servicios en la nube y secretos de GitHub Actions, con robos confirmados en al menos 1.835 objetivos.",
+        "Los responsables de repositorios afectados deberían revisar cambios recientes en sus flujos de trabajo y revocar las credenciales expuestas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-compromise-4-800-github-accounts-to-steal-cloud-credentials/",
+          "publishedAt": "2026-11-12T17:25:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "checkpoint-gaia-dynamiccli-root-zero-day-cve-2026-123039",
+      "category": "Seguridad",
+      "title": "Check Point publica parches urgentes para un fallo explotado en sus cortafuegos",
+      "sentences": [
+        "Check Point ha distribuido correcciones de emergencia para una vulnerabilidad de elevación de privilegios identificada como CVE-2026-123039.",
+        "El problema afecta a la comunicación con el servicio DynamicCLI de Gaia OS y puede permitir que un usuario local autenticado ejecute órdenes como administrador.",
+        "La compañía afirma haber detectado explotación activa contra varias decenas de clientes desde finales de octubre.",
+        "Los administradores de equipos afectados deben instalar las correcciones y comprobar los indicadores de intrusión publicados por el fabricante."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/",
+          "publishedAt": "2026-11-13T05:44:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "windows-november-2026-slmgr-activation-error-0x80041008",
+      "category": "Microsoft",
+      "title": "Las actualizaciones de Windows provocan errores de activación en algunas empresas",
+      "sentences": [
+        "Microsoft ha reconocido un problema de licencias tras las actualizaciones de seguridad de noviembre que puede generar el error 0x80041008.",
+        "El fallo afecta principalmente a organizaciones que activan Windows mediante herramientas automatizadas o comandos SLMGR.",
+        "La compañía señala que los equipos ya activados normalmente conservan su licencia y que no todos los clientes están afectados.",
+        "Mientras prepara una solución, recomienda a las empresas que necesiten resolverlo de inmediato contactar con su soporte profesional."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-windows-activation-failures-after-november-updates/",
+          "publishedAt": "2026-11-13T04:36:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "windows-november-2026-complex-document-printing-issue",
+      "category": "Microsoft",
+      "title": "Microsoft advierte de fallos al imprimir ciertos documentos tras actualizar Windows",
+      "sentences": [
+        "Microsoft ha comunicado que los parches de seguridad de noviembre pueden impedir la impresión de documentos con formatos complejos.",
+        "El problema aparece cuando el documento contiene imágenes de altura o anchura cero, utilizadas a veces como elementos invisibles de diseño.",
+        "La incidencia afecta principalmente a impresiones de Word mediante la interfaz gráfica GDI y puede reproducirse desde otras aplicaciones.",
+        "La compañía está investigando el comportamiento, por lo que conviene revisar los avisos oficiales antes de aplicar medidas en equipos afectados."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-says-november-security-updates-cause-printing-issues/",
+          "publishedAt": "2026-11-13T07:27:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "operation-tornado-dark-web-marketplaces-354-arrests-nov-2026",
+      "category": "Seguridad",
+      "title": "Una operación internacional contra mercados de la web oscura deja 354 detenidos",
+      "sentences": [
+        "Las autoridades han anunciado 354 detenciones en una operación internacional dirigida contra vendedores y compradores de mercados de la web oscura.",
+        "La actuación, denominada TorNado, se desarrolló entre mayo de 2025 y octubre de 2026 con la participación de organismos de catorce países.",
+        "Los investigadores intervinieron dinero, criptomonedas, drogas y armas en actuaciones realizadas tanto en Europa como en Estados Unidos.",
+        "Europol sostiene que la cooperación entre países permitió identificar participantes incluso después del cierre de varias plataformas ilegales."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/police-arrest-354-vendors-buyers-in-global-cybercrime-crackdown/",
+          "publishedAt": "2026-11-13T03:34:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "us-ai-task-force-critical-infrastructure-cyberattack-reporting-nov-2026",
+      "category": "Inteligencia artificial",
+      "title": "Estados Unidos estudia cómo comunicar ataques informáticos realizados con IA",
+      "sentences": [
+        "Un grupo asesor del Gobierno estadounidense ha debatido medidas para facilitar que las infraestructuras críticas comuniquen ataques informáticos asistidos por inteligencia artificial.",
+        "Entre los sectores mencionados figuran la banca, la energía y los servicios de emergencia, donde una intrusión podría causar interrupciones graves.",
+        "Según un portavoz oficial, también se estudian estándares para que los desarrolladores de IA informen de incidentes de seguridad.",
+        "Por ahora se trata de conversaciones y propuestas regulatorias, no de nuevas obligaciones aprobadas para empresas o usuarios."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/us/trumps-ai-task-force-met-thursday-discussed-ai-powered-cyberattacks-2026-11-13/",
+          "publishedAt": "2026-11-13T02:54:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "screenconnect-sckit-wormlike-msp-campaign-nov-2026",
+      "category": "Seguridad",
+      "title": "Un nuevo malware intenta propagarse desde clientes de soporte remoto a técnicos",
+      "sentences": [
+        "Investigadores han descrito SCKit, un conjunto de herramientas maliciosas observado en ataques contra proveedores de servicios informáticos que usan ScreenConnect.",
+        "Su diseño intenta aprovechar un fallo previamente corregido para pasar de un equipo cliente comprometido al ordenador del técnico que lo atiende.",
+        "Huntress y Blackpoint Cyber indican que no han confirmado que ese mecanismo de propagación funcionara en los ataques analizados.",
+        "La campaña sí ha afectado a organizaciones mediante accesos remotos fraudulentos, por lo que es importante revisar extensiones y sesiones de administración."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/new-worm-like-sckit-malware-targets-msps-in-screenconnect-attacks/",
+          "publishedAt": "2026-11-12T17:53:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "linux-gsocket-malicious-persistence-outbound-relay-nov-2026",
+      "category": "Seguridad",
+      "title": "Detectan un aumento del uso malicioso de GSocket para mantener acceso a Linux",
+      "sentences": [
+        "Microsoft ha observado que distintos atacantes utilizan GSocket, una herramienta legítima de conexiones remotas, para conservar el acceso a servidores Linux comprometidos.",
+        "El programa permite comunicarse mediante una red de retransmisión sin abrir un puerto de entrada convencional en el servidor.",
+        "Según la telemetría de Microsoft, las detecciones asociadas crecieron un 356,2 % entre marzo y agosto de este año.",
+        "Los equipos de seguridad deberían vigilar conexiones salientes anómalas, porque bloquear únicamente los accesos entrantes puede resultar insuficiente."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-plant-gsocket-on-linux-servers-for-persistent-access/",
+          "publishedAt": "2026-11-12T04:38:00Z"
+        }
+      ]
+    }
+  ]
+}
