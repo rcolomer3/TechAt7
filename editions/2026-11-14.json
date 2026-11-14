@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-14",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "us-faa-ground-stop-nov-2026",
+      "category": "Tecnología",
+      "title": "Estados Unidos reanuda vuelos tras una caída de comunicaciones aéreas",
+      "sentences": [
+        "La autoridad aérea estadounidense levantó la paralización nacional de vuelos decretada el viernes por fallos de comunicaciones en centros de control.",
+        "La interrupción afectó a miles de vuelos y provocó cancelaciones y retrasos que podrían prolongarse durante varios días.",
+        "Las autoridades afirmaron que no había pruebas de un ciberataque como causa del incidente.",
+        "El episodio ha puesto el foco en la fiabilidad de la infraestructura que coordina el tráfico aéreo."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/us/faa-issues-national-ground-stop-due-extraordinary-circumstance-reasons-safety-2026-11-13/",
+          "publishedAt": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "storyKey": "apple-homeview-apple-tv-retail-launch-2026",
+      "category": "Apple",
+      "title": "Apple pone a la venta HomeView y su nuevo Apple TV 4K",
+      "sentences": [
+        "Apple ha iniciado la venta de HomeView y de una nueva generación del Apple TV 4K en los mercados de lanzamiento.",
+        "HomeView incorpora una pantalla de siete pulgadas para controlar accesorios del hogar, consultar cámaras y realizar llamadas.",
+        "El dispositivo cuesta 299 dólares en Estados Unidos y depende de varias funciones de Siri con inteligencia artificial.",
+        "La disponibilidad y las funciones pueden variar según el país, por lo que no debe asumirse que ambos equipos se vendan ya en España."
+      ],
+      "sources": [
+        {
+          "name": "9to5Mac",
+          "url": "https://9to5mac.com/2026/11/13/daily-november-13-2026/",
+          "publishedAt": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "storyKey": "trezor-safe5-cryptobilis-hardware-implants-2026",
+      "category": "Seguridad",
+      "title": "Trezor confirma componentes espía en tres carteras físicas Safe 5",
+      "sentences": [
+        "Trezor ha confirmado que tres dispositivos Safe 5 vendidos por el distribuidor CryptoBilis incorporaban placas electrónicas manipuladas.",
+        "Los componentes podían capturar frases de recuperación y enviarlas a atacantes mediante una conexión móvil.",
+        "La compañía lanzó el firmware 2.13.1 para bloquear el funcionamiento de los implantes identificados.",
+        "Quienes compraron una unidad a ese vendedor deben seguir las recomendaciones de sustitución y renovar sus claves de recuperación si pudieron quedar expuestas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/",
+          "publishedAt": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "storyKey": "north-korea-facestealer-crypto-disruption-2026",
+      "category": "Seguridad",
+      "title": "Estados Unidos desmantela una campaña norcoreana de robo de criptomonedas",
+      "sentences": [
+        "Las autoridades estadounidenses han interrumpido la infraestructura de FaceStealer, una campaña atribuida a operadores norcoreanos.",
+        "Los atacantes utilizaban videollamadas falsas, imágenes manipuladas y supuestas reparaciones técnicas para instalar programas maliciosos.",
+        "La operación se relaciona con robos de criptomonedas por más de 400 millones de dólares, según las autoridades.",
+        "El FBI recomienda verificar invitaciones inesperadas y no ejecutar instaladores enviados como solución a errores de reuniones."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/",
+          "publishedAt": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "storyKey": "quantum-systems-qbase-update-cyberattack-2026",
+      "category": "Seguridad",
+      "title": "Un ataque informático afecta al proveedor alemán de drones Quantum Systems",
+      "sentences": [
+        "Quantum Systems confirmó que sufrió un incidente informático detectado a finales de octubre y que está colaborando con las autoridades.",
+        "Según informaciones de prensa, los atacantes comprometieron la distribución de actualizaciones de QBase, su software de planificación de misiones.",
+        "Las informaciones apuntan a que algunos drones militares alemanes fueron apartados preventivamente de operaciones.",
+        "La compañía no ha atribuido públicamente el ataque a un Estado ni ha precisado cuántos clientes instalaron la actualización sospechosa."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/german-military-drone-operations-disrupted-by-cyberattack/",
+          "publishedAt": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "storyKey": "apache-http2-cve-2026-119618",
+      "category": "Seguridad",
+      "title": "Apache corrige una vulnerabilidad crítica en servidores con HTTP/2",
+      "sentences": [
+        "Apache ha publicado la versión 2.4.71 de HTTP Server para corregir una vulnerabilidad crítica en el módulo mod_http2.",
+        "El fallo CVE-2026-119618 afecta a versiones anteriores y podría permitir ejecución remota de código sin autenticación.",
+        "Investigadores de Anthropic y Google identificaron independientemente el problema, relacionado con accesos simultáneos a memoria.",
+        "Los administradores de servidores expuestos con HTTP/2 deben revisar su versión y aplicar la actualización de seguridad."
+      ],
+      "sources": [
+        {
+          "name": "SecurityWeek",
+          "url": "https://www.securityweek.com/apache-patches-critical-http-server-rce-found-by-anthropic-google/",
+          "publishedAt": "2026-11-12"
+        }
+      ]
+    },
+    {
+      "storyKey": "amazon-world-product-graph-plan-2026",
+      "category": "Inteligencia artificial",
+      "title": "Amazon estudia un gran catálogo mundial para reforzar las compras con IA",
+      "sentences": [
+        "Documentos internos examinados por Reuters describen una iniciativa denominada World Product Graph para reunir datos de productos de múltiples tiendas.",
+        "La base podría mejorar las comparaciones de artículos y las respuestas del asistente de compras Rufus.",
+        "El proyecto también permitiría a Amazon competir con agentes de IA que recomiendan productos de otros comercios.",
+        "Amazon afirma que el documento está desactualizado y no confirma que la iniciativa vaya a lanzarse."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/media-telecom/amazons-plan-own-worlds-product-data-fight-ai-shopping-agents-2026-11-13/",
+          "publishedAt": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "storyKey": "federal-reserve-ai-financial-stability-survey-2026",
+      "category": "Inteligencia artificial",
+      "title": "La Reserva Federal señala los riesgos financieros de la inteligencia artificial",
+      "sentences": [
+        "Un informe de estabilidad financiera de la Reserva Federal recoge que el 87 % de los contactos consultados mencionó riesgos asociados a la inteligencia artificial.",
+        "En la consulta anterior, realizada en mayo, la proporción había sido del 50 %.",
+        "Entre las preocupaciones figuran la financiación de centros de datos, los ciberataques y una posible corrección bursátil.",
+        "El informe describe riesgos percibidos por los encuestados, no una predicción de que vaya a producirse una crisis."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/finance/ai-rockets-top-worries-about-financial-system-latest-fed-survey-2026-11-13/",
+          "publishedAt": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "storyKey": "china-nvidia-restricted-gpus-ai-projects-2026",
+      "category": "Hardware",
+      "title": "Proyectos chinos de IA por más de 3.000 millones dependen de chips restringidos de Nvidia",
+      "sentences": [
+        "Una investigación de Reuters ha identificado más de 150 documentos sobre proyectos chinos de computación con chips Nvidia sujetos a restricciones estadounidenses.",
+        "El conjunto de inversiones identificadas supera los 3.000 millones de dólares e incluye instalaciones previstas, contratadas o ya ejecutadas.",
+        "Las dificultades para conseguir procesadores podrían obligar a retrasar proyectos o rediseñarlos con alternativas nacionales.",
+        "La investigación no vincula esos proyectos con las acusaciones que rodearon la reciente salida del director ejecutivo de Nvidia."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/china/huang-exit-us-scrutiny-imperil-3-billion-chinese-ai-projects-reliant-nvidia-2026-11-13/",
+          "publishedAt": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "storyKey": "fbi-artex-ai-cyberattack-framework-alert-2026",
+      "category": "Seguridad",
+      "title": "El FBI alerta del uso de agentes de IA para acelerar intrusiones informáticas",
+      "sentences": [
+        "El FBI ha emitido una alerta sobre ataques que emplean ARTEX, un sistema de agentes capaz de automatizar varias fases de una intrusión.",
+        "Según el aviso, algunas operaciones pasaron del reconocimiento al acceso privilegiado en menos de tres horas.",
+        "La actividad observada afecta a sectores como finanzas, administraciones, salud y telecomunicaciones.",
+        "La agencia advierte de que estas herramientas reducen el tiempo disponible para detectar y contener ataques."
+      ],
+      "sources": [
+        {
+          "name": "GBHackers",
+          "url": "https://gbhackers.com/fbi-warns-artex-ai-framework/",
+          "publishedAt": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "storyKey": "apple-homeview-shared-profile-privacy-review-2026",
+      "category": "Web y privacidad",
+      "title": "Una prueba de HomeView detecta problemas al separar información entre familiares",
+      "sentences": [
+        "Una prueba publicada por The Verge señala que HomeView puede mostrar mensajes y calendarios de otros miembros de la familia al cambiar de perfil.",
+        "El dispositivo reúne controles de domótica, cámaras y funciones personales en una pantalla compartida.",
+        "El análisis también describe limitaciones en las aplicaciones compatibles y respuestas poco fiables de Siri AI.",
+        "Antes de utilizarlo en espacios comunes conviene revisar qué información personal puede aparecer en pantalla."
+      ],
+      "sources": [
+        {
+          "name": "The Verge",
+          "url": "https://www.theverge.com/tech/1031726/apple-homeview-review-smart-display-homekit",
+          "publishedAt": "2026-11-12"
+        }
+      ]
+    }
+  ]
+}
