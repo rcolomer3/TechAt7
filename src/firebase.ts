@@ -36,7 +36,7 @@ async function queryRadar(uid?:string):Promise<RadarData>{
   getDocsFromServer(query(collection(db,'events'),where('confirmed','==',true),where('date','>=',madridDate()),orderBy('date','asc'),limit(40))),
   uid?getDocsFromServer(query(collection(db,'users',uid,'editions'),orderBy('date','desc'),limit(60))):Promise.resolve(null)
  ]);
- const selections=new Map(personal?.docs.map(x=>[x.id,x.data()])??[]);
+ const selections=new Map<string,{contentHash?:string;articles:Digest['articles']}>(personal?.docs.map(x=>[x.id,x.data() as {contentHash?:string;articles:Digest['articles']}])??[]);
  return {digests:d.docs.map(x=>{const digest={...x.data(),id:x.id} as Digest;const selection=selections.get(digest.date);return selection?.contentHash===digest.contentHash?{...digest,articles:selection.articles as Digest['articles']}:digest;}),updates:u.docs.map(x=>({...x.data(),id:x.id} as Update)),events:v.docs.map(x=>({...x.data(),id:x.id} as LaunchEvent))};
 }
 export async function loadRadar():Promise<RadarData>{
