@@ -2,6 +2,9 @@ name: Firestore rules
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['firestore.rules']
 
 permissions:
   contents: read
