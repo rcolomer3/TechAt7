@@ -28,17 +28,19 @@ export async function login(){
  }
 }
 export const logout=()=>auth?signOut(auth):Promise.resolve();
-async function queryRadar():Promise<RadarData>{
+async function queryRadar(uid?:string):Promise<RadarData>{
  if(!db)throw new Error('Falta configuración de Firebase.');
- const [d,u,v]=await Promise.all([
+ const [d,u,v,personal]=await Promise.all([
   getDocsFromServer(query(collection(db,'digests'),where('status','==','published'),orderBy('date','desc'))),
   getDocsFromServer(query(collection(db,'updates'),orderBy('publishedAt','desc'),limit(40))),
-  getDocsFromServer(query(collection(db,'events'),where('confirmed','==',true),where('date','>=',madridDate()),orderBy('date','asc'),limit(40)))
+  getDocsFromServer(query(collection(db,'events'),where('confirmed','==',true),where('date','>=',madridDate()),orderBy('date','asc'),limit(40))),
+  uid?getDocsFromServer(query(collection(db,'users',uid,'editions'),orderBy('date','desc'),limit(60))):Promise.resolve(null)
  ]);
- return {digests:d.docs.map(x=>({...x.data(),id:x.id} as Digest)),updates:u.docs.map(x=>({...x.data(),id:x.id} as Update)),events:v.docs.map(x=>({...x.data(),id:x.id} as LaunchEvent))};
+ const selections=new Map(personal?.docs.map(x=>[x.id,x.data()])??[]);
+ return {digests:d.docs.map(x=>{const digest={...x.data(),id:x.id} as Digest;const selection=selections.get(digest.date);return selection?.contentHash===digest.contentHash?{...digest,articles:selection.articles as Digest['articles']}:digest;}),updates:u.docs.map(x=>({...x.data(),id:x.id} as Update)),events:v.docs.map(x=>({...x.data(),id:x.id} as LaunchEvent))};
 }
 export async function loadRadar():Promise<RadarData>{
- try{return await queryRadar();}catch(error){
+ try{return await queryRadar(auth?.currentUser?.uid); }catch(error){
   console.warn('TechAt7: no se pudo consultar Firestore', error);
   const code=(error as {code?:string}).code;
   if(code==='failed-precondition')throw new Error('Estamos terminando de preparar el radar. Vuelve a intentarlo dentro de unos minutos.');
