@@ -1,6 +1,8 @@
 // ChatGPT researches and writes editions/*.json. This publisher never generates news.
 import {readFile,readdir,mkdir,writeFile} from 'node:fs/promises';
 import {hash,validateCurated,madridDate} from './core.mjs';
+import {categories} from './edition.mjs';
+import {publishPersonalized} from './personalized.mjs';
 import {validateEdition,rejectRepeats,editionHash,deliverOnce,planPublication,editionFile,digestId} from './edition.mjs';
 
 const now=new Date();
@@ -98,10 +100,15 @@ async function publish({date,archive,prepare,optional,extra},report){
  report.status='published';
  report.notifications={accepted:0,skipped:0,invalid:0,uncertain:0};
  if(notificationRun){
+  const selections=await publishPersonalized({db,edition,date,contentHash,categories});
   const tokens=await db.collectionGroup('tokens').limit(501).get();
   if(tokens.size>500)throw new Error('Más de 500 dispositivos: se requiere paginación antes de notificar.');
   for(const tokenDoc of tokens.docs){
-   const result=await deliverOnce({db,messaging,tokenDoc,date,articles:edition.articles.length});
+   const uid=tokenDoc.ref.parent.parent?.id;
+   const count=selections.get(uid);
+   if(count===0)continue;
+   // A missing preference document keeps the legacy shared edition available.
+   const result=await deliverOnce({db,messaging,tokenDoc,date,articles:count??edition.articles.length});
    report.notifications[result]++;
   }
   if(report.notifications.uncertain)throw new Error('Resultado incierto de un envío; no se reintenta automáticamente para evitar duplicados.');

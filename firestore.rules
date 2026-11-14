@@ -8,6 +8,10 @@ service cloud.firestore {
   match /digests/{date} { allow read: if resource.data.status == 'published'; allow write: if false; }
   match /updates/{id} { allow read: if true; allow write: if false; }
   match /events/{id} { allow read: if resource.data.confirmed == true; allow write: if false; }
+  match /users/{uid}/editions/{date} {
+   allow read: if signedIn() && request.auth.uid == uid;
+   allow write: if false;
+  }
   match /users/{uid}/saved/{id} {
    allow read, delete: if signedIn() && request.auth.uid == uid;
    allow create, update: if signedIn() && request.auth.uid == uid
