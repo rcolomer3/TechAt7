@@ -519,3 +519,24 @@ main{max-width:1300px;margin:auto;padding:52px 48px 60px}.heading {
  }
  .filters.filters-collapsed { display:none; }
 }
+
+.news-headline {
+ display:grid;
+ grid-template-columns:minmax(0,1fr) auto;
+ align-items:center;
+ gap:12px;
+ margin:14px 0 16px;
+}
+.news-card .news-headline h3 {
+ margin:0;
+ text-align:start;
+ text-align-last:auto;
+}
+.news-headline img {
+ width:clamp(52px,16vw,72px);
+ height:auto;
+ aspect-ratio:1;
+ object-fit:cover;
+ border-radius:12px;
+ background:var(--surface-soft);
+}
