@@ -165,9 +165,13 @@ function App(){
   if(t!==tab)setFiltersOpen(false);
   reading.update({tab:t,date:'',filter:'Todas'});
  };
+ const archiveImages=tab==='Guardadas'?new Map(data.digests.flatMap(digest=>digest.articles
+  .filter(article=>article.image)
+  .map(article=>[savedKey({...article,editionDate:digest.date}),article.image] as const))):null;
  function renderCard(article:SavedArticle){
   const key=savedKey(article);
-  return <NewsCard key={key} article={article}
+  const image=article.image??archiveImages?.get(key);
+  return <NewsCard key={key} article={image?{...article,image}:article}
    date={tab==='Hoy'||groupArchive?undefined:article.editionDate}
    saved={saved.items.some(item=>savedKey(item)===key)} saving={saved.pending.includes(key)} canSave={saved.ready}
    onSave={()=>action(()=>saved.toggle(article))} expanded={reading.expanded.includes(key)}
@@ -286,10 +290,12 @@ function App(){
  </>}</main></div>;
 }
 function NewsCard({article:a,date,saved,saving,canSave,onSave,expanded,onToggle,onOpenSource}:{article:SavedArticle;date?:string;saved:boolean;saving:boolean;canSave:boolean;onSave:()=>void;expanded:boolean;onToggle:()=>void;onOpenSource:()=>void}){
+ const [failedImage,setFailedImage]=useState('');
+ const thumbnail=a.image?.url.startsWith('https://')&&a.image.url!==failedImage?a.image:undefined;
  const short=brief(a.summary);
  const panelId=React.useId();
  const paragraphs=expanded?Array.from(new Intl.Segmenter('es',{granularity:'sentence'}).segment(a.summary),part=>part.segment.trim()).filter(Boolean):[short];
- return <article className="card news-card" id={readingId(savedKey(a))} style={{'--category-color':categoryColor(a.category)} as React.CSSProperties}><div className="card-top"><div className="card-meta"><span className="tag category-tag">{a.category}</span>{date&&<time dateTime={date}>{formatDateES(date)}</time>}</div><div className="card-actions">{a.url&&<ShareButton title={a.title} url={a.url} onBeforeShare={onOpenSource}/>}<button className={'save-news'+(saved?' is-saved':'')} title={saving?'Guardando…':saved?'Quitar de guardadas':'Guardar noticia'} aria-label={(saved?'Quitar de guardadas: ':'Guardar noticia: ')+a.title} aria-pressed={saved} aria-busy={saving} disabled={!canSave||saving} onClick={onSave}><Icon name={saving?'refresh':'bookmark'} className={saving?'spinning':undefined}/></button></div></div><h3>{a.title}</h3><div className="news-summary" id={panelId} lang="es">{paragraphs.map((text,i)=><p key={i}>{text}</p>)}</div>{short!==a.summary.trim()&&<button className="read-more" aria-expanded={expanded} aria-controls={panelId} onClick={onToggle}>{expanded?'Ver menos':'Ampliar resumen'} <span aria-hidden="true">{expanded?'−':'+'}</span></button>}<div className="card-footer"><span>{a.source}</span>{a.url?<a href={a.url} target="_blank" rel="noopener noreferrer" aria-label={'Leer en '+a.source+': '+a.title} onClick={onOpenSource} onAuxClick={onOpenSource}>Leer noticia ↗</a>:<span className="demo-label">DEMO</span>}</div></article>;
+ return <article className="card news-card" id={readingId(savedKey(a))} style={{'--category-color':categoryColor(a.category)} as React.CSSProperties}><div className="card-top"><div className="card-meta"><span className="tag category-tag">{a.category}</span>{date&&<time dateTime={date}>{formatDateES(date)}</time>}</div><div className="card-actions">{a.url&&<ShareButton title={a.title} url={a.url} onBeforeShare={onOpenSource}/>}<button className={'save-news'+(saved?' is-saved':'')} title={saving?'Guardando…':saved?'Quitar de guardadas':'Guardar noticia'} aria-label={(saved?'Quitar de guardadas: ':'Guardar noticia: ')+a.title} aria-pressed={saved} aria-busy={saving} disabled={!canSave||saving} onClick={onSave}><Icon name={saving?'refresh':'bookmark'} className={saving?'spinning':undefined}/></button></div></div>{thumbnail?<div className="news-headline"><h3>{a.title}</h3><img src={thumbnail.url} alt={thumbnail.alt} width="72" height="72" loading="lazy" decoding="async" referrerPolicy="no-referrer" onError={()=>setFailedImage(thumbnail.url)}/></div>:<h3>{a.title}</h3>}<div className="news-summary" id={panelId} lang="es">{paragraphs.map((text,i)=><p key={i}>{text}</p>)}</div>{short!==a.summary.trim()&&<button className="read-more" aria-expanded={expanded} aria-controls={panelId} onClick={onToggle}>{expanded?'Ver menos':'Ampliar resumen'} <span aria-hidden="true">{expanded?'−':'+'}</span></button>}<div className="card-footer"><span>{a.source}</span>{a.url?<a href={a.url} target="_blank" rel="noopener noreferrer" aria-label={'Leer en '+a.source+': '+a.title} onClick={onOpenSource} onAuxClick={onOpenSource}>Leer noticia ↗</a>:<span className="demo-label">DEMO</span>}</div></article>;
 }
 function Empty({title,text,action}:{title:string;text:string;action?:React.ReactNode}){return <div className="empty"><span className="empty-symbol"><Icon name="radar"/></span><h3>{title}</h3><p>{text}</p>{action&&<div className="empty-actions">{action}</div>}</div>}
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
