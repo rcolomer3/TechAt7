@@ -25,6 +25,7 @@ function App(){
  const [appearance,setAppearance]=useAppearance();
  const [authReady,setAuthReady]=useState(!configured);
  const [archiveQuery,setArchiveQuery]=useState('');
+ const [savedQuery,setSavedQuery]=useState('');
  const [page,setPage]=useState(1);
  const [filtersOpen,setFiltersOpen]=useState(false);
  const filtersId=React.useId();
@@ -91,14 +92,18 @@ function App(){
  const visible=newsDigests(data.digests,today,tab,archiveDate);
  const hasExtra=visible.some(d=>d.extra);
  const allArticles=tab==='Guardadas'?[...saved.items].sort((a,b)=>b.editionDate.localeCompare(a.editionDate)):uniqueArticles(visible.flatMap(d=>d.articles.map(a=>({...a,editionDate:d.date,editionId:d.id}))));
- const searchTerms=tab==='Anteriores'?searchable(archiveQuery).trim().split(/\s+/).filter(Boolean):[];
+ const searchInSaved=tab==='Guardadas';
+ const searchQuery=searchInSaved?savedQuery:archiveQuery;
+ const setSearchQuery=searchInSaved?setSavedQuery:setArchiveQuery;
+ const searchLabel=searchInSaved?'Buscar en Guardadas':'Buscar en Anteriores';
+ const searchTerms=tab==='Anteriores'||searchInSaved?searchable(searchQuery).trim().split(/\s+/).filter(Boolean):[];
  const matchingArticles=searchTerms.length?allArticles.filter(article=>{
-  const text=searchable([article.title,article.summary,article.source].join(' '));
+  const text=searchable([article.title,article.source,searchInSaved?article.category:article.summary].join(' '));
   return searchTerms.every(term=>text.includes(term));
  }):allArticles;
  const preferred=new Set(categoryPrefs.categories);
  const categoryArticles=tab==='Guardadas'?matchingArticles:matchingArticles.filter(article=>preferred.has(article.category));
- const articleCategories=[...new Set(categoryArticles.map(article=>article.category))];
+ const articleCategories=[...new Set((searchInSaved?allArticles:categoryArticles).map(article=>article.category))];
  const categories=['Todas',...articleCategories.sort((a,b)=>a.localeCompare(b,'es'))];
  const activeFilter=categories.includes(filter)?filter:'Todas';
  const filteredArticles=activeFilter==='Todas'?categoryArticles:categoryArticles.filter(article=>article.category===activeFilter);
@@ -185,19 +190,19 @@ function App(){
    </span>:tab==='Anteriores'?<span aria-live="polite">{searchTerms.length
     ?`${articles.length} ${articles.length===1?'resultado':'resultados'}${limitNote}`
     :`${articles.length} noticias anteriores a hoy${limitNote}`}</span>
-   :<span>{tab==='Guardadas'?`${articles.length} ${articles.length===1?'noticia guardada':'noticias guardadas'}`:'Fechas anunciadas oficialmente'}</span>}
+    :<span aria-live="polite">{tab==='Guardadas'?`${articles.length} ${searchTerms.length?(articles.length===1?'resultado':'resultados'):(articles.length===1?'noticia guardada':'noticias guardadas')}`:'Fechas anunciadas oficialmente'}</span>}
   </div>
   {tab==='Anteriores'&&<select aria-label="Fecha de las noticias" value={archiveDate} onChange={e=>reading.update({date:e.target.value,filter:'Todas'})}>
    <option value="">Todas las fechas</option>
    {archive.map(d=><option key={d.id} value={d.date}>{formatDateES(d.date)}</option>)}
   </select>}
  </div>
- {tab==='Anteriores'&&<div className="archive-search" role="search" aria-label="Archivo de noticias">
+ {(tab==='Anteriores'||searchInSaved)&&<div className="archive-search" role="search" aria-label={searchLabel}>
   <Icon name="search"/>
-  <input ref={archiveSearch} type="search" value={archiveQuery} onChange={event=>setArchiveQuery(event.target.value)}
-   aria-label="Buscar en Anteriores" placeholder="Buscar en Anteriores"/>
-  {archiveQuery&&<button type="button" aria-label="Borrar búsqueda" onClick={()=>{
-   setArchiveQuery('');
+  <input ref={archiveSearch} type="search" value={searchQuery} onChange={event=>setSearchQuery(event.target.value)}
+   aria-label={searchLabel} placeholder={searchLabel}/>
+  {searchQuery&&<button type="button" aria-label="Borrar búsqueda" onClick={()=>{
+   setSearchQuery('');
    archiveSearch.current?.focus();
   }}>×</button>}
  </div>}
@@ -240,7 +245,9 @@ function App(){
   :tab==='Anteriores'?searchTerms.length
    ?<Empty title="No encontramos coincidencias" text="Prueba con otras palabras o cambia la fecha o la categoría."/>
    :<Empty title="Sin noticias anteriores" text={categories.length>1?'Aquí encontrarás las noticias publicadas antes de hoy. Prueba otra fecha o categoría.':'No hay noticias anteriores de los temas que has elegido. Puedes activar más categorías en Ajustes.'}/>
-  :<Empty title="Nada guardado todavía" text="Pulsa el marcador de una noticia para guardarla aquí y leerla cuando quieras."/>
+  :searchTerms.length&&allArticles.length
+   ?<Empty title="No encontramos coincidencias" text="Prueba con otro título, fuente o categoría."/>
+   :<Empty title="Nada guardado todavía" text="Pulsa el marcador de una noticia para guardarla aquí y leerla cuando quieras."/>
  :upcoming.length?upcoming.map(e=><article className="list-card" key={e.id}><span className="tag">{formatDateES(e.date)} · Confirmado</span><h3>{e.title}</h3><p>{e.summary}</p><a onClick={reading.capture} onAuxClick={reading.capture} href={e.url} target="_blank" rel="noopener noreferrer">Ver anuncio oficial ↗</a></article>):<Empty title="Sin eventos confirmados" text="Los eventos y lanzamientos aparecerán aquí cuando tengan una fecha anunciada oficialmente."/>}
  {tab==='Anteriores'&&!loading&&!error&&pages>1&&<nav className="archive-pagination" aria-label="Páginas de Anteriores">
   <button type="button" disabled={currentPage===1} onClick={()=>changePage(currentPage-1)}><span aria-hidden="true">‹</span> Anterior</button>
