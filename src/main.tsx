@@ -133,7 +133,7 @@ function App(){
  useEffect(()=>{const contentReady=tab==='Guardadas'?saved.ready&&!saved.error:!loading&&!error;if(reading.ready&&contentReady&&!categories.includes(filter))reading.update({filter:'Todas'});},[reading.ready,tab,saved.ready,saved.error,loading,error,filter,categories.join('\u0000')]);
  const upcoming=data.events.filter(e=>e.confirmed&&e.date>=madridDate());
  const changeTab=(t:typeof tabs[number])=>{
-  setFiltersOpen(false);
+  if(t!==tab)setFiltersOpen(false);
   reading.update({tab:t,date:'',filter:'Todas'});
  };
  function renderCard(article:SavedArticle){
