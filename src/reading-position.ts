@@ -22,9 +22,9 @@ export function useReadingPosition({uid,enabled,day,feedReady,savedReady}:{uid:s
   positions.current.set(uid,record);
  },[ready,contentReady,day,view,expanded,uid]);
  useLayoutEffect(()=>{
-  if(!ready||!contentReady)return;
+  if(!ready)return;
   if(jumpToTop.current){jumpToTop.current=false;window.scrollTo({top:0,behavior:'instant'});capture();return;}
-  if(restored.current)return;
+  if(!contentReady||restored.current)return;
   let second=0;
   const first=requestAnimationFrame(()=>{second=requestAnimationFrame(()=>{
    const record=pending.current;
@@ -51,6 +51,7 @@ export function useReadingPosition({uid,enabled,day,feedReady,savedReady}:{uid:s
   }
   if(patch.tab===undefined){applyView();return;}
   cancelAnimationFrame(tabScrollFrame.current);
+  if(patch.tab!=='Ajustes'){applyView();return;}
   const startY=window.scrollY;
   if(startY<=0||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
    applyView();
