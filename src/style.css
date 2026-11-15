@@ -484,7 +484,17 @@ main{max-width:1300px;margin:auto;padding:52px 48px 60px}.heading {
  font-weight:600;
  font-size:12px;
 }
-.archive-pagination button span { font-size:20px; line-height:1; }
+.archive-pagination button span {
+ display:inline-block;
+ flex:0 0 8px;
+ width:8px;
+ height:8px;
+ font-size:0;
+ border:solid currentColor;
+ border-width:0 1.5px 1.5px 0;
+ transform:rotate(-45deg);
+}
+.archive-pagination button:first-child span { transform:rotate(135deg); }
 .page-indicator {
  padding:0 8px;
  font-size:12px;
