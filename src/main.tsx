@@ -26,6 +26,8 @@ function App(){
  const [authReady,setAuthReady]=useState(!configured);
  const [archiveQuery,setArchiveQuery]=useState('');
  const [page,setPage]=useState(1);
+ const [filtersOpen,setFiltersOpen]=useState(false);
+ const filtersId=React.useId();
  const [pageSize,setPageSize]=useState(()=>{
   const stored=Number(localStorage.getItem(pageSizeKey));
   return pageSizes.includes(stored)?stored:20;
@@ -115,7 +117,7 @@ function App(){
   const start=archiveStart.current;
   if(start){
    const headerHeight=readingHeader.current?.offsetHeight??0;
-   const top=window.scrollY+start.getBoundingClientRect().top-headerHeight;
+   const top=window.scrollY+start.getBoundingClientRect().top-headerHeight-(readingHeader.current?parseFloat(getComputedStyle(readingHeader.current).top)||0:0);
    window.scrollTo({top});
   }
  }
@@ -130,7 +132,10 @@ function App(){
  }
  useEffect(()=>{const contentReady=tab==='Guardadas'?saved.ready&&!saved.error:!loading&&!error;if(reading.ready&&contentReady&&!categories.includes(filter))reading.update({filter:'Todas'});},[reading.ready,tab,saved.ready,saved.error,loading,error,filter,categories.join('\u0000')]);
  const upcoming=data.events.filter(e=>e.confirmed&&e.date>=madridDate());
- const changeTab=(t:typeof tabs[number])=>reading.update({tab:t,date:'',filter:'Todas'});
+ const changeTab=(t:typeof tabs[number])=>{
+  setFiltersOpen(false);
+  reading.update({tab:t,date:'',filter:'Todas'});
+ };
  function renderCard(article:SavedArticle){
   const key=savedKey(article);
   return <NewsCard key={key} article={article}
@@ -169,7 +174,7 @@ function App(){
    </main>
   </div>;
  }
- return <div className="shell"><aside className="navigation"><a className="navigation-brand" href={import.meta.env.BASE_URL} aria-label="TechAt7 inicio"><AppIcon/><span>TechAt7<small>Resumen diario</small></span></a><nav className="navigation-tabs" aria-label="Principal">{tabs.map(t=><button key={t} aria-current={tab===t?'page':undefined} className={tab===t?'active':''} onClick={()=>changeTab(t)}><span className="nav-icon"><Icon name={t==='Hoy'?'today':t==='Anteriores'?'archive':t==='Guardadas'?'bookmark':t==='Eventos'?'calendar':'settings'}/>{t==='Hoy'&&newEdition&&tab!=='Hoy'&&<span className="nav-dot" aria-hidden="true"/>}</span><span className="nav-label">{t}</span></button>)}</nav></aside><main><div ref={readingHeader} className={tab==='Ajustes'?undefined:'reading-header'}><section className="heading"><div><h1 className={tab==='Eventos'?'heading-long-title':undefined}>{tab==='Hoy'?'El mundo tech, al día':tab==='Anteriores'?'El mundo tech, día a día':tab==='Guardadas'?'Tus noticias, a tu ritmo':tab==='Eventos'?'Lo próximo en el mundo tech':'Ajustes'}</h1></div>{tab!=='Ajustes'&&<button className="refresh" aria-label={syncing?'Sincronizando noticias':'Sincronizar noticias'} title={syncLabel?`${syncLabel} · Pulsa para sincronizar`:'Sincronizar noticias'} onClick={()=>void refresh('manual')} disabled={loading||syncing}><Icon name="refresh" className={loading||syncing?'spinning':''}/><span>{syncing?'Sincronizando':'Sincronizar'}</span></button>}</section>{newEdition&&tab!=='Hoy'&&<div className="banner new-edition" role="status"><b>NUEVA EDICIÓN</b><span>{newEdition===today?'Ya está disponible la edición de hoy.':`Ya está disponible la edición del ${formatDateES(newEdition)}.`}</span><button type="button" className="new-edition-action" onClick={()=>{setNewEdition(null);changeTab('Hoy');}}>Ver ahora</button><button type="button" className="new-edition-dismiss" aria-label="Descartar aviso" onClick={()=>setNewEdition(null)}>×</button></div>}{!online&&<div className="banner">Sin conexión. La interfaz está disponible; los datos en vivo requieren internet.</div>}{!configured&&<div className="banner"><b>VISTA DE DEMOSTRACIÓN</b><span>Tarjetas de ejemplo, sin noticias inventadas. Conecta Firebase para recibir tu resumen real.</span></div>}{saved.error&&tab!=='Guardadas'&&<div className="banner" role="alert">{saved.error}<button onClick={saved.reload}>Reintentar</button></div>}{notice&&<div role="status" className="banner notice">{notice}<button aria-label="Cerrar aviso" onClick={()=>setNotice('')}>×</button></div>}{tab!=='Ajustes'&&<><div className="section-title">
+ return <div className="shell"><aside className="navigation"><a className="navigation-brand" href={import.meta.env.BASE_URL} aria-label="TechAt7 inicio"><AppIcon/><span>TechAt7<small>Resumen diario</small></span></a><nav className="navigation-tabs" aria-label="Principal">{tabs.map(t=><button key={t} aria-current={tab===t?'page':undefined} className={tab===t?'active':''} onClick={()=>changeTab(t)}><span className="nav-icon"><Icon name={t==='Hoy'?'today':t==='Anteriores'?'archive':t==='Guardadas'?'bookmark':t==='Eventos'?'calendar':'settings'}/>{t==='Hoy'&&newEdition&&tab!=='Hoy'&&<span className="nav-dot" aria-hidden="true"/>}</span><span className="nav-label">{t}</span></button>)}</nav></aside><main className={tab==='Ajustes'?undefined:'reading-main'}><div ref={readingHeader} className={tab==='Ajustes'?undefined:'reading-header'}><section className="heading"><div><h1 className={tab==='Eventos'?'heading-long-title':undefined}>{tab==='Hoy'?'El mundo tech, al día':tab==='Anteriores'?'El mundo tech, día a día':tab==='Guardadas'?'Tus noticias, a tu ritmo':tab==='Eventos'?'Lo próximo en el mundo tech':'Ajustes'}</h1></div>{tab!=='Ajustes'&&<button className="refresh" aria-label={syncing?'Sincronizando noticias':'Sincronizar noticias'} title={syncLabel?`${syncLabel} · Pulsa para sincronizar`:'Sincronizar noticias'} onClick={()=>void refresh('manual')} disabled={loading||syncing}><Icon name="refresh" className={loading||syncing?'spinning':''}/><span>{syncing?'Sincronizando':'Sincronizar'}</span></button>}</section>{newEdition&&tab!=='Hoy'&&<div className="banner new-edition" role="status"><b>NUEVA EDICIÓN</b><span>{newEdition===today?'Ya está disponible la edición de hoy.':`Ya está disponible la edición del ${formatDateES(newEdition)}.`}</span><button type="button" className="new-edition-action" onClick={()=>{setNewEdition(null);changeTab('Hoy');}}>Ver ahora</button><button type="button" className="new-edition-dismiss" aria-label="Descartar aviso" onClick={()=>setNewEdition(null)}>×</button></div>}{!online&&<div className="banner">Sin conexión. La interfaz está disponible; los datos en vivo requieren internet.</div>}{!configured&&<div className="banner"><b>VISTA DE DEMOSTRACIÓN</b><span>Tarjetas de ejemplo, sin noticias inventadas. Conecta Firebase para recibir tu resumen real.</span></div>}{saved.error&&tab!=='Guardadas'&&<div className="banner" role="alert">{saved.error}<button onClick={saved.reload}>Reintentar</button></div>}{notice&&<div role="status" className="banner notice">{notice}<button aria-label="Cerrar aviso" onClick={()=>setNotice('')}>×</button></div>}{tab!=='Ajustes'&&<><div className="section-title">
   <div>
    <h2>{tab==='Hoy'?'Tu resumen de hoy':tab==='Anteriores'?'Archivo de noticias':tab==='Guardadas'?'Tus noticias guardadas':'Eventos y lanzamientos'}</h2>
    {tab==='Hoy'?<span>
@@ -196,7 +201,12 @@ function App(){
    archiveSearch.current?.focus();
   }}>×</button>}
  </div>}
- {(tab==='Hoy'||tab==='Anteriores'||tab==='Guardadas')&&<div className="filters">{categories.map(c=><button aria-pressed={c===activeFilter} className={c===activeFilter?'chosen':''} key={c} onClick={()=>reading.update({filter:c})}>{c}</button>)}{tab!=='Guardadas'&&<button type="button" className="filter-manage" aria-label="Elegir categorías que quiero leer" onClick={()=>changeTab('Ajustes')}><Icon name="settings"/><span>Categorías</span></button>}</div>}
+ {(tab==='Hoy'||tab==='Anteriores'||tab==='Guardadas')&&<div className="category-filters">
+  {categories.length>5&&<button type="button" className="mobile-filters-toggle" aria-expanded={filtersOpen} aria-controls={filtersId} onClick={()=>setFiltersOpen(open=>!open)}>
+   <span>Categorías · {activeFilter}</span>
+   <span aria-hidden="true">{filtersOpen?'−':'+'}</span>
+  </button>}
+  <div id={filtersId} className={'filters'+(categories.length>5&&!filtersOpen?' filters-collapsed':'')}>{categories.map(c=><button aria-pressed={c===activeFilter} className={c===activeFilter?'chosen':''} key={c} onClick={()=>{reading.update({filter:c});setFiltersOpen(false);}}>{c}</button>)}{tab!=='Guardadas'&&<button type="button" className="filter-manage" aria-label="Elegir categorías que quiero leer" onClick={()=>changeTab('Ajustes')}><Icon name="settings"/><span>Categorías</span></button>}</div></div>}
  </>}</div>
  {tab==='Ajustes'?<div className="settings-layout"><AppearanceSettings value={appearance} onChange={setAppearance}/><CategorySettings selected={categoryPrefs.categories} onToggle={categoryPrefs.toggle} onSetCategories={categoryPrefs.setCategories} dailyLimit={categoryPrefs.dailyLimit} onDailyLimit={categoryPrefs.setDailyLimit} saving={categoryPrefs.saving} error={categoryPrefs.error} cloud={configured}/><section className="settings-panel">
  <h2>Historial de noticias</h2>
@@ -233,9 +243,9 @@ function App(){
   :<Empty title="Nada guardado todavía" text="Pulsa el marcador de una noticia para guardarla aquí y leerla cuando quieras."/>
  :upcoming.length?upcoming.map(e=><article className="list-card" key={e.id}><span className="tag">{formatDateES(e.date)} · Confirmado</span><h3>{e.title}</h3><p>{e.summary}</p><a onClick={reading.capture} onAuxClick={reading.capture} href={e.url} target="_blank" rel="noopener noreferrer">Ver anuncio oficial ↗</a></article>):<Empty title="Sin eventos confirmados" text="Los eventos y lanzamientos aparecerán aquí cuando tengan una fecha anunciada oficialmente."/>}
  {tab==='Anteriores'&&!loading&&!error&&pages>1&&<nav className="archive-pagination" aria-label="Páginas de Anteriores">
-  <button type="button" disabled={currentPage===1} onClick={()=>changePage(currentPage-1)}>Anterior</button>
-  <span aria-live="polite">Página {currentPage} de {pages}</span>
-  <button type="button" disabled={currentPage===pages} onClick={()=>changePage(currentPage+1)}>Siguiente</button>
+  <button type="button" disabled={currentPage===1} onClick={()=>changePage(currentPage-1)}><span aria-hidden="true">‹</span> Anterior</button>
+  <span className="page-indicator" aria-live="polite"><span className="sr-only">Página </span>{currentPage} <span>de</span> {pages}</span>
+  <button type="button" disabled={currentPage===pages} onClick={()=>changePage(currentPage+1)}>Siguiente <span aria-hidden="true">›</span></button>
  </nav>}
  </>}</main></div>;
 }

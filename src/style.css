@@ -448,3 +448,63 @@ main{max-width:1300px;margin:auto;padding:52px 48px 60px}.heading {
  .empty h3 { font-size:clamp(20px,2.7vw,26px); }
 }
 
+
+/* Keep the initial top spacing inside the sticky area so it never scrolls away. */
+.shell > .reading-main {
+ --reading-top-space:52px;
+ align-self:start;
+ margin-block:0;
+ padding-top:0;
+}
+.reading-header {
+ top:var(--shell-inset,0px);
+ padding-top:var(--reading-top-space);
+}
+.mobile-filters-toggle { display:none; }
+.archive-pagination {
+ width:fit-content;
+ max-width:100%;
+ margin-inline:auto;
+ gap:4px;
+ padding:4px;
+ border:1px solid var(--border);
+ border-radius:999px;
+ background:var(--surface);
+ box-shadow:var(--shadow);
+}
+.archive-pagination button {
+ display:inline-flex;
+ align-items:center;
+ gap:6px;
+ border:0;
+ border-radius:999px;
+ padding:6px 12px;
+ font-weight:600;
+ font-size:12px;
+}
+.archive-pagination button span { font-size:20px; line-height:1; }
+.page-indicator {
+ padding:0 8px;
+ font-size:12px;
+ font-weight:700;
+ font-variant-numeric:tabular-nums;
+}
+.page-indicator > span:not(.sr-only) { font-weight:400; color:var(--secondary); }
+
+@media(min-width:1600px){.shell > .reading-main { --reading-top-space:68px; }}
+@media(max-width:1150px){.shell > .reading-main { --reading-top-space:40px; }}
+@media(max-width:760px){
+ .shell > .reading-main { --reading-top-space:calc(16px + env(safe-area-inset-top)); }
+ .mobile-filters-toggle {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  width:100%;
+  margin-bottom:10px;
+  padding:8px 12px;
+  font-size:12px;
+  text-align:left;
+ }
+ .filters.filters-collapsed { display:none; }
+}
