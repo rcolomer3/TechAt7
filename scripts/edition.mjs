@@ -36,6 +36,17 @@ function sourceURL(value){
  return url.href;
 }
 
+function optionalImage(image){
+ if(typeof image?.url!=='string'||image.url.length>2048||typeof image.alt!=='string')return;
+ const alt=plain(image.alt);
+ if(!alt||alt.length>160)return;
+ try{
+  const url=new URL(image.url);
+  if(url.protocol!=='https:'||url.username||url.password||url.port||!url.hostname.includes('.')||/^[\d.]+$/.test(url.hostname)||url.hostname.endsWith('.local'))return;
+  return {url:url.href,alt};
+ }catch{return;}
+}
+
 function validateEditionEvents(items,storyKeys,editionDate){
  if(!Array.isArray(items))throw new Error('Los eventos de la edición deben ser una lista.');
  const seen=new Set();
@@ -87,7 +98,8 @@ export function validateEdition(input,expectedDate){
   const url=sources[0].url,key=titleKey(title);
   if(topics.has(topicKey)||titles.has(key)||sources.some(s=>urls.has(s.url)))throw new Error('Hay acontecimientos repetidos en la edición.');
   topics.add(topicKey);titles.add(key);sources.forEach(s=>urls.add(s.url));
-  return {id:hash(url),title,summary,category:item.category,source:sources.map(s=>s.name).join(' · '),url,publishedAt:sources[0].publishedAt,sources,topicKey};
+  const image=optionalImage(item.image);
+  return {id:hash(url),title,summary,...(image?{image}:{}),category:item.category,source:sources.map(s=>s.name).join(' · '),url,publishedAt:sources[0].publishedAt,sources,topicKey};
  });
  if(domains.size<3)throw new Error('Se necesitan al menos tres fuentes diferentes en la edición.');
  const events=validateEditionEvents(input.events===undefined?[]:input.events,topics,input.date);
