@@ -25,6 +25,7 @@ function App(){
  const [appearance,setAppearance]=useAppearance();
  const [authReady,setAuthReady]=useState(!configured);
  const [archiveQuery,setArchiveQuery]=useState('');
+ const [archiveCategories,setArchiveCategories]=useState<string[]>([]);
  const [savedQuery,setSavedQuery]=useState('');
  const [page,setPage]=useState(1);
  const [filtersOpen,setFiltersOpen]=useState(false);
@@ -103,10 +104,33 @@ function App(){
  }):allArticles;
  const preferred=new Set(categoryPrefs.categories);
  const categoryArticles=tab==='Guardadas'?matchingArticles:matchingArticles.filter(article=>preferred.has(article.category));
- const articleCategories=[...new Set((searchInSaved?allArticles:categoryArticles).map(article=>article.category))];
+ const isArchive=tab==='Anteriores';
+ const categoryOptions=isArchive?allArticles.filter(article=>preferred.has(article.category)):searchInSaved?allArticles:categoryArticles;
+ const articleCategories=[...new Set([
+  ...categoryOptions.map(article=>article.category),
+  ...(isArchive?archiveCategories.filter(category=>preferred.has(category)):[])
+ ])];
  const categories=['Todas',...articleCategories.sort((a,b)=>a.localeCompare(b,'es'))];
  const activeFilter=categories.includes(filter)?filter:'Todas';
- const filteredArticles=activeFilter==='Todas'?categoryArticles:categoryArticles.filter(article=>article.category===activeFilter);
+ const selectedArchiveCategories=archiveCategories.filter(category=>preferred.has(category));
+ const filteredArticles=isArchive
+  ?selectedArchiveCategories.length?categoryArticles.filter(article=>selectedArchiveCategories.includes(article.category)):categoryArticles
+  :activeFilter==='Todas'?categoryArticles:categoryArticles.filter(article=>article.category===activeFilter);
+ const filterLabel=isArchive
+  ?selectedArchiveCategories.length===0?'Todas':selectedArchiveCategories.length===1?selectedArchiveCategories[0]:`${selectedArchiveCategories.length} seleccionadas`
+  :activeFilter;
+ function selectCategory(category:string){
+  if(isArchive){
+   setArchiveCategories(current=>{
+    const selected=current.filter(item=>preferred.has(item));
+    if(category==='Todas')return [];
+    return selected.includes(category)?selected.filter(item=>item!==category):[...selected,category];
+   });
+   return;
+  }
+  reading.update({filter:category});
+  setFiltersOpen(false);
+ }
  const dailyLimit=showAll?0:categoryPrefs.dailyLimit;
  const articles=tab==='Guardadas'?filteredArticles:limitPerEdition(filteredArticles,dailyLimit);
  const noPreferred=tab!=='Guardadas'&&categoryPrefs.categories.length===0;
@@ -116,7 +140,7 @@ function App(){
  const pages=Math.max(1,Math.ceil(articles.length/pageSize));
  const currentPage=Math.min(page,pages);
  const displayed=tab==='Anteriores'?articles.slice((currentPage-1)*pageSize,currentPage*pageSize):articles;
- useEffect(()=>{setPage(1);},[archiveQuery,archiveDate,activeFilter,pageSize,dailyLimit]);
+ useEffect(()=>{setPage(1);},[archiveQuery,archiveDate,archiveCategories,activeFilter,pageSize,dailyLimit]);
  function changePage(next:number){
   setPage(next);
   const start=archiveStart.current;
@@ -208,10 +232,15 @@ function App(){
  </div>}
  {(tab==='Hoy'||tab==='Anteriores'||tab==='Guardadas')&&<div className="category-filters">
   {categories.length>5&&<button type="button" className="mobile-filters-toggle" aria-expanded={filtersOpen} aria-controls={filtersId} onClick={()=>setFiltersOpen(open=>!open)}>
-   <span>Categorías · {activeFilter}</span>
+   <span>Categorías · {filterLabel}</span>
    <span aria-hidden="true">{filtersOpen?'−':'+'}</span>
   </button>}
-  <div id={filtersId} className={'filters'+(categories.length>5&&!filtersOpen?' filters-collapsed':'')}>{categories.map(c=><button aria-pressed={c===activeFilter} className={c===activeFilter?'chosen':''} key={c} onClick={()=>{reading.update({filter:c});setFiltersOpen(false);}}>{c}</button>)}{tab!=='Guardadas'&&<button type="button" className="filter-manage" aria-label="Elegir categorías que quiero leer" onClick={()=>changeTab('Ajustes')}><Icon name="settings"/><span>Categorías</span></button>}</div></div>}
+  <div id={filtersId} className={'filters'+(categories.length>5&&!filtersOpen?' filters-collapsed':'')}>{categories.map(category=>{
+   const selected=isArchive
+    ?category==='Todas'?selectedArchiveCategories.length===0:selectedArchiveCategories.includes(category)
+    :category===activeFilter;
+   return <button type="button" aria-pressed={selected} className={selected?'chosen':''} key={category} onClick={()=>selectCategory(category)}>{category}</button>;
+  })}{tab!=='Guardadas'&&<button type="button" className="filter-manage" aria-label="Elegir categorías que quiero leer" onClick={()=>changeTab('Ajustes')}><Icon name="settings"/><span>Categorías</span></button>}</div></div>}
  </>}</div>
  {tab==='Ajustes'?<div className="settings-layout"><AppearanceSettings value={appearance} onChange={setAppearance}/><CategorySettings selected={categoryPrefs.categories} onToggle={categoryPrefs.toggle} onSetCategories={categoryPrefs.setCategories} dailyLimit={categoryPrefs.dailyLimit} onDailyLimit={categoryPrefs.setDailyLimit} saving={categoryPrefs.saving} error={categoryPrefs.error} cloud={configured}/><section className="settings-panel">
  <h2>Historial de noticias</h2>
