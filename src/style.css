@@ -459,6 +459,8 @@ main{max-width:1300px;margin:auto;padding:52px 48px 60px}.heading {
 .reading-header {
  top:var(--shell-inset,0px);
  padding-top:var(--reading-top-space);
+ /* Mask the space above the pinned header as cards scroll behind it. */
+ box-shadow:0 calc(-1 * var(--shell-inset,0px)) 0 var(--bg);
 }
 .mobile-filters-toggle { display:none; }
 .archive-pagination {
