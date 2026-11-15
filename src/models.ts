@@ -1,4 +1,4 @@
-export type Article = {id:string; title:string; summary:string; url:string; source:string; publishedAt:string; category:string};
+export type Article = {id:string; title:string; summary:string; url:string; source:string; publishedAt:string; category:string; image?:{url:string; alt:string}};
 export type Digest = {id:string; date:string; publishedAt:string; articles:Article[]; contentHash?:string; demo?:boolean; extra?:boolean; belowTarget?:boolean; editorialVersion?:number; language?:'es'; status:'published'};
 export type Update = {id:string; platform:'iOS'|'macOS'|'Windows'|'Synology'; title:string; summary:string; url:string; publishedAt:string};
 export type LaunchEvent = {id:string; title:string; date:string; summary:string; url:string; confirmed:true};
