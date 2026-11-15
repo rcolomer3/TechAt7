@@ -51,7 +51,15 @@ export function useReadingPosition({uid,enabled,day,feedReady,savedReady}:{uid:s
   }
   if(patch.tab===undefined){applyView();return;}
   cancelAnimationFrame(tabScrollFrame.current);
-  if(patch.tab!=='Ajustes'){applyView();return;}
+  if(patch.tab!=='Ajustes'){
+   if(patch.tab===view.tab){
+    const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0,behavior:reducedMotion?'instant':'smooth'});
+   }else{
+    applyView();
+   }
+   return;
+  }
   const startY=window.scrollY;
   if(startY<=0||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
    applyView();
