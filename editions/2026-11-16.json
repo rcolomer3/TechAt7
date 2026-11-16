@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-16",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "microsoft-365-global-outage-outlook-teams-copilot-nov-2026",
+      "category": "Microsoft",
+      "title": "Microsoft explica la causa de la caída mundial de Microsoft 365",
+      "sentences": [
+        "Microsoft atribuye la interrupción mundial del 12 de noviembre a un fallo de software introducido en julio en sus servidores de red.",
+        "El tráfico adicional tras una conmutación de Teams y una reducción previa de capacidad desencadenaron una avería en cadena.",
+        "Según su informe preliminar, más del 80 % de los servidores de pasarela dejaron de responder y Exchange Online tardó más en recuperarse.",
+        "La compañía afirma que ha corregido el defecto y reforzado la supervisión, aunque publicará un informe definitivo más adelante."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-says-months-old-bug-caused-global-microsoft-365-outage/",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "storyKey": "fandango-checkout-card-skimmer-october-2026",
+      "category": "Seguridad",
+      "title": "Fandango avisa de un robo de datos de tarjetas durante compras de entradas",
+      "sentences": [
+        "Fandango está notificando a clientes que un código malicioso interceptó datos de pago en su página de compra entre el 8 y el 11 de octubre.",
+        "La información potencialmente expuesta incluye número de tarjeta, código CVV, caducidad, código postal y correo electrónico.",
+        "La empresa asegura que corrigió el problema y que no conoce fraudes vinculados al incidente, pero no ha comunicado cuántas personas resultaron afectadas.",
+        "Quienes compraron entradas en esas fechas deberían revisar los movimientos bancarios y comunicar cualquier cargo sospechoso."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/fandango-says-hackers-stole-payment-card-details-from-checkout-pages/",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "storyKey": "google-gtig-agentic-ai-threat-tracker-november-2026",
+      "category": "Seguridad",
+      "title": "Google documenta ataques que ya automatizan la búsqueda y explotación de fallos",
+      "sentences": [
+        "Google Threat Intelligence Group ha identificado operaciones que utilizan agentes de IA para descubrir vulnerabilidades y explotarlas sin intervención humana directa.",
+        "Su investigación describe el uso de herramientas como CAIRN y un sistema llamado exploit_agent contra servidores y sitios web expuestos.",
+        "La compañía advierte de que estas técnicas reducen el tiempo disponible para instalar parches y pueden acelerar campañas de intrusión.",
+        "El informe distingue los ataques automatizados ya observados de su previsión de operaciones todavía más autónomas en los próximos meses."
+      ],
+      "sources": [
+        {
+          "name": "Google Cloud",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/agentic-threat-activity-crosses-a-significant-threshold",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "storyKey": "windows-server-2016-end-extended-support-january-2027",
+      "category": "Microsoft",
+      "title": "Windows Server 2016 dejará de recibir soporte ordinario en enero",
+      "sentences": [
+        "Microsoft recuerda que el soporte ampliado de Windows Server 2016 finalizará el 13 de enero de 2027.",
+        "La actualización de seguridad de enero será la última incluida en ese periodo de soporte para todas sus ediciones.",
+        "Después, las actualizaciones mensuales de seguridad solo continuarán para equipos inscritos en el programa Extended Security Updates.",
+        "La empresa recomienda planificar la migración a Windows Server 2025 y revisar los servicios que aún dependan de la versión antigua."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-windows-server-2016-reaches-end-of-support-in-60-days/",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "storyKey": "coles-australia-cybersecurity-incident-november-2026",
+      "category": "Seguridad",
+      "title": "La cadena australiana Coles investiga un incidente de ciberseguridad",
+      "sentences": [
+        "Coles ha confirmado que investiga un incidente informático y que trabaja con especialistas externos para proteger sus sistemas.",
+        "La empresa afirma que, por ahora, no ha encontrado pruebas de extracción de datos de clientes, empleados o proveedores.",
+        "También asegura que sus tiendas, compras en línea y servicios de fidelización siguen funcionando con normalidad.",
+        "La investigación continúa en coordinación con el centro australiano de ciberseguridad, por lo que el alcance definitivo aún no está establecido."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/australian-retail-giant-coles-investigates-cybersecurity-incident/",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "storyKey": "anthropic-claude-mythos-fable-5-2-cybersecurity-november-2026",
+      "category": "Inteligencia artificial",
+      "title": "Anthropic diferencia las capacidades de seguridad de Claude Mythos y Fable 5.2",
+      "sentences": [
+        "Anthropic ha distribuido Claude Mythos 5.2 a socios seleccionados y Claude Fable 5.2 a usuarios generales.",
+        "La compañía presenta Mythos como su modelo más avanzado para investigación de vulnerabilidades, mientras Fable mantiene restricciones sobre tareas ofensivas.",
+        "Según evaluaciones publicadas por Anthropic, Mythos 5.2 encuentra un 10,2 % más de vulnerabilidades que Claude Opus 5.5 en una prueba de redescubrimiento.",
+        "Estos resultados son afirmaciones de la empresa y no implican que el modelo especializado esté disponible para todo el público."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropics-claude-fable-52-blocks-fewer-security-tasks-while-mythos-gets-better-at-finding-bugs/",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "storyKey": "linux-noisytcp-cve-2026-99288-kernel-dos",
+      "category": "Seguridad",
+      "title": "NoisyTCP permite bloquear servidores Linux mediante tráfico de red",
+      "sentences": [
+        "Un investigador ha divulgado NoisyTCP, una vulnerabilidad del núcleo Linux identificada como CVE-2026-99288.",
+        "Un atacante sin autenticar podría provocar un bloqueo del sistema mediante paquetes TCP especialmente preparados y una condición de carrera.",
+        "El problema afecta a configuraciones habituales con servicios como Nginx, Apache o SSH, aunque su explotación puede resultar difícil por la estrecha ventana temporal.",
+        "El fallo permite causar una denegación de servicio, pero no concede ejecución de código ni acceso a los datos del servidor."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/linux/new-noisytcp-linux-kernel-flaw-lets-attackers-crash-servers/",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "storyKey": "windows-november-2026-slmgr-activation-error-0x80041008",
+      "category": "Microsoft",
+      "title": "Microsoft publica parches extraordinarios para los fallos de activación de Windows",
+      "sentences": [
+        "Microsoft ha distribuido actualizaciones fuera de calendario para corregir los errores de activación y licencias detectados tras los parches de noviembre.",
+        "El problema afecta principalmente a organizaciones que utilizan la herramienta SLMGR para automatizar la activación de Windows.",
+        "Las correcciones incluyen Windows Server 2019, 2022 y 2025, además de varias versiones empresariales de Windows 10 y Windows 11.",
+        "Los dispositivos que ya estaban activados y no necesitan ejecutar los comandos afectados no deberían sufrir este problema, según Microsoft."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-new-windows-emergency-updates-fix-activation-licensing-failures/",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "storyKey": "tsmc-cloud-provider-employee-data-leak-november-2026",
+      "category": "Seguridad",
+      "title": "TSMC confirma la filtración de datos de trabajadores desde un proveedor externo",
+      "sentences": [
+        "TSMC ha confirmado que información personal de empleados actuales y antiguos apareció publicada sin autorización en internet.",
+        "La compañía relaciona los datos expuestos con sistemas de un proveedor de servicios en la nube, no con una intrusión confirmada en sus fábricas.",
+        "Un atacante afirma haber obtenido 6,9 GB de información, pero esa cantidad procede de su propia declaración y no constituye una cifra verificada por TSMC.",
+        "El fabricante está avisando a los trabajadores afectados y asegura que sus operaciones y datos de clientes no se han visto comprometidos."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/tsmc-employee-data-breach-linked-to-cloud-provider/",
+          "publishedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "storyKey": "us-remote-ai-chip-access-export-controls-november-2026",
+      "category": "Regulación",
+      "title": "Estados Unidos restringe el acceso remoto a chips avanzados de IA desde terceros países",
+      "sentences": [
+        "Estados Unidos ha aprobado nuevas restricciones para impedir que empresas chinas utilicen chips avanzados de IA alojados en centros de datos de otros países.",
+        "La medida exige licencias de exportación para determinados chips destinados a Singapur, Tailandia, Malasia, Indonesia y Brasil.",
+        "El Departamento de Comercio sostiene que busca cerrar vías para eludir los controles actuales mediante servicios de computación remota.",
+        "La norma excluye ciertos sistemas de comercio electrónico y redes sociales y sustituye un esquema anterior de licencias globales."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/legal/litigation/us-issues-rule-protect-advanced-ai-chips-being-accessed-remotely-2026-11-16/",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "storyKey": "alibaba-qwen4-max-safety-release-november-2026",
+      "category": "Inteligencia artificial",
+      "title": "Alibaba presenta Qwen4-Max con nuevas barreras frente a usos peligrosos",
+      "sentences": [
+        "Alibaba ha anunciado Qwen4-Max, un modelo de IA que busca conservar capacidades defensivas de ciberseguridad sin facilitar ataques informáticos.",
+        "La compañía afirma que mejoró del 8 % al 14,7 % su resultado en una prueba de generación de código seguro.",
+        "También asegura que redujo aproximadamente un 60 % el coste medio de ciertas tareas en pruebas internas, cifras que Reuters no ha verificado de forma independiente.",
+        "Alibaba prevé publicar versiones más pequeñas de la familia Qwen4 con pesos abiertos, sin confirmar en esta información una fecha concreta."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/retail-consumer/alibaba-unveils-new-flagship-ai-model-with-safety-upgrades-2026-11-16/",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "storyKey": "mit-microsoft-adams-bridge-cryptography-patent-lawsuit-2026",
+      "category": "Empresas",
+      "title": "El MIT demanda a Microsoft por una patente criptográfica usada en centros de datos",
+      "sentences": [
+        "El Instituto Tecnológico de Massachusetts ha demandado a Microsoft en un tribunal federal de Texas por una presunta infracción de patente.",
+        "La universidad sostiene que el hardware Adams Bridge Accelerator de Microsoft utiliza tecnología criptográfica protegida por sus derechos.",
+        "Según la demanda, la innovación está relacionada con la protección frente a amenazas de seguridad procedentes de ordenadores cuánticos.",
+        "El MIT solicita una compensación económica no especificada y Microsoft todavía no había respondido públicamente a Reuters sobre la acusación."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/legal/litigation/mit-sues-microsoft-patent-infringement-over-data-center-technology-2026-11-16/",
+          "publishedAt": "2026-11-16"
+        }
+      ]
+    }
+  ]
+}
