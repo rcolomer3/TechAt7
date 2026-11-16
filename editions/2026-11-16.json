@@ -5,24 +5,6 @@
   "producer": "chatgpt",
   "articles": [
     {
-      "storyKey": "microsoft-365-global-outage-outlook-teams-copilot-nov-2026",
-      "category": "Microsoft",
-      "title": "Microsoft explica la causa de la caída mundial de Microsoft 365",
-      "sentences": [
-        "Microsoft atribuye la interrupción mundial del 12 de noviembre a un fallo de software introducido en julio en sus servidores de red.",
-        "El tráfico adicional tras una conmutación de Teams y una reducción previa de capacidad desencadenaron una avería en cadena.",
-        "Según su informe preliminar, más del 80 % de los servidores de pasarela dejaron de responder y Exchange Online tardó más en recuperarse.",
-        "La compañía afirma que ha corregido el defecto y reforzado la supervisión, aunque publicará un informe definitivo más adelante."
-      ],
-      "sources": [
-        {
-          "name": "BleepingComputer",
-          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-says-months-old-bug-caused-global-microsoft-365-outage/",
-          "publishedAt": "2026-11-16"
-        }
-      ]
-    },
-    {
       "storyKey": "fandango-checkout-card-skimmer-october-2026",
       "category": "Seguridad",
       "title": "Fandango avisa de un robo de datos de tarjetas durante compras de entradas",
@@ -126,24 +108,6 @@
         {
           "name": "BleepingComputer",
           "url": "https://www.bleepingcomputer.com/news/linux/new-noisytcp-linux-kernel-flaw-lets-attackers-crash-servers/",
-          "publishedAt": "2026-11-16"
-        }
-      ]
-    },
-    {
-      "storyKey": "windows-november-2026-slmgr-activation-error-0x80041008",
-      "category": "Microsoft",
-      "title": "Microsoft publica parches extraordinarios para los fallos de activación de Windows",
-      "sentences": [
-        "Microsoft ha distribuido actualizaciones fuera de calendario para corregir los errores de activación y licencias detectados tras los parches de noviembre.",
-        "El problema afecta principalmente a organizaciones que utilizan la herramienta SLMGR para automatizar la activación de Windows.",
-        "Las correcciones incluyen Windows Server 2019, 2022 y 2025, además de varias versiones empresariales de Windows 10 y Windows 11.",
-        "Los dispositivos que ya estaban activados y no necesitan ejecutar los comandos afectados no deberían sufrir este problema, según Microsoft."
-      ],
-      "sources": [
-        {
-          "name": "BleepingComputer",
-          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-new-windows-emergency-updates-fix-activation-licensing-failures/",
           "publishedAt": "2026-11-16"
         }
       ]
