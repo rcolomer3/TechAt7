@@ -55,24 +55,24 @@ test('rejects events that are unconfirmed, unrelated, past, invalid or duplicate
  assert.throws(()=>validate([{...event,officialHost:'otro.example'}]),/enlace/);
  assert.throws(()=>validate([event,event]),/identificador/);
 });
-test('scheduled runs delayed past midnight use the previous Madrid date and can still notify',()=>{
+test('scheduled runs delayed past midnight treat a missing prior edition as optional',()=>{
  const delayed=new Date('2026-11-06T23:14:17Z');
  assert.deepEqual(planPublication(delayed,{scheduled:true}),[
-  {date:'2026-11-06',archive:false,optional:false}
+  {date:'2026-11-06',archive:false,optional:true}
  ]);
 });
-test('scheduled runs recover older editions silently and also publish the current edition when due',()=>{
+test('scheduled runs keep both missing recovery and current editions optional',()=>{
  assert.deepEqual(planPublication(new Date('2026-11-07T01:00:00Z'),{scheduled:true}),[
-  {date:'2026-11-06',archive:true,optional:false}
+  {date:'2026-11-06',archive:true,optional:true}
  ]);
  assert.deepEqual(planPublication(new Date('2026-11-07T18:05:00Z'),{scheduled:true}),[
   {date:'2026-11-06',archive:true,optional:true},
-  {date:'2026-11-07',archive:false}
+  {date:'2026-11-07',archive:false,optional:true}
  ]);
 });
 test('scheduled recovery uses the local calendar across the start of daylight saving time',()=>{
  assert.deepEqual(planPublication(new Date('2026-03-29T22:30:00Z'),{scheduled:true}),[
-  {date:'2026-03-29',archive:false,optional:false}
+  {date:'2026-03-29',archive:false,optional:true}
  ]);
 });
 test('push and manual modes preserve draft preparation and explicit archive dates',()=>{
