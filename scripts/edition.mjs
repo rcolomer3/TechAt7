@@ -9,8 +9,9 @@ export function planPublication(now,{date,archive=false,scheduled=false}={}){
   // Use the calendar date in Madrid, including on daylight saving changes.
   const previousDay=new Date(today+'T12:00:00Z');
   previousDay.setUTCDate(previousDay.getUTCDate()-1);
-  const recovery={date:madridDate(previousDay),archive:hour>=2,optional:hour>=19};
-  return hour<19?[recovery]:[recovery,{date:today,archive:false}];
+  const recovery={date:madridDate(previousDay),archive:hour>=2,optional:true};
+  // Scheduled checks are a fallback: a missing edition is not a workflow failure.
+  return hour<19?[recovery]:[recovery,{date:today,archive:false,optional:true}];
  }
  return [{date:date||today,archive,prepare:(date||today)===today&&hour<19}];
 }
