@@ -109,6 +109,11 @@
           "name": "BleepingComputer",
           "url": "https://www.bleepingcomputer.com/news/security/google-project-zero-cuts-bug-disclosure-deadline-to-30-days-amid-ai-threats/",
           "publishedAt": "2026-11-16"
+        },
+        {
+          "name": "Google Project Zero",
+          "url": "https://projectzero.google/2026/11/disclosure-policy.html",
+          "publishedAt": "2026-11-13"
         }
       ]
     },
