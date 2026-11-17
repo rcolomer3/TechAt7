@@ -40,10 +40,19 @@ async function publish({date,archive,prepare,optional,extra},report){
   input=JSON.parse(await readFile(new URL(`../editions/${editionFile(date,extra)}`,import.meta.url),'utf8'));
  }catch(error){
   if(error.code!=='ENOENT')throw error;
-  if(optional){report.status='missing';return;}
+  if(optional){report.status='missing';console.log('Edición no disponible, reintento programado omitido:',date);return;}
   throw new Error('ChatGPT todavía no ha entregado una edición para '+date+'. No se publican extractos RSS ni se envían avisos.');
  }
- const edition=validateEdition(input,date),contentHash=editionHash(edition);
+ let edition;
+ try{edition=validateEdition(input,date);}
+ catch(error){
+  if(!scheduled)throw error;
+  report.status='invalid';
+  report.error=error.message;
+  console.warn('La edición todavía es inválida; se omite este reintento automático:',date,error.message);
+  return;
+ }
+ const contentHash=editionHash(edition);
  report.articles=edition.articles.length;
  report.events=edition.events?.length??0;
  if(dry){
@@ -69,7 +78,14 @@ async function publish({date,archive,prepare,optional,extra},report){
  }
  const recent=await db.collection('digests').orderBy('date','desc').limit(14).get();
  if(!recent.docs.some(d=>d.id===digestId(date,extra)&&d.data().contentHash===contentHash)){
-  rejectRepeats(edition.articles,recent.docs.filter(d=>d.id!==digestId(date,extra)).flatMap(d=>d.data().articles||[]));
+  try{rejectRepeats(edition.articles,recent.docs.filter(d=>d.id!==digestId(date,extra)).flatMap(d=>d.data().articles||[]));}
+  catch(error){
+   if(!scheduled)throw error;
+   report.status='invalid';
+   report.error=error.message;
+   console.warn('La edición repite una noticia; se omite este reintento automático:',date,error.message);
+   return;
+  }
  }
  if(prepare){
   await db.doc('drafts/'+date).set({...edition,contentHash,status:'ready',preparedAt:now.toISOString()});
