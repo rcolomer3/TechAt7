@@ -6,18 +6,10 @@ on:
       - 'editions/*.json'
       - '!editions/*-extra.json'
   schedule:
-    # Backups for editions pushed early and for publication retries.
+    # Two backups for early drafts or delayed publication; invalid/missing drafts are reported without failing cron.
     - cron: '5 19 * * *'
       timezone: Europe/Madrid
-    - cron: '20 19 * * *'
-      timezone: Europe/Madrid
-    - cron: '45 19 * * *'
-      timezone: Europe/Madrid
     - cron: '15 20 * * *'
-      timezone: Europe/Madrid
-    - cron: '40 20 * * *'
-      timezone: Europe/Madrid
-    - cron: '5 21 * * *'
       timezone: Europe/Madrid
   workflow_dispatch:
     inputs:
