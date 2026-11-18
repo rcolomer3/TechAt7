@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-18",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "microsoft-agent-framework-pypi-malicious-versions-nov-2026",
+      "category": "Seguridad",
+      "title": "Manipulan el paquete oficial de agentes de Microsoft para robar credenciales",
+      "sentences": [
+        "Dos versiones del paquete Python Microsoft Agent Framework fueron alteradas en PyPI para incorporar un programa que robaba credenciales.",
+        "Las versiones 1.26.1 y 1.26.2 podían ejecutar el código malicioso al iniciar Python, incluso sin importar expresamente la biblioteca.",
+        "Los investigadores detectaron intentos de obtener secretos de Azure, AWS, GitHub y otros servicios, y PyPI puso las versiones en cuarentena.",
+        "Quienes instalaron esas versiones deben reconstruir los entornos afectados desde una base segura y renovar las credenciales potencialmente expuestas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/microsofts-agent-framework-pypi-package-compromised-to-steal-credentials/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "storyKey": "microsoft-windows-server-2028-ignite-security-announcement",
+      "category": "Microsoft",
+      "title": "Microsoft presenta Windows Server 2028 con seguridad reforzada desde el inicio",
+      "sentences": [
+        "Microsoft ha anunciado Windows Server 2028 durante Ignite con una configuración Server Core más restrictiva de forma predeterminada.",
+        "Entre las medidas previstas figuran protección reforzada de credenciales, conexiones de red autenticadas y mejoras en el registro de actividad.",
+        "También incorpora opciones de administración mediante Intune, almacenamiento NVMe y herramientas para ejecutar modelos de inteligencia artificial.",
+        "Los administradores interesados pueden solicitar acceso a programas de pruebas, pero el anuncio no equivale a disponibilidad general inmediata."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-announces-windows-server-2028-with-hardened-security/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "storyKey": "openjdk-java4shell-cve-2026-114938-base64-avx512",
+      "category": "Seguridad",
+      "title": "Un fallo crítico de Java amenaza aplicaciones empresariales y ya tiene parche",
+      "sentences": [
+        "Investigadores han divulgado Java4Shell, una vulnerabilidad de corrupción de memoria identificada como CVE-2026-114938 en implementaciones de OpenJDK.",
+        "En determinadas plataformas x86 con aceleración AVX-512, datos Base64 manipulados pueden facilitar la ejecución remota de código según la aplicación.",
+        "Los investigadores demostraron vías de ataque contra herramientas empresariales como Jenkins, Jira, Confluence y Keycloak, aunque no existe un ataque universal.",
+        "Oracle publicó correcciones el 17 de noviembre y los responsables de sistemas deben actualizar sus entornos Java afectados cuanto antes."
+      ],
+      "sources": [
+        {
+          "name": "OpenSecurity",
+          "url": "https://www.opensecurity.es/java4shell-cve-2026-114938-openjdk-base64-rce-jira-jenkins-keycloak/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "storyKey": "apache-roller-cve-2026-129448-exploited-rce",
+      "category": "Seguridad",
+      "title": "Apache corrige un fallo de Roller que ya se está explotando",
+      "sentences": [
+        "Apache ha alertado de ataques activos contra CVE-2026-129448, una vulnerabilidad crítica del servidor de blogs Roller.",
+        "El problema afecta a las versiones 4.0.0 hasta 6.1.4 y permite ejecutar código remoto sin autenticación mediante el servicio XML-RPC.",
+        "La versión 6.1.6 bloquea esta vía y desactiva los tipos de extensión utilizados para procesar solicitudes maliciosas.",
+        "Los administradores deben actualizar con urgencia, ya que desactivar XML-RPC únicamente desde la interfaz de administración no basta para mitigar el fallo."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/apache-warns-of-roller-rce-vulnerability-exploited-in-attacks/amp/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "storyKey": "riken-fugaku-supercomputer-intrusion-november-2026",
+      "category": "Seguridad",
+      "title": "Japón desconecta el superordenador Fugaku tras una intrusión",
+      "sentences": [
+        "El centro de investigación japonés RIKEN ha suspendido el funcionamiento del superordenador Fugaku después de detectar accesos no autorizados a servidores internos.",
+        "Según la investigación, los atacantes entraron a través de un panel público y pudieron acceder a datos de usuarios y claves de conexión.",
+        "RIKEN ha identificado información comprometida de 4.222 usuarios de Fugaku y 375 de Rikyu, aunque sigue investigando el alcance total.",
+        "El centro ha invalidado claves de acceso y no reanudará el servicio hasta verificar la seguridad de los sistemas afectados."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/japan-takes-fugaku-supercomputer-offlline-after-cyberattack/",
+          "publishedAt": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "storyKey": "hugging-face-kokoro-model-account-takeover-research-2026",
+      "category": "Inteligencia artificial",
+      "title": "Investigadores toman una cuenta de Hugging Face y muestran el riesgo de alterar modelos",
+      "sentences": [
+        "Un equipo de seguridad consiguió recuperar el control de la cuenta que distribuía Kokoro, un popular modelo abierto de síntesis de voz.",
+        "El acceso se logró registrando un dominio antiguo del responsable y utilizando el procedimiento de recuperación de contraseña.",
+        "En una prueba local, los investigadores modificaron los pesos del modelo para que pronunciara un contenido diferente sin cambiar el código de la aplicación.",
+        "No subieron los pesos alterados a Hugging Face, pero el experimento evidencia el riesgo de confiar automáticamente en actualizaciones de modelos."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/researchers-hijack-hugging-face-account-for-popular-kokoro-ai-model/",
+          "publishedAt": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "storyKey": "tor-network-relay-ddos-emergency-update-04917",
+      "category": "Web y privacidad",
+      "title": "Tor publica una actualización urgente para resistir un ataque de denegación de servicio",
+      "sentences": [
+        "El proyecto Tor ha distribuido la versión 0.4.9.17 de su software para repetidores mientras su red afronta una campaña de saturación.",
+        "Los responsables explican que un volumen masivo de circuitos de clientes está afectando a gran parte de los operadores de repetidores.",
+        "La actualización refuerza las defensas contra ataques de denegación de servicio, especialmente en el tratamiento de conexiones IPv6.",
+        "Tor recomienda instalarla cuanto antes y señala que continúa desarrollando protecciones adicionales para próximas versiones."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/tor-releases-emergency-update-amid-ongoing-ddos-attack/",
+          "publishedAt": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "storyKey": "apple-icloud-mail-applecare-service-disruptions-nov-17-2026",
+      "category": "Apple",
+      "title": "Apple reconoce interrupciones en iCloud Mail y varios servicios de acceso",
+      "sentences": [
+        "Apple informó el 17 de noviembre de incidencias en iCloud Mail, el inicio de sesión de iCloud y aplicaciones accesibles desde iCloud.com.",
+        "Su página de estado también señalaba problemas en Apple School Manager, Schoolwork y la contratación de AppleCare desde dispositivos.",
+        "Durante la incidencia algunos usuarios podían encontrar lentitud o dificultades para entrar en sus cuentas y consultar el correo.",
+        "El aviso describía una interrupción en curso en el momento de publicarse, por lo que no permite afirmar cuándo se restablecieron todos los servicios."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/apple/apple-reports-outages-affecting-icloud-mail-applecare-and-more/",
+          "publishedAt": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "storyKey": "microsoft-mai-code-2-cybersecurity-models-ignite-2026",
+      "category": "Inteligencia artificial",
+      "title": "Microsoft anuncia modelos propios de IA para programación y ciberseguridad",
+      "sentences": [
+        "Microsoft presentó en Ignite una familia de modelos de inteligencia artificial especializados para competir en tareas concretas con otros proveedores.",
+        "Entre ellos figura MAI Code 2, orientado a programación, que la empresa asegura que ofrece resultados competitivos con menores costes.",
+        "También anunció un modelo centrado en ciberseguridad cuyo acceso inicial quedará limitado a determinados clientes, además de modelos de imagen y transcripción.",
+        "Las comparaciones de rendimiento proceden de Microsoft y todavía no demuestran por sí solas una superioridad general en todas las tareas."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/legal/litigation/microsoft-unveils-ai-models-coding-cybersecurity-it-takes-anthropic-openai-2026-11-17/",
+          "publishedAt": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "storyKey": "nvidia-hopper-h200-shipments-china-halt-november-2026",
+      "category": "Hardware",
+      "title": "Nvidia detiene los envíos de chips Hopper autorizados hacia China",
+      "sentences": [
+        "La dirección provisional de Nvidia ha comunicado que la empresa ha dejado de enviar a China chips Hopper para centros de datos con licencia estadounidense.",
+        "En el trimestre terminado el 25 de octubre vendió 2.400 millones de dólares en estos productos autorizados, según la compañía.",
+        "Nvidia no explicó si la suspensión es permanente, en un contexto de controles estadounidenses y restricciones de importación chinas.",
+        "El cambio añade incertidumbre a los proveedores chinos que dependen de aceleradores importados para sus sistemas de inteligencia artificial."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/china/nvidia-stops-shipping-us-approved-ai-chips-china-2026-11-18/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "storyKey": "us-considers-disclosure-chinese-ai-models-business-2026",
+      "category": "Regulación",
+      "title": "Estados Unidos estudia exigir que las empresas revelen si utilizan IA china",
+      "sentences": [
+        "La Administración estadounidense está valorando una obligación de transparencia para empresas que utilicen modelos de inteligencia artificial desarrollados en China.",
+        "La medida estudiada podría consistir en avisos públicos en las webs corporativas, sin prohibir directamente el uso de esos modelos.",
+        "Las conversaciones responden a la preocupación por la dependencia de sistemas como Qwen, DeepSeek o Kimi, cada vez más utilizados por su coste.",
+        "Por ahora se trata de una propuesta en discusión y no de una norma aprobada ni de una obligación vigente para las empresas."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/china/trump-administration-weighs-forcing-us-firms-disclose-chinese-ai-use-2026-11-18/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "storyKey": "tencent-cloud-ai-chip-curbs-training-q3-2026",
+      "category": "Empresas",
+      "title": "Tencent advierte de que las restricciones de chips pueden retrasar sus próximos modelos",
+      "sentences": [
+        "Tencent ha explicado que las nuevas restricciones estadounidenses al acceso remoto a chips avanzados podrían ralentizar el entrenamiento de sus futuros modelos.",
+        "La compañía considera que el impacto inmediato sobre sus ingresos de nube será limitado porque gran parte de ese negocio se centra en inferencia.",
+        "En el tercer trimestre registró ingresos de 207.300 millones de yuanes, un crecimiento interanual del ocho por ciento.",
+        "Sus directivos creen que los límites de acceso también pueden impulsar a largo plazo el desarrollo de chips y proveedores nacionales chinos."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/technology/tencent-q3-revenue-growth-slows-8-misses-estimates-2026-11-18/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "storyKey": "scattered-spider-tyler-buchanan-six-year-sentence-2026",
+      "category": "Seguridad",
+      "title": "Condenan a seis años a un integrante destacado de Scattered Spider",
+      "sentences": [
+        "Un tribunal estadounidense ha impuesto seis años de prisión al británico Tyler Robert Buchanan por delitos vinculados al grupo de ciberdelincuencia Scattered Spider.",
+        "Los investigadores describen campañas de mensajes fraudulentos que suplantaban a empresas para robar contraseñas y datos de empleados.",
+        "Según la acusación, la organización utilizó también cambios fraudulentos de tarjetas SIM para sustraer más de 11,6 millones de dólares en criptomonedas.",
+        "La sentencia pone de relieve el alcance de los ataques de ingeniería social contra cuentas corporativas y sistemas de autenticación."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/british-scattered-spider-hacker-sentenced-to-6-years-in-prison/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    }
+  ]
+}
