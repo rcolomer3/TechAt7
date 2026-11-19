@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-19",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "php-november-2026-security-18-cves",
+      "category": "Seguridad",
+      "title": "PHP publica parches para 18 vulnerabilidades, algunas críticas",
+      "sentences": [
+        "El equipo de PHP ha lanzado actualizaciones de seguridad para corregir 18 vulnerabilidades en distintas partes del lenguaje y su infraestructura.",
+        "Entre ellas figura CVE-2026-129289, un fallo de PHP-FPM que podría permitir ejecutar código remoto sin autenticación en configuraciones que reutilizan conexiones.",
+        "Las versiones corregidas son PHP 8.5.13, 8.4.28, 8.3.37 y 8.2.36, según la rama que utilice cada servidor.",
+        "Los administradores deben actualizar cuanto antes, ya que las mitigaciones temporales no cubren todos los problemas corregidos."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/php-security-updates-fix-18-flaws-including-critical-rce-bugs/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "nginx2root-http2-rce-november-2026",
+      "category": "Seguridad",
+      "title": "NGINX corrige fallos de HTTP/2 que permiten tomar servidores vulnerables",
+      "sentences": [
+        "Investigadores han detallado dos vulnerabilidades críticas de NGINX, conocidas como NGINX2Root, que pueden permitir ejecutar código a distancia sin iniciar sesión.",
+        "Los fallos CVE-2026-123007 y CVE-2026-123633 afectan a determinadas instalaciones que utilizan HTTP/2 y, en uno de los casos, un servidor intermediario.",
+        "NGINX Open Source ha publicado las versiones 1.30.7 y 1.31.9 para corregir los problemas, mientras que NGINX Plus dispone de actualizaciones específicas.",
+        "La exposición real depende de la configuración, pero los responsables de servidores deberían aplicar los parches y comprobar si tienen HTTP/2 habilitado."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/critical-nginx-nginx2root-bugs-let-attackers-hijack-servers/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "drupal-installer-rce-cve-2026-132165",
+      "category": "Seguridad",
+      "title": "Drupal corrige un fallo crítico que puede permitir tomar el control de una web",
+      "sentences": [
+        "El equipo de Drupal ha corregido CVE-2026-132165, una vulnerabilidad que puede permitir a usuarios anónimos volver a ejecutar el instalador en ciertas condiciones.",
+        "Un atacante podría aprovechar el problema para tomar el control de un sitio o ejecutar código remoto si la configuración afectada lo permite.",
+        "Las versiones recomendadas son Drupal 10.6.22, 11.3.22 y 11.4.13, y el proyecto advierte de que podrían aparecer ataques rápidamente.",
+        "Quienes no puedan actualizar de inmediato pueden bloquear el acceso a /core/install.php como mitigación provisional, sin considerarlo un sustituto del parche."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/drupal-patches-critical-rce-flaw-warns-exploits-may-surface-quickly/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "edge-lockdown-gpu-api-canary-november-2026",
+      "category": "Microsoft",
+      "title": "Microsoft prueba un modo de máxima protección en Edge",
+      "sentences": [
+        "Microsoft está probando Lockdown Mode en Edge para personas expuestas a ataques especialmente dirigidos, como periodistas o administradores de sistemas.",
+        "Esta protección experimental desactiva WebGL, WebGL2 y WebGPU y se apoya en otras restricciones de ejecución del navegador para reducir la superficie de ataque.",
+        "Por ahora puede probarse en Edge Canary mediante opciones avanzadas, pero todavía no es una función general de la versión estable.",
+        "Las páginas que dependen de gráficos interactivos, mapas o juegos pueden dejar de funcionar correctamente al activar estas defensas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-tests-new-edge-lockdown-mode-that-disables-gpu-apis/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "windows11-hotpatch-app-launch-failure-november-2026",
+      "category": "Microsoft",
+      "title": "Microsoft investiga fallos al abrir programas tras un parche de Windows 11",
+      "sentences": [
+        "Microsoft ha reconocido problemas de instalación y ejecución de algunas aplicaciones después del hotpatch de noviembre de 2026 para Windows 11.",
+        "El fallo puede mostrar el error 0xC0000099 y afectar a Office y a programas de terceros, especialmente cuando cargan componentes de Windows Installer de 32 bits.",
+        "Según el aviso dirigido a administradores, se han detectado incidencias en equipos con Windows 11 24H2 y versiones posteriores que recibieron esa actualización.",
+        "La compañía ha compartido una solución provisional mientras investiga el origen del problema, por lo que conviene revisar sus indicaciones antes de cambiar sistemas afectados."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-app-installation-launch-issues-after-hotpatch/amp/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "nvidia-gentlemen-ransomware-unverified-claim-nov2026",
+      "category": "Seguridad",
+      "title": "Nvidia investiga una amenaza de ransomware sin confirmar intrusión propia",
+      "sentences": [
+        "El grupo de ransomware Gentlemen ha incluido a Nvidia en su página de filtraciones y amenaza con publicar información supuestamente robada.",
+        "Los atacantes no han presentado pruebas públicas que confirmen que hayan comprometido los sistemas internos de la compañía.",
+        "Nvidia afirma que no ha encontrado indicios de acceso a sus redes, aunque está investigando un posible incidente en un proveedor externo.",
+        "Por tanto, la reclamación del grupo sigue sin verificarse y no debe interpretarse como una filtración confirmada de los sistemas de Nvidia."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/nvidia-investigating-gentlemen-ransomware-breach-claims/amp/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "ukraine-fbi-ransomware-four-arrests-40m-2026",
+      "category": "Seguridad",
+      "title": "Ucrania y el FBI detienen a cuatro sospechosos de una red de ransomware",
+      "sentences": [
+        "La policía ucraniana y el FBI han detenido a cuatro presuntos integrantes de una organización internacional dedicada a extorsionar empresas mediante ransomware.",
+        "Los investigadores relacionan la red con al menos 28 compañías que habrían pagado más de 40,5 millones de dólares en rescates.",
+        "Según las autoridades, los atacantes utilizaban suplantación de soporte informático, llamadas con voces generadas por IA y herramientas de acceso remoto.",
+        "La investigación continúa y las detenciones no equivalen a condenas, pero muestran el alcance de las operaciones que combinan ingeniería social y cifrado de datos."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/ukraine-fbi-arrest-ransomware-gang-members-tied-to-40m-in-ransoms/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "storyKey": "coinbase-musk-deepfake-tesla-livestream-scam-2026",
+      "category": "Criptomonedas",
+      "title": "Coinbase afirma haber frenado 4,7 millones de dólares en una estafa con IA",
+      "sentences": [
+        "Coinbase asegura que bloqueó transferencias por 4,7 millones de dólares destinadas a una falsa promoción de criptomonedas difundida durante una retransmisión de Tesla.",
+        "Los estafadores utilizaron un vídeo generado con IA que imitaba a Elon Musk y prometía devolver el doble del dinero enviado a determinadas direcciones.",
+        "Según la plataforma, sus sistemas de detección y un agente de IA intervinieron ante operaciones sospechosas y frenaron alrededor del 91 % de los intentos.",
+        "La empresa no ha precisado cuánto dinero consiguieron finalmente los delincuentes, y recuerda que una transferencia autorizada por la víctima puede seguir siendo fraudulenta."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/coinbase-blocks-47-million-in-transfers-to-elon-musk-deepfake-scam/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "storyKey": "ireland-credit-unions-wellington-it-breach-2026",
+      "category": "Seguridad",
+      "title": "Una intrusión en un proveedor afecta a unas 40 cooperativas de crédito irlandesas",
+      "sentences": [
+        "Un incidente atribuido al proveedor tecnológico Wellington IT ha expuesto información relacionada con clientes de cooperativas de crédito, principalmente en Irlanda.",
+        "Las autoridades irlandesas han señalado que unas 40 entidades están afectadas, aunque todavía se desconoce el número total de personas perjudicadas.",
+        "Entre los datos potencialmente accesibles figuran nombres de beneficiarios, IBAN y referencias de pagos guardados, pero no se han señalado contraseñas o PIN comprometidos.",
+        "Las entidades recomiendan desconfiar de mensajes que suplanten al banco y comprobar cualquier solicitud de información o transferencia por canales oficiales."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/data-breach-impacts-40-irish-credit-unions-in-reported-it-provider-hack/",
+          "publishedAt": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "storyKey": "tsmc-chinese-chip-designers-16nm-us-licences-nov2026",
+      "category": "Hardware",
+      "title": "TSMC endurece las restricciones de fabricación de chips avanzados para China",
+      "sentences": [
+        "TSMC ha comenzado a limitar pedidos de determinados diseñadores chinos de semiconductores tras la entrada en vigor de nuevas normas estadounidenses de exportación.",
+        "Según fuentes consultadas por Reuters, los procesos de fabricación de 16 nanómetros o inferiores requieren licencias específicas para los clientes afectados.",
+        "En general, estos diseñadores quedarían limitados a tecnologías más antiguas de 28 y 40 nanómetros y bajo otras condiciones técnicas.",
+        "La medida puede dificultar la fabricación de procesadores avanzados para inteligencia artificial en China, aunque el alcance depende de cada producto y autorización."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/china/tsmc-tightens-china-ai-chip-curbs-new-us-rules-close-manufacturing-loophole-2026-11-19/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "anthropic-nasdaq-ipo-first-day-november-2026",
+      "category": "Empresas",
+      "title": "Anthropic debuta en el Nasdaq tras fijar su acción en 83 dólares",
+      "sentences": [
+        "Anthropic, desarrolladora de Claude, ha iniciado su cotización en el Nasdaq bajo el símbolo ANT después de fijar el precio de su oferta pública en 83 dólares por acción.",
+        "La compañía puso a la venta 980 millones de acciones, una operación que aspira a captar aproximadamente 81.000 millones de dólares.",
+        "Según la información de mercado, los títulos abrieron a 111,50 dólares y la valoración de la empresa superó temporalmente los dos billones de dólares.",
+        "El estreno refleja una elevada demanda de inversión en inteligencia artificial, aunque la cotización futura y la rentabilidad de la compañía siguen siendo inciertas."
+      ],
+      "sources": [
+        {
+          "name": "El País",
+          "url": "https://elpais.com/economia/2026-11-19/anthropic-se-estrena-con-fuertes-subidas-en-la-mayor-salida-a-bolsa-de-la-historia.html",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    }
+  ]
+}
