@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-20",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "cairn-monai-label-zero-day-ai-agent-amazon-2026",
+      "category": "Seguridad",
+      "title": "Un agente de IA descubre y explota un fallo desconocido en software médico",
+      "sentences": [
+        "Amazon Threat Intelligence ha documentado cómo atacantes utilizaron agentes autónomos Cairn para comprometer un servidor con MONAI Label, una aplicación de imágenes médicas.",
+        "Según los investigadores, los agentes encontraron un fallo de recorrido de rutas y consiguieron explotarlo apenas once minutos después de examinar la interfaz del programa.",
+        "En otra sesión aprovecharon la vulnerabilidad para introducir una puerta de acceso y obtener privilegios de administrador.",
+        "Los responsables de MONAI Label publicaron una actualización de seguridad el 18 de noviembre y Amazon atribuye la campaña a un grupo vinculado con China con confianza moderada."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "qubole-vendor-chase-visa-mastercard-data-exposure-2026",
+      "category": "Seguridad",
+      "title": "Chase, Visa y Mastercard investigan exposición de datos en proveedores",
+      "sentences": [
+        "JPMorgan Chase ha confirmado que un ciberataque contra proveedores externos permitió acceder a información de marketing que podría incluir nombres y correos electrónicos de clientes.",
+        "Visa y Mastercard también reconocieron incidentes en terceros, aunque precisaron que sus redes de pagos no resultaron afectadas.",
+        "Visa asegura que no se comprometieron números de tarjetas, mientras Mastercard habla de una cantidad limitada de direcciones de correo de un programa de beneficios.",
+        "Un grupo de extorsión atribuye los robos a un ataque contra Qubole, pero las afirmaciones sobre el volumen de datos sustraídos no están verificadas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/vendor-data-breach-exposes-chase-visa-mastercard-customer-info/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "nable-mail-assure-spamexperts-hosted-cloud-intrusion-2026",
+      "category": "Seguridad",
+      "title": "N-able confirma una intrusión detrás de la caída de sus servicios de correo",
+      "sentences": [
+        "N-able ha reconocido que el acceso no autorizado a un servidor provocó la interrupción de Mail Assure y SpamExperts Hosted Cloud en varias regiones.",
+        "La compañía atribuyó inicialmente el problema a la configuración de la plataforma, pero una investigación posterior identificó un incidente de seguridad.",
+        "La administración web, la cuarentena y algunos registros quedaron temporalmente inaccesibles, aunque el flujo de correo y el filtrado antispam siguieron funcionando.",
+        "N-able afirma que todavía no ha encontrado pruebas de acceso a los buzones o datos de clientes y mantiene abierta la investigación."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/n-able-says-recent-security-breach-led-to-major-service-outage/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "windows11-26h2-automatic-rollout-unmanaged-nov2026",
+      "category": "Microsoft",
+      "title": "Windows 11 26H2 comienza a instalarse automáticamente en equipos personales",
+      "sentences": [
+        "Microsoft ha iniciado el despliegue automático y gradual de Windows 11 26H2 en ordenadores compatibles que no estén administrados por departamentos de informática.",
+        "La distribución empezó a ampliarse el 18 de noviembre para dispositivos que todavía ejecutan las versiones 24H2 y 25H2.",
+        "La llegada de la actualización depende de los ajustes de Windows Update y de la elegibilidad de cada equipo, por lo que no se instalará al mismo tiempo en todos.",
+        "Quienes prefieran comprobarla manualmente pueden entrar en Configuración y Windows Update, mientras las empresas con dispositivos gestionados quedan fuera de esta fase automática."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-now-automatically-installs-windows-11-26h2-on-personal-and-unmanaged-pcs/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "f5-bigip-five-critical-rce-hotfix-nov2026",
+      "category": "Seguridad",
+      "title": "F5 publica parches urgentes para cinco fallos críticos de BIG-IP",
+      "sentences": [
+        "F5 ha publicado correcciones extraordinarias para cinco vulnerabilidades críticas que afectan a determinadas configuraciones de BIG-IP APM e iRules.",
+        "Los fallos pueden permitir que un atacante remoto sin autenticación interrumpa el servicio o ejecute código en los sistemas vulnerables.",
+        "La compañía también ha corregido por separado un problema grave relacionado con SAML que puede provocar una denegación de servicio.",
+        "F5 indica que no dispone de medidas de mitigación alternativas para los cinco fallos críticos y recomienda instalar cuanto antes los parches correspondientes."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/f5-releases-emergency-patches-for-critical-big-ip-rce-flaws/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "windows11-kb5132057-preview-28-changes-2026",
+      "category": "Microsoft",
+      "title": "Windows 11 estrena una actualización opcional con 28 mejoras",
+      "sentences": [
+        "Microsoft ha publicado KB5132057 como actualización preliminar opcional para Windows 11 25H2 y 26H2, con veintiocho cambios y correcciones.",
+        "Incluye un cuadro de búsqueda renovado, ajustes de reconocimiento facial de Windows Hello para entornos oscuros y un nuevo diseño para el cuadro Ejecutar.",
+        "La mejora de Windows Hello requiere activar el ajuste que modifica automáticamente el brillo de la pantalla durante la identificación.",
+        "Esta versión no incorpora parches de seguridad y permite probar cambios de calidad antes de su distribución general en una actualización posterior."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5132057-update-released-with-28-changes-and-fixes/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "vmware-vcenter-cve-2026-123890-auth-bypass-zero-day",
+      "category": "Seguridad",
+      "title": "VMware corrige un fallo de vCenter explotado desde septiembre",
+      "sentences": [
+        "Broadcom ha publicado actualizaciones para cerrar CVE-2026-123890, una vulnerabilidad crítica de autenticación en VMware vCenter Server.",
+        "Un atacante con acceso de red a una instalación vulnerable podría saltarse la autenticación y obtener acceso no autorizado a la consola de administración.",
+        "La compañía indica que el fallo se había explotado como vulnerabilidad de día cero desde septiembre en ataques atribuidos a actores vinculados con China.",
+        "El boletín VMSA-2026-0009 también incluye otras correcciones para SDDC Manager y VMware Tools, por lo que los administradores deben revisar las versiones afectadas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/vmware-patches-vcenter-zero-day-exploited-in-attacks-since-september/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "sbc-medical-group-japan-1-624m-data-breach-2026",
+      "category": "Seguridad",
+      "title": "Una filtración en SBC Medical Group afecta a datos de 1,6 millones de personas",
+      "sentences": [
+        "SBC Medical Group ha comunicado a los reguladores estadounidenses dos incidentes de seguridad en sus operaciones vinculadas a clínicas japonesas.",
+        "Uno de los accesos expuso información personal de aproximadamente 1.624.000 personas, con posibles nombres, contactos, fechas de nacimiento y otros registros.",
+        "El segundo incidente afectó a cuentas administrativas de clínicas en la plataforma externa de reservas Tribeau.",
+        "La empresa detectó o recibió aviso de ambos problemas el 16 de noviembre y continúa investigando su alcance, sin afirmar que todos los tipos de datos afectaran a cada persona."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-steal-data-of-16-million-sbc-medical-group-customers/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "asus-control-center-express-hardcoded-key-cve-2026-114202",
+      "category": "Seguridad",
+      "title": "ASUS corrige tres fallos críticos en su herramienta de administración de equipos",
+      "sentences": [
+        "ASUS ha publicado Control Center Express 1.7.29 para corregir tres vulnerabilidades graves en su consola centralizada de gestión informática.",
+        "La más peligrosa, CVE-2026-114202, tiene una puntuación de gravedad máxima y permite falsificar un token de autenticación usando una clave criptográfica integrada en el producto.",
+        "Un atacante remoto podría obtener permisos administrativos sin disponer previamente de una cuenta ni necesitar interacción del usuario.",
+        "Los otros dos fallos afectan a sesiones y autorizaciones, por lo que ASUS recomienda actualizar las instalaciones empresariales afectadas."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/asus-warns-of-critical-hard-coded-key-flaw-in-control-center-express/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "tfl-oyster-photocard-265000-breach-nov2026",
+      "category": "Seguridad",
+      "title": "Londres avisa de una filtración que afecta a 265.000 usuarios de Oyster",
+      "sentences": [
+        "Transport for London ha informado de un incidente que podría haber expuesto datos de unas 265.000 personas titulares de tarjetas Oyster con fotografía.",
+        "La organización detectó el problema el 16 de noviembre tras recibir avisos de correos sospechosos enviados desde sus propios sistemas.",
+        "Los datos potencialmente afectados incluyen información de contacto, direcciones, fechas de nacimiento y respuestas a preguntas de seguridad.",
+        "La web de estas tarjetas se ha desconectado mientras se investiga, pero las tarjetas existentes continúan siendo válidas para viajar."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/transport-for-london-breach-exposes-265-000-oyster-card-users-data/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "apple-hiring-cross-app-ai-agent-job-listing-nov2026",
+      "category": "Apple",
+      "title": "Apple busca desarrollar un agente de IA capaz de trabajar entre aplicaciones",
+      "sentences": [
+        "Una oferta de empleo de Apple, posteriormente retirada, describía un proyecto para crear un asistente de inteligencia artificial capaz de ejecutar tareas entre distintas aplicaciones.",
+        "El puesto buscaba liderar agentes que puedan navegar por la web, utilizar herramientas de programación y coordinar acciones mediante servicios y API.",
+        "El anuncio relacionaba ese trabajo con los equipos de Siri, interfaces y modelos propios de Apple, según la información publicada por The Verge.",
+        "La descripción revela una línea de desarrollo, pero Apple no ha anunciado un producto final ni una fecha de lanzamiento para esas capacidades."
+      ],
+      "sources": [
+        {
+          "name": "The Verge",
+          "url": "https://www.theverge.com/tech/1038227/apple-ai-agent-engineer-job-listing",
+          "publishedAt": "2026-11-19T22:31:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "signal-blocks-screenshots-ai-agent-chat-access-nov2026",
+      "category": "Web y privacidad",
+      "title": "Signal limita las capturas de pantalla para proteger los chats frente a agentes de IA",
+      "sentences": [
+        "Signal ha anunciado nuevas restricciones de capturas de pantalla para dificultar que asistentes de inteligencia artificial lean conversaciones privadas desde el propio dispositivo.",
+        "La aplicación activará estas protecciones de forma predeterminada y mostrará avisos cuando se intenten realizar determinadas capturas o accesos a pantalla.",
+        "La organización reconoce que la protección es incompleta y pide a Apple, Google y Microsoft mecanismos más claros para excluir aplicaciones del acceso de agentes.",
+        "El cifrado de extremo a extremo protege los mensajes durante su transmisión, pero no impide que un asistente con permisos del sistema lea el contenido mostrado en pantalla."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/legal/litigation/signal-restricts-screenshots-block-ai-agents-reading-messages-2026-11-20/",
+          "publishedAt": "2026-11-20T09:02:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "trump-xi-human-control-military-ai-bessent-nov2026",
+      "category": "Regulación",
+      "title": "Estados Unidos y China respaldan el control humano de decisiones militares con IA",
+      "sentences": [
+        "El secretario del Tesoro estadounidense, Scott Bessent, ha afirmado que Donald Trump y Xi Jinping acordaron mantener la intervención humana en las decisiones militares importantes que utilicen inteligencia artificial.",
+        "Según Bessent, el entendimiento pretende evitar que sistemas autónomos inicien por sí solos operaciones militares de gran alcance.",
+        "El funcionario presentó ese principio como un resultado de las conversaciones bilaterales, aunque no detalló un tratado vinculante ni mecanismos de verificación.",
+        "Ambos países siguen compitiendo por los modelos y chips más avanzados, por lo que la declaración no implica el fin de sus restricciones tecnológicas."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/china/trump-xi-agreed-that-military-ai-decisions-should-involve-humans-bessent-says-2026-11-20/",
+          "publishedAt": "2026-11-20T16:48:00Z"
+        }
+      ]
+    }
+  ]
+}
