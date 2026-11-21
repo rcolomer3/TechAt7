@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-21",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "gg-technologies-apple-namedrop-india-patent-suit-2026",
+      "category": "Apple",
+      "title": "Una empresa reclama a Apple 162 millones por la función NameDrop",
+      "sentences": [
+        "GG Technologies ha demandado a Apple en India porque considera que NameDrop infringe una patente relacionada con el intercambio de contactos por proximidad.",
+        "La empresa, creadora de StayTouch, reclama unos 162 millones de dólares y pide restricciones a la venta de dispositivos con esa función.",
+        "La demanda se presentó en octubre tras fracasar una mediación, y existe además un procedimiento relacionado en Estados Unidos.",
+        "Las acusaciones todavía deben examinarse judicialmente y no existe una resolución que obligue a Apple a retirar NameDrop."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/20/startup-sues-apple-in-india-over-tap-to-share-contacts-feature/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "europa-fusion-daniel-ek-nantas-nardelli-investment-2026",
+      "category": "Startups",
+      "title": "El fundador de Spotify respalda una empresa de energía de fusión",
+      "sentences": [
+        "Daniel Ek, fundador de Spotify, está apoyando a Europa Fusion, una empresa británica impulsada por el investigador de inteligencia artificial Nantas Nardelli.",
+        "La compañía quiere desarrollar energía de fusión mediante un enfoque que prioriza simulaciones y análisis de datos frente a pruebas físicas continuas.",
+        "Su propuesta utiliza pulsos eléctricos de gran potencia para comprimir el combustible y provocar reacciones de fusión.",
+        "El proyecto se encuentra en una fase temprana y todavía no existe una central comercial de fusión que suministre electricidad a la red."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/20/daniel-ek-backs-ai-researchers-fusion-power-startup-heres-what-theyre-building/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "riemann-hypothesis-alpoge-lean-masullo-proofs-2026",
+      "category": "Ciencia",
+      "title": "Dos nuevas demostraciones reabren el debate sobre la hipótesis de Riemann",
+      "sentences": [
+        "El matemático Levent Alpöge ha difundido una supuesta demostración formalizada en Lean de la hipótesis de Riemann, un problema abierto desde 1859.",
+        "Alpöge explicó que utilizó Claude durante su investigación y varios especialistas han comprobado que su código formal puede compilarse.",
+        "Por separado, Alessandro Masullo presentó una demostración elaborada sin inteligencia artificial que también está pendiente de evaluación.",
+        "Ninguna de estas propuestas debe considerarse una solución definitivamente aceptada hasta que la comunidad matemática complete su revisión."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/20/ai-claimed-a-solution-to-the-167-year-old-riemann-hypothesis-and-a-human-did-too/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "bending-spoons-intuit-mailchimp-acquisition-2026",
+      "category": "Empresas",
+      "title": "Bending Spoons compra Mailchimp a Intuit por 3.680 millones de dólares",
+      "sentences": [
+        "La empresa italiana Bending Spoons ha acordado adquirir Mailchimp a Intuit por una valoración de 3.680 millones de dólares.",
+        "Intuit había comprado la plataforma de marketing por correo electrónico en 2021 por aproximadamente 12.000 millones de dólares.",
+        "El acuerdo combina una parte mayoritaria en efectivo con una inversión de Intuit de 368 millones de dólares en acciones de Bending Spoons.",
+        "Intuit afirma que la operación le permitirá concentrarse en herramientas de inteligencia artificial para pequeñas empresas y recomprar acciones."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/20/bending-spoons-buys-mailchimp-for-3-68-billion/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "tigerfish-transcription-public-s3-police-data-2026",
+      "category": "Seguridad",
+      "title": "Una empresa de transcripciones deja expuestas grabaciones policiales",
+      "sentences": [
+        "La compañía estadounidense Tigerfish dejó accesible públicamente un almacenamiento en la nube con transcripciones y materiales originales de clientes.",
+        "Entre los archivos había entrevistas policiales, grabaciones de cámaras corporales, audios, vídeos y facturas de organismos públicos.",
+        "Un investigador localizó los datos en un contenedor de Amazon S3 sin contraseña y comunicó el hallazgo antes de que se hiciera público.",
+        "Tigerfish confirmó que bloqueó el acceso al almacenamiento afectado y revisó la configuración de sus otros contenedores."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/20/a-transcription-firm-used-by-police-prosecutors-and-tech-giants-exposed-customer-data-online/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "google-gemini-macos-computer-use-launch-2026",
+      "category": "Google",
+      "title": "Gemini empieza a manejar aplicaciones y archivos de Mac por encargo",
+      "sentences": [
+        "Google ha anunciado funciones de control del ordenador en su aplicación Gemini para macOS, capaces de navegar por aplicaciones y páginas web.",
+        "El agente puede organizar archivos, completar formularios y realizar tareas de varios pasos mientras muestra una vista previa de sus acciones.",
+        "El usuario puede detener el proceso y aprobar operaciones antes de que se ejecuten, según la descripción de Google.",
+        "El lanzamiento inicial está limitado a Estados Unidos, en inglés y con suscripciones Google AI Plus, Pro o Ultra; no hay fecha confirmada para España."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/19/google-gives-gemini-the-ability-to-use-your-mac-for-you/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "meta-muse-agent-cross-account-privacy-reports-2026",
+      "category": "Web y privacidad",
+      "title": "Empleados de Meta alertan de respuestas de Muse con datos ajenos",
+      "sentences": [
+        "Trabajadores de Meta han comunicado que el asistente Muse mostró en pruebas mensajes y datos que parecían pertenecer a otras cuentas.",
+        "Entre los ejemplos descritos figuran recordatorios de conversaciones privadas y saldos bancarios que los usuarios no habían solicitado.",
+        "Las incidencias proceden de comunicaciones internas examinadas por Reuters y no demuestran que todos los usuarios públicos estén afectados.",
+        "Meta señala que los empleados prueban versiones diferentes de la aplicación y que esos ensayos sirven para detectar y corregir problemas de privacidad."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/19/metas-ai-agent-muse-is-mixing-up-conversations-and-exposing-private-data-report-says/",
+          "publishedAt": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "storyKey": "bell-canada-agentic-intrusion-enterprise-maximo-2026",
+      "category": "Seguridad",
+      "title": "Bell Canada confirma un robo de datos empresariales durante una intrusión",
+      "sentences": [
+        "Bell Canada ha confirmado que un atacante al que describe como agente autónomo accedió a sistemas internos el 17 de noviembre.",
+        "El incidente afectó a un entorno de preproducción de Maximo utilizado para solicitar y configurar conexiones de telecomunicaciones.",
+        "Los datos potencialmente sustraídos incluyen contactos profesionales, títulos de incidencias y algunas direcciones IP, pero no contraseñas según la empresa.",
+        "Bell asegura que contuvo el acceso y que sus servicios no sufrieron interrupciones; todavía desconoce quién está detrás del ataque."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "storyKey": "badbox-3-android-tv-adfraud-40-billion-2026",
+      "category": "Seguridad",
+      "title": "BADBOX 3.0 genera 40.000 millones de solicitudes publicitarias fraudulentas al día",
+      "sentences": [
+        "Investigadores de HUMAN han identificado una nueva expansión de BADBOX, una red de dispositivos Android infectados dedicada al fraude publicitario.",
+        "En su máximo observado, BADBOX 3.0 produjo alrededor de 40.000 millones de solicitudes de anuncios al día, según la empresa de seguridad.",
+        "El malware afecta especialmente a dispositivos baratos de televisión y otros equipos Android, y puede convertirlos también en servidores proxy sin permiso.",
+        "Los investigadores han bloqueado parte de la infraestructura y recomiendan comprar dispositivos Android certificados y mantener Play Protect activo."
+      ],
+      "sources": [
+        {
+          "name": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/badbox-30-botnet-returns-with-record-breaking-40-billion-daily-ad-requests/",
+          "publishedAt": "2026-11-21"
+        }
+      ]
+    },
+    {
+      "storyKey": "samsung-memory-chief-hwang-sang-joon-2026",
+      "category": "Hardware",
+      "title": "Samsung reorganiza su división de memorias para competir en chips de IA",
+      "sentences": [
+        "Samsung Electronics ha nombrado a Hwang Sang-joon presidente y responsable de su negocio de memorias en una reorganización de la dirección.",
+        "La empresa quiere reforzar su competitividad en componentes utilizados por centros de datos y sistemas de inteligencia artificial.",
+        "También ha designado nuevos responsables para el diseño de chips System LSI y para su negocio de dispositivos móviles.",
+        "Los cambios llegan después de un fuerte aumento del beneficio de su división de semiconductores, impulsado por la demanda de infraestructura de IA."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/technology/samsung-elec-names-new-heads-memory-chip-mobile-businesses-2026-11-20/",
+          "publishedAt": "2026-11-20"
+        }
+      ]
+    }
+  ]
+}
