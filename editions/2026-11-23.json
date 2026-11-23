@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-23",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "nvidia-jensen-huang-reinstated-ceo-november-2026",
+      "category": "Empresas",
+      "title": "Nvidia devuelve la dirección a Jensen Huang tras su salida",
+      "sentences": [
+        "El consejo de Nvidia ha restituido a Jensen Huang como consejero delegado y presidente menos de dos semanas después de su dimisión.",
+        "La empresa afirma que consultó con altos cargos estadounidenses antes de concluir que su regreso no representa un riesgo para la seguridad nacional.",
+        "El presidente Donald Trump respaldó públicamente la decisión y aseguró que el Gobierno no dispone de pruebas de actividad ilegal por parte del ejecutivo.",
+        "La reincorporación devuelve al fundador el control operativo del fabricante de chips de inteligencia artificial en un momento de fuerte escrutinio sobre su gobierno corporativo."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/empresas-y-economia/estoy-deseando-volver-al-trabajo-jensen-huang-vuelve-a-liderar-nvidia-como-mesias-poder-reforzado",
+          "publishedAt": "2026-11-23T15:14:38Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/technology/nvidia-reinstates-jensen-huang-ceo-2026-11-23/",
+          "publishedAt": "2026-11-23T13:59:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "sierra-series-f-1-75b-30b-valuation-november-2026",
+      "category": "Startups",
+      "title": "Sierra duplica su valoración hasta 30.000 millones con una nueva ronda",
+      "sentences": [
+        "Sierra, especializada en agentes de inteligencia artificial para atención al cliente, ha anunciado una financiación de 1.750 millones de dólares.",
+        "La operación sitúa su valoración en 30.000 millones de dólares, el doble que en la ronda realizada seis meses antes.",
+        "Greenoaks y Lightspeed Venture Partners lideran la inversión, en la que también participan varios accionistas anteriores.",
+        "La compañía asegura que trabaja con casi la mitad de las empresas Fortune 50 y utilizará los fondos para ampliar su tecnología y su equipo comercial."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/",
+          "publishedAt": "2026-11-23T14:43:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "uber-recorded-rides-pilot-us-november-2026",
+      "category": "Movilidad",
+      "title": "Uber prueba viajes con grabación de vídeo desde el móvil del conductor",
+      "sentences": [
+        "Uber está probando en Estados Unidos una modalidad de reserva denominada Recorded Rides para trayectos que se graban durante el recorrido.",
+        "La función utiliza la cámara frontal del teléfono del conductor y aparece como una opción diferenciada en la aplicación.",
+        "La prueba comienza en Baltimore, Raleigh, Indianápolis y San Luis, con especial atención a viajes nocturnos y desplazamientos de adolescentes.",
+        "La compañía indica que tanto conductores como pasajeros pueden rechazar la grabación, y también estudia activarla ante desvíos o posibles accidentes."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/23/uber-now-lets-you-book-rides-that-record-the-drive-by-default/",
+          "publishedAt": "2026-11-23T14:00:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "amazon-decart-ai-optimization-technology-acquisition-2026",
+      "category": "Inteligencia artificial",
+      "title": "Amazon compra tecnología de Decart para optimizar sus chips de IA",
+      "sentences": [
+        "Amazon ha acordado adquirir tecnología de optimización de modelos de la empresa israelí Decart e incorporar a sus fundadores y especialistas.",
+        "La operación incluye Decart Optimization Stack, un sistema que mejora la ejecución de modelos en chips de distintos fabricantes.",
+        "Bloomberg cifra el acuerdo en unos 7.500 millones de dólares, pero Amazon no ha comunicado oficialmente el importe de la transacción.",
+        "Amazon pretende aprovechar estas herramientas para aumentar el rendimiento de Trainium y facilitar que sus clientes ejecuten modelos con menor coste."
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/retail-consumer/amazon-buy-decarts-ai-chip-optimization-tech-latest-ai-talent-grab-2026-11-23/",
+          "publishedAt": "2026-11-23"
+        }
+      ]
+    },
+    {
+      "storyKey": "netherlands-dpa-ai-smart-glasses-privacy-warning-november-2026",
+      "category": "Web y privacidad",
+      "title": "Países Bajos alerta sobre las gafas inteligentes que graban a terceros",
+      "sentences": [
+        "La autoridad neerlandesa de protección de datos ha pedido a los consumidores que eviten comprar gafas con cámaras y funciones de inteligencia artificial.",
+        "El organismo advierte de que grabar continuamente a otras personas en espacios públicos suele vulnerar las normas de privacidad aplicables.",
+        "También ha detectado respuestas erróneas y potencialmente peligrosas en pruebas de dispositivos, incluidas interpretaciones incorrectas de información médica.",
+        "La advertencia no constituye una prohibición general, pero aumenta la presión regulatoria sobre los fabricantes y el uso de estos accesorios."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/23/dutch-privacy-authority-urges-consumers-not-to-buy-pervert-glasses/",
+          "publishedAt": "2026-11-23T15:29:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "crowdstrike-zscaler-43-9b-acquisition-agreement-november-2026",
+      "category": "Seguridad",
+      "title": "CrowdStrike acuerda comprar Zscaler por 43.900 millones de dólares",
+      "sentences": [
+        "CrowdStrike y Zscaler han anunciado un acuerdo de adquisición mediante intercambio de acciones valorado en 43.900 millones de dólares.",
+        "La operación combinaría la protección de dispositivos de CrowdStrike con los servicios de acceso de confianza cero de Zscaler.",
+        "Las compañías sostienen que la integración permitirá ofrecer una defensa empresarial más completa frente a ataques y riesgos derivados de la inteligencia artificial.",
+        "El cierre sigue sujeto a autorizaciones regulatorias y está previsto aproximadamente dentro de un año, por lo que la compra todavía no está completada."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/23/crowdstrike-to-acquire-zscaler-for-44-billion/",
+          "publishedAt": "2026-11-23T16:20:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "meta-reevaluates-2030-net-zero-target-sustainability-2026",
+      "category": "Empresas",
+      "title": "Meta reconsidera su objetivo de emisiones netas cero para 2030",
+      "sentences": [
+        "Meta ha reconocido en su nuevo informe de sostenibilidad que está revisando el calendario de su compromiso de emisiones netas cero para 2030.",
+        "La compañía también está reevaluando los hitos intermedios y no ha anunciado todavía una fecha alternativa para alcanzar el objetivo.",
+        "Sus responsables sostienen que mantienen el compromiso de reducir emisiones y seguir publicando informes anuales sobre los avances.",
+        "El cambio refleja las dificultades de compatibilizar los objetivos ambientales con la expansión de centros de datos y servicios de inteligencia artificial."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/23/meta-throws-out-its-net-zero-goal-its-competitors-should-be-furious/",
+          "publishedAt": "2026-11-23T17:13:00Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "google-gemini-4-neon-argon-antigravity-model-choice-november-2026",
+      "category": "Google",
+      "title": "Gemini incorpora Neon y mantiene varias familias para programar",
+      "sentences": [
+        "Google ha ampliado su catálogo de Gemini 4 con Neon, que sustituye a Argon como opción en la aplicación principal de Gemini.",
+        "Sin embargo, Neon y Argon siguen disponibles en Antigravity junto con otras variantes como Carbon e Hydrogen.",
+        "Según el análisis publicado por Xataka, la compañía ha presentado cuatro ramas de esta generación en siete semanas sin explicar claramente qué modelo conviene para cada tarea.",
+        "Para los desarrolladores, la coexistencia de modelos con diferentes capacidades y costes complica la elección de una configuración estable para sus proyectos."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/robotica-e-ia/google-ha-convertido-gemini-tabla-periodica-problema-que-ahora-hay-dos-modelos-programacion-ninguna-pista-cual-elegir",
+          "publishedAt": "2026-11-23T12:43:59Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "fbi-ncic-database-suspected-intrusion-november-2026",
+      "category": "Seguridad",
+      "title": "El FBI investiga una posible intrusión en su base nacional de datos policiales",
+      "sentences": [
+        "El FBI investiga un posible acceso no autorizado al National Crime Information Center, una base de datos utilizada por agencias policiales estadounidenses.",
+        "El sistema reúne información sobre personas buscadas, desaparecidos, antecedentes y bienes robados, entre otros registros de interés policial.",
+        "Associated Press señala que el alcance de la supuesta intrusión todavía se desconoce y que el organismo no ha ofrecido detalles públicos del incidente.",
+        "Por ahora no está confirmado qué información se habría consultado o extraído, de modo que no debe presentarse como una filtración de datos ya acreditada."
+      ],
+      "sources": [
+        {
+          "name": "Associated Press",
+          "url": "https://apnews.com/article/d066cff87a64a564db0a00172c124972",
+          "publishedAt": "2026-11-21"
+        }
+      ]
+    },
+    {
+      "storyKey": "samsung-spain-b2b-enterprise-device-sales-share-2026",
+      "category": "Empresas",
+      "title": "Samsung revela el peso creciente de sus ventas empresariales en España",
+      "sentences": [
+        "Samsung España ha detallado que su división dirigida a empresas aporta alrededor del 30 % de las ventas nacionales de móviles, tabletas, portátiles y dispositivos ponibles.",
+        "La compañía señala que su cuota de mercado empresarial en valor se acerca al 38 % durante la primera mitad de 2026.",
+        "Su propuesta combina equipos Enterprise Edition con administración, soporte y herramientas de seguridad Samsung Knox para organizaciones.",
+        "Samsung pretende aumentar su presencia entre pequeñas y medianas empresas y aspira a crecer a doble dígito en el negocio B2B durante 2027."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/empresas-y-economia/todos-conocemos-a-samsung-sus-moviles-sus-televisores-gran-tapada-su-division-empresas",
+          "publishedAt": "2026-11-22"
+        }
+      ]
+    }
+  ]
+}
