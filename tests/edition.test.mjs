@@ -14,6 +14,25 @@ test('rejects the old one-headline English edition, wrong dates and short snippe
  const z=input();z.articles[0].sentences=['Un extracto breve.'];assert.throws(()=>validateEdition(z,z.date),/4–5/);
  const english=input();english.articles[0].sentences=['The company has released a major software update for all its customers.','The new version fixes a security issue that could expose private account details.','Customers can install the new software using the settings menu on their devices.','This change is available now and protects the information stored on the phone.'];assert.throws(()=>validateEdition(english,english.date),/español/);
 });
+test('accepts explicitly short daily editions and keeps the checks for full summaries',()=>{
+ for(const count of [1,2,3,9]){
+  const edition=input();
+  edition.shortEdition=true;
+  edition.articles=edition.articles.slice(0,count);
+  assert.equal(validateEdition(edition,edition.date).articles.length,count);
+ }
+ const short={...input(),shortEdition:true};
+ assert.throws(()=>validateEdition(short,short.date),/1–9/);
+ short.articles=[];
+ assert.throws(()=>validateEdition(short,short.date),/1–9/);
+ short.articles=input().articles.slice(0,2);
+ assert.throws(()=>validateEdition(short,short.date,{extra:true}),/edición extra/);
+ short.articles[1].sources[0].url='https://medio0.example/noticia-1';
+ assert.throws(()=>validateEdition(short,short.date),/dominio distinto/);
+ short.articles=short.articles.slice(0,1);
+ short.articles[0].sentences=['Un titular sin resumen.'];
+ assert.throws(()=>validateEdition(short,short.date),/4–5/);
+});
 test('rejects duplicate topics, homepages and insufficient source diversity',()=>{
  const x=input();x.articles[1].storyKey=x.articles[0].storyKey;assert.throws(()=>validateEdition(x,x.date),/repetidos/);
  const y=input();y.articles[0].sources[0].url='https://example.com/';assert.throws(()=>validateEdition(y,y.date),/portada/);
@@ -85,7 +104,10 @@ test('push and manual modes preserve draft preparation and explicit archive date
 function memoryStore(){const docs=new Map();return {doc:path=>({get:async()=>({exists:docs.has(path),data:()=>docs.get(path)}),create:async value=>{if(docs.has(path))throw {code:6};docs.set(path,value);},set:async value=>docs.set(path,value)}),docs};}
 const tokenDoc={ref:{path:'users/test/tokens/device',delete:async()=>{}},data:()=>({token:'private-test-token'})};
 test('retries and concurrent runs send only once per device and edition',async()=>{
- const db=memoryStore();let sends=0;const args={db,tokenDoc,date:'2026-11-01',articles:5,messaging:{send:async()=>{sends++;}}};
+ const db=memoryStore();let sends=0;const args={db,tokenDoc,date:'2026-11-01',articles:1,messaging:{send:async message=>{
+  assert.equal(message.data.body,'1 noticia resumida en español. Abre la edición.');
+  sends++;
+ }}};
  const results=await Promise.all([deliverOnce(args),deliverOnce(args)]);assert.equal(sends,1);assert.ok(results.includes('accepted'));assert.equal(await deliverOnce(args),'skipped');assert.equal(sends,1);
 });
 test('ambiguous FCM errors never cause an automatic duplicate',async()=>{

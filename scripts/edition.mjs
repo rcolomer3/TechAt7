@@ -75,10 +75,18 @@ function validateEditionEvents(items,storyKeys,editionDate){
  });
 }
 
-export function validateEdition(input,expectedDate){
+export function validateEdition(input,expectedDate,{extra=false}={}){
  if(input?.schemaVersion!==1||input.language!=='es'||input.producer!=='chatgpt')throw new Error('La edición debe proceder de ChatGPT y estar en español.');
  if(!/^\d{4}-\d{2}-\d{2}$/.test(input.date)||input.date!==expectedDate||new Date(input.date+'T12:00:00Z').toISOString().slice(0,10)!==input.date)throw new Error('Fecha de edición incorrecta.');
- if(!Array.isArray(input.articles)||input.articles.length<10||input.articles.length>20)throw new Error('Se necesitan 10–20 noticias completas; no se publica una edición incompleta.');
+ if(input.shortEdition!==undefined&&input.shortEdition!==true)throw new Error('shortEdition debe ser true u omitirse.');
+ const shortEdition=input.shortEdition===true;
+ if(shortEdition&&extra)throw new Error('La edición extra requiere 10–20 noticias y no admite el formato corto.');
+ const articleCount=Array.isArray(input.articles)?input.articles.length:0;
+ if(shortEdition){
+  if(articleCount<1||articleCount>9)throw new Error('Una edición corta debe tener 1–9 noticias completas.');
+ }else if(articleCount<10||articleCount>20){
+  throw new Error('Se necesitan 10–20 noticias completas o marcar una edición diaria corta.');
+ }
  const urls=new Set(),topics=new Set(),titles=new Set(),domains=new Set();
  const articles=input.articles.map(item=>{
   const title=plain(item.title),topicKey=titleKey(item.storyKey);
@@ -102,7 +110,8 @@ export function validateEdition(input,expectedDate){
   const image=optionalImage(item.image);
   return {id:hash(url),title,summary,...(image?{image}:{}),category:item.category,source:sources.map(s=>s.name).join(' · '),url,publishedAt:sources[0].publishedAt,sources,topicKey};
  });
- if(domains.size<3)throw new Error('Se necesitan al menos tres fuentes diferentes en la edición.');
+ const minimumDomains=Math.min(3,articleCount);
+ if(domains.size<minimumDomains)throw new Error(minimumDomains===3?'Se necesitan al menos tres fuentes diferentes en la edición.':'Cada noticia de una edición con dos artículos requiere un dominio distinto.');
  const events=validateEditionEvents(input.events===undefined?[]:input.events,topics,input.date);
  return {date:input.date,language:'es',editorialVersion:2,summaryMethod:'chatgpt-researched',articles,...(events.length?{events}:{})};
 }
@@ -127,7 +136,8 @@ export async function deliverOnce({db,messaging,tokenDoc,date,articles}){
   return 'uncertain';
  }
  try{
-  await messaging.send({token:tokenDoc.data().token,data:{title:'Ya tienes las noticias de hoy',body:`${articles} noticias resumidas en español. Abre la edición.`,date},webpush:{headers:{TTL:'86400',Urgency:'normal'}}});
+  const countText=articles===1?'1 noticia resumida':`${articles} noticias resumidas`;
+  await messaging.send({token:tokenDoc.data().token,data:{title:'Ya tienes las noticias de hoy',body:`${countText} en español. Abre la edición.`,date},webpush:{headers:{TTL:'86400',Urgency:'normal'}}});
  }catch(error){
   const invalid=['messaging/registration-token-not-registered','messaging/invalid-registration-token'].includes(error.code);
   await delivery.set({state:invalid?'invalid':'uncertain',code:error.code||'transport-error'},{merge:true});

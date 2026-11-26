@@ -44,7 +44,7 @@ async function publish({date,archive,prepare,optional,extra},report){
   throw new Error('ChatGPT todavía no ha entregado una edición para '+date+'. No se publican extractos RSS ni se envían avisos.');
  }
  let edition;
- try{edition=validateEdition(input,date);}
+ try{edition=validateEdition(input,date,{extra});}
  catch(error){
   if(!scheduled)throw error;
   report.status='invalid';

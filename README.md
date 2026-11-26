@@ -8,7 +8,7 @@ PWA personal React/Vite con Google Authentication, Firestore, notificaciones FCM
 
 No se utiliza Gemini, Ollama ni una API de IA de pago. GitHub no genera noticias. El antiguo extractor RSS se ha retirado del proceso de publicación para impedir que un solo titular en inglés se presente como edición diaria.
 
-El contrato de edición y las instrucciones editoriales están en [editions/README.md](editions/README.md). Se requieren 10–20 noticias (objetivo 15–20), 4–5 frases en español por tarjeta, fuentes verificables al artículo concreto, al menos tres dominios de fuentes y ausencia de repeticiones. Los controles de idioma, estructura, fechas y duplicados son automáticos. La comprobación de hechos corresponde a la tarea de ChatGPT: estos validadores no certifican por sí solos la veracidad del contenido.
+El contrato de edición y las instrucciones editoriales están en [editions/README.md](editions/README.md). La edición habitual reúne 10–20 noticias (objetivo 15–20). Tras ampliar la búsqueda, se puede publicar y avisar con una edición diaria corta de 1–9 noticias verificadas. Se mantienen las 4–5 frases en español por tarjeta, los enlaces a artículos concretos y los controles de duplicados y diversidad de fuentes. Los controles de idioma, estructura, fechas y duplicados son automáticos. La comprobación de hechos corresponde a la tarea de ChatGPT: estos validadores no certifican por sí solos la veracidad del contenido.
 
 La tarea de ChatGPT debe poder usar el plugin GitHub y publicar en rcolomer3/TechAt7. El repositorio ya está autorizado para escritura en ChatGPT Codex Connector. Hay que validar también una ejecución real de la tarea programada; la autorización de un chat no demuestra esa capacidad por sí sola.
 
