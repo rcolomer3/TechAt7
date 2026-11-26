@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-26",
+  "language": "es",
+  "producer": "chatgpt",
+  "articles": [
+    {
+      "storyKey": "whatsapp-scheduled-messages-november-2026",
+      "category": "Redes sociales",
+      "title": "WhatsApp empieza a desplegar la programación de mensajes",
+      "sentences": [
+        "WhatsApp ha empezado a distribuir una función para programar mensajes en conversaciones individuales y de grupo.",
+        "El usuario puede elegir una fecha situada entre diez minutos y catorce días después de preparar el envío.",
+        "La función admite texto, fotos y vídeos y permite consultar y borrar los mensajes pendientes.",
+        "WhatsApp explica que el mensaje se enviará aunque el teléfono esté apagado y conservará el cifrado de extremo a extremo."
+      ],
+      "sources": [
+        {
+          "name": "WhatsApp",
+          "url": "https://blog.whatsapp.com/say-it-at-the-right-time-with-scheduled-messages?lang=es",
+          "publishedAt": "2026-11-25"
+        },
+        {
+          "name": "El País",
+          "url": "https://elpais.com/tecnologia/2026-11-26/whatsapp-ya-permite-programar-mensajes-algunos-es-mejor-enviarlos-mas-tarde.html",
+          "publishedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "storyKey": "onepassword-backend-security-incident-november-2026",
+      "category": "Seguridad",
+      "title": "1Password confirma la exposición de datos de cuenta de algunos clientes",
+      "sentences": [
+        "1Password ha comunicado que una intrusión en sus sistemas internos expuso nombres, correos electrónicos y otros datos de cuenta de un grupo de clientes.",
+        "La empresa afirma que el incidente dejó intactos el contenido de las bóvedas de contraseñas y las claves que lo protegen.",
+        "La compañía restauró versiones limpias de los servicios afectados y renovó o revocó las credenciales internas que pudieron quedar expuestas.",
+        "El proveedor recomienda desconfiar de correos inesperados que pidan aceptar invitaciones o iniciar recuperaciones de cuenta."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/seguridad/1password-confirma-robo-datos-clientes-hackeo-cuenta-github-empleado",
+          "publishedAt": "2026-11-26T10:33:51Z"
+        },
+        {
+          "name": "1Password",
+          "url": "https://1password.com/blog/update-on-nov-2026-security-incident",
+          "publishedAt": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "storyKey": "x-teen-protected-accounts-parental-controls-november-2026",
+      "category": "Redes sociales",
+      "title": "X activa por defecto las cuentas protegidas para adolescentes",
+      "sentences": [
+        "X ha introducido protecciones por defecto y controles parentales para usuarios de entre trece y diecisiete años.",
+        "El perfil protegido limita quién puede ver sus publicaciones y la plataforma restringe la exposición a contenido sensible.",
+        "La red social también desactiva la publicidad personalizada para esas cuentas.",
+        "El sistema permite vincular una cuenta adulta a la del adolescente para supervisar y ajustar determinadas opciones de seguridad."
+      ],
+      "sources": [
+        {
+          "name": "Europa Press",
+          "url": "https://www.europapress.es/portaltic/socialmedia/noticia-red-social-protege-defecto-cuentas-adolescentes-anade-controles-parentales-20261126115914.html",
+          "publishedAt": "2026-11-26"
+        },
+        {
+          "name": "Engadget",
+          "url": "https://www.engadget.com/2329049/x-is-adding-its-first-ever-parental-controls/",
+          "publishedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "storyKey": "anthropic-messages-api-rust-migration-november-2026",
+      "category": "Desarrollo",
+      "title": "Anthropic pasa de Python a Rust la interfaz que da acceso a Claude",
+      "sentences": [
+        "Anthropic ha explicado cómo migró a Rust la interfaz principal que usan clientes y aplicaciones propias para acceder a Claude.",
+        "El equipo utilizó la versión de Python en producción como referencia para comprobar que la nueva implementación conservaba el comportamiento esperado.",
+        "La compañía calcula que el nuevo servicio utiliza alrededor de un setenta por ciento menos de CPU por solicitud.",
+        "También informa de que el tiempo mediano hasta el primer fragmento de respuesta bajó aproximadamente un veinte por ciento."
+      ],
+      "sources": [
+        {
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/research/migrating-api-to-rust",
+          "publishedAt": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "storyKey": "spacex-starmind-fcc-authorization-november-2026",
+      "category": "Ciencia",
+      "title": "La FCC autoriza la constelación Starmind de SpaceX",
+      "sentences": [
+        "La Comisión Federal de Comunicaciones de Estados Unidos ha autorizado a SpaceX a desplegar hasta un millón de satélites Starmind para centros de datos orbitales.",
+        "El permiso habilita seis capas orbitales entre los quinientos y algo más de mil kilómetros de altitud.",
+        "Las alturas aprobadas quedan por debajo del máximo que había pedido la empresa.",
+        "Operadores satelitales y asociaciones astronómicas han expresado preocupación por el aumento de objetos en órbita y sus efectos sobre las observaciones."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/espacio/hay-batalla-controlar-orbita-baja-esta-ganando-spacex-tiene-permiso-para-colocar-otro-millon-satelites",
+          "publishedAt": "2026-11-26T11:26:03Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "huawei-us-federal-jury-verdict-november-2026",
+      "category": "Regulación",
+      "title": "Un jurado federal declara culpable a Huawei de varios cargos en Estados Unidos",
+      "sentences": [
+        "Un jurado del distrito este de Nueva York ha declarado culpables a Huawei y a tres filiales tras un juicio de tres meses.",
+        "Entre los cargos figuran conspiración para robar secretos comerciales, fraude bancario y violaciones de sanciones relacionadas con Irán.",
+        "La acusación presentó pruebas relativas a tecnología de routers, antenas y equipos de pruebas para pantallas táctiles.",
+        "El tribunal ha fijado para septiembre de 2027 la imposición de la pena, que puede incluir multas y restitución."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/empresas-y-economia/huawei-declarada-culpable-fraude-robo-secretos-eeuu-absuelta-operar-como-organizacion-criminal",
+          "publishedAt": "2026-11-25T15:16:55Z"
+        },
+        {
+          "name": "Departamento de Justicia de Estados Unidos",
+          "url": "https://www.justice.gov/opa/pr/chinese-tech-giant-huawei-and-subsidiaries-convicted-sanctions-violations-fraud-conspiracy",
+          "publishedAt": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "storyKey": "xiaomi-q3-2026-smartphone-memory-margin",
+      "category": "Android",
+      "title": "Xiaomi compensa parte de la caída en móviles con precios medios más altos",
+      "sentences": [
+        "Xiaomi registró una caída de los envíos de teléfonos en el tercer trimestre mientras el encarecimiento de la memoria presionaba sus costes.",
+        "El precio medio por dispositivo subió, por lo que los ingresos del negocio de móviles bajaron mucho menos que el volumen de unidades.",
+        "Según el análisis de Xataka, la compañía ha reducido su presencia en los segmentos de precio más bajos y en algunos mercados.",
+        "El presidente de Xiaomi prevé que la presión de los costes de memoria continúe durante 2027."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/empresas-y-economia/xiaomi-ha-construido-su-exito-moviles-baratos-crisis-memorias-le-esta-obligando-a-vender-caro",
+          "publishedAt": "2026-11-25T16:30:29Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "tidal-fully-ai-generated-track-removals-november-2026",
+      "category": "Audio y vídeo",
+      "title": "Tidal anuncia la retirada de música íntegramente generada con IA",
+      "sentences": [
+        "Tidal ha pasado de etiquetar la música generada íntegramente con inteligencia artificial a anunciar su retirada del catálogo.",
+        "La plataforma prevé empezar la retirada el nueve de diciembre y calcula que ha identificado unos veintisiete millones de pistas.",
+        "La política se aplica a canciones generadas de principio a fin con estas herramientas.",
+        "Los artistas y distribuidores pueden recurrir la clasificación si consideran que su música se ha etiquetado por error."
+      ],
+      "sources": [
+        {
+          "name": "Xataka",
+          "url": "https://www.xataka.com/musica/tidal-va-a-borrar-27-millones-canciones-hechas-ia-96-no-ha-sonado-vez-tres-meses",
+          "publishedAt": "2026-11-26T08:30:08Z"
+        }
+      ]
+    },
+    {
+      "storyKey": "new-york-chatbot-toy-moratorium-law-november-2026",
+      "category": "Regulación",
+      "title": "Nueva York aprueba una moratoria para los juguetes con compañeros de IA",
+      "sentences": [
+        "La gobernadora de Nueva York, Kathy Hochul, ha firmado una moratoria de cinco años para los juguetes con chatbots de compañía.",
+        "La ley abarca la fabricación, distribución y venta de esos productos en el estado.",
+        "El texto legislativo se centra en juguetes con sistemas diseñados para simular una relación prolongada con el usuario.",
+        "La medida busca reducir la exposición de los menores a interacciones potencialmente perjudiciales que pueden producirse sin supervisión."
+      ],
+      "sources": [
+        {
+          "name": "WXXI News",
+          "url": "https://www.wxxinews.org/new-york-public-news-network/2026-11-24/new-york-bans-ai-chatbot-toys",
+          "publishedAt": "2026-11-24"
+        },
+        {
+          "name": "Asamblea del Estado de Nueva York",
+          "url": "https://nyassembly.gov/leg/?Actions=Y&Chamber%26nbspVideo%2FTranscript=Y&Committee%26nbspVotes=Y&Floor%26nbspVotes=Y&LFIN=Y&Memo=Y&Summary=Y&Text=Y&bn=A11144B&default_fld=&leg_video=&term=",
+          "publishedAt": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "storyKey": "character-ai-bankruptcy-user-data-sale-objection-november-2026",
+      "category": "Web y privacidad",
+      "title": "Una coalición de fiscales impugna la venta de datos de Character.AI",
+      "sentences": [
+        "Una coalición de fiscales generales se opone al plan de vender datos de usuarios como parte del proceso concursal de Character.AI.",
+        "Los fiscales sostienen que la propuesta alcanza conversaciones privadas y que las garantías para los usuarios resultan insuficientes.",
+        "Las cuentas afectadas por la propuesta incluyen a menores, lo que aumenta la preocupación de los estados por la información que podría transferirse.",
+        "La objeción pide que el tribunal concursal rechace la operación en los términos planteados."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/25/state-ags-fight-character-ais-plan-to-auction-off-users-private-chats/",
+          "publishedAt": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "storyKey": "openai-chatgpt-chat-work-unified-pilot-november-2026",
+      "category": "Inteligencia artificial",
+      "title": "ChatGPT empieza a unir Chat y Work para un grupo de usuarios Pro",
+      "sentences": [
+        "OpenAI ha empezado a probar una experiencia unificada de Chat y Work con un grupo reducido de suscriptores Pro.",
+        "Con el cambio, ambas funciones pasan a compartir un contador de uso para los modelos sujetos a la cuota.",
+        "La compañía ha explicado a TechCrunch que los usuarios más intensivos podrían alcanzar ese límite antes.",
+        "Las conversaciones con el modelo Instant quedan fuera del contador y siguen disponibles cuando se agota la cuota."
+      ],
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/",
+          "publishedAt": "2026-11-25"
+        }
+      ]
+    }
+  ]
+}
