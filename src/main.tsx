@@ -36,7 +36,23 @@ function App(){
  const archiveStart=useRef<HTMLDivElement>(null);
  const readingHeader=useRef<HTMLDivElement>(null);
  const archiveSearch=useRef<HTMLInputElement>(null);
- useEffect(()=>{const receive=(event:MessageEvent)=>{if(event.data?.type==='radar-digest')window.dispatchEvent(new Event('radar-digest'));};navigator.serviceWorker?.addEventListener('message',receive);return()=>navigator.serviceWorker?.removeEventListener('message',receive);},[]);
+ useEffect(()=>{
+  const receive=(event:MessageEvent)=>{
+   if(event.data?.type==='radar-digest')window.dispatchEvent(new Event('radar-digest'));
+  };
+  const clearBadge=()=>{
+   if(configured&&document.visibilityState==='visible'){
+    void navigator.clearAppBadge?.().catch(()=>{});
+   }
+  };
+  clearBadge();
+  navigator.serviceWorker?.addEventListener('message',receive);
+  document.addEventListener('visibilitychange',clearBadge);
+  return()=>{
+   navigator.serviceWorker?.removeEventListener('message',receive);
+   document.removeEventListener('visibilitychange',clearBadge);
+  };
+ },[]);
  const [data,setData]=useState<RadarData>(configured?{digests:[],updates:[],events:[]}:demo),[loading,setLoading]=useState(true),[error,setError]=useState(''),[notice,setNotice]=useState(''),[user,setUser]=useState<User|null>(null),[busy,setBusy]=useState(false),[online,setOnline]=useState(navigator.onLine);
  const [syncing,setSyncing]=useState(false),[lastSync,setLastSync]=useState<number|null>(null),[syncIssue,setSyncIssue]=useState(false),[newEdition,setNewEdition]=useState<string|null>(null),[showAll,setShowAll]=useState(false);
  const knownEdition=useRef<string|null>(null);
