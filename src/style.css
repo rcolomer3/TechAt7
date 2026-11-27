@@ -174,7 +174,7 @@ main{max-width:1300px;margin:auto;padding:52px 48px 60px}.heading {
  letter-spacing:-.035em;
 }
 .login-subtitle{margin:6px 0 18px;color:var(--secondary);font-size:14px;line-height:1.5}
-.auth-stage{display:grid;gap:10px}
+.auth-stage{display:grid;align-content:center;gap:10px;min-height:145px}
 .auth-notice{
  min-height:76px;
  display:grid;
@@ -187,15 +187,25 @@ main{max-width:1300px;margin:auto;padding:52px 48px 60px}.heading {
  line-height:1.5;
 }
 .auth-notice p{margin:0;color:var(--secondary);font-size:13px}
-.auth-status-line{display:flex;align-items:center;justify-content:center;gap:8px}
+.auth-loading{
+ display:grid;
+ justify-items:center;
+ gap:8px;
+ font-size:14px;
+ line-height:1.5;
+}
+.auth-loading strong{font-weight:600}
+.auth-loading p{margin:0;color:var(--secondary);font-size:12px}
 .auth-spinner{
- flex:none;
- width:16px;
- height:16px;
- border:2px solid var(--border);
+ width:25px;
+ height:25px;
+ border:3px solid var(--border);
  border-top-color:var(--accent);
  border-radius:50%;
  animation:spin .8s linear infinite;
+}
+@media(forced-colors:active){
+ .auth-spinner{forced-color-adjust:none;border-color:Canvas;border-top-color:CanvasText}
 }
 .google-login{
  width:100%;
@@ -209,7 +219,6 @@ main{max-width:1300px;margin:auto;padding:52px 48px 60px}.heading {
  font-weight:600;
 }
 .google-login svg{flex:none}
-.google-login[data-preparing="true"]{visibility:hidden}
 .login-error{
  margin:0;
  padding:10px 12px;

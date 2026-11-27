@@ -17,7 +17,6 @@ import {useReadingPosition,readingId} from './reading-position';
 import {readingTabs} from './reading-state';
 import {ShareButton} from './share-button';
 import {categoryColor} from './categories';
-import './style.css';
 const pageSizes=[10,20,30,50];
 const pageSizeKey='techat7-archive-page-size';
 const tabs=readingTabs;
@@ -177,32 +176,38 @@ function App(){
    onSave={()=>action(()=>saved.toggle(article))} expanded={reading.expanded.includes(key)}
    onToggle={()=>reading.toggleExpanded(key)} onOpenSource={reading.capture}/>;
  }
- const preparingSession=!authReady||((!configured||user)&&(!reading.ready||!categoryPrefs.ready));
+ const preparingSession=!authReady
+  ||((!configured||user)&&(!reading.ready||!categoryPrefs.ready))
+  ||(configured&&!!user&&loading);
  if(preparingSession||(configured&&!user)){
-  const status=preparingSession
-   ? authReady ? 'Preparando tu edición…' : 'Comprobando sesión…'
-   : busy ? 'Conectando con Google…' : 'Accede a tu cuenta';
-  const detail=preparingSession
-   ? authReady ? 'Cargando tu espacio de lectura.' : 'Buscando tu sesión guardada.'
-   : busy ? 'Completa el acceso en la ventana de Google.' : 'Lee las noticias del día y accede a tus guardadas.';
+  const showLoading=preparingSession||busy;
+  const status=!authReady
+   ? 'Comprobando sesión…'
+   : preparingSession ? 'Preparando tu edición…' : 'Conectando con Google…';
+  const detail=!authReady
+   ? 'Buscando tu sesión guardada.'
+   : preparingSession ? 'Cargando tu espacio de lectura.' : 'Completa el acceso en la ventana de Google.';
   return <div className="auth-screen">
    <main className="login-card" aria-labelledby="login-title">
     <AppIcon className="radar-mark"/>
     <h1 id="login-title">TechAt7</h1>
     <p className="login-subtitle">Tu resumen diario de tecnología</p>
     <div className="auth-stage">
-     <div className="auth-notice" role="status" aria-atomic="true">
-      <div className="auth-status-line">
-       {(preparingSession||busy)&&<span className="auth-spinner" aria-hidden="true"/>}
-       <strong>{status}</strong>
-      </div>
+     {showLoading?<div className="auth-loading" role="status" aria-atomic="true">
+      <span className="auth-spinner" aria-hidden="true"/>
+      <strong>{status}</strong>
       <p>{detail}</p>
-     </div>
-     <button type="button" className="google-login" data-preparing={preparingSession} disabled={preparingSession||busy} onClick={()=>action(login)}>
-      <GoogleIcon/>
-      <span>Entrar con Google</span>
-     </button>
-     {!preparingSession&&!busy&&notice&&<p className="login-error" role="alert">{notice}</p>}
+     </div>:<>
+      <div className="auth-notice">
+       <strong>Accede a tu cuenta</strong>
+       <p>Lee las noticias del día y accede a tus guardadas.</p>
+      </div>
+      <button type="button" className="google-login" onClick={()=>action(login)}>
+       <GoogleIcon/>
+       <span>Entrar con Google</span>
+      </button>
+      {notice&&<p className="login-error" role="alert">{notice}</p>}
+     </>}
     </div>
    </main>
   </div>;
