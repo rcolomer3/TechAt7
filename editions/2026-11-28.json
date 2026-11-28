@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-28",
+  "language": "es",
+  "producer": "chatgpt",
+  "shortEdition": true,
+  "articles": [
+    {
+      "storyKey": "openai-gpt-62-correccion-cuotas-noviembre-2026",
+      "category": "Inteligencia artificial",
+      "title": "OpenAI corrige el cómputo de cuota de GPT-6.2 Astra y Sol",
+      "sentences": [
+        "OpenAI aplicó por error un descuento al contabilizar el uso de Astra y Sol desde su lanzamiento.",
+        "Tras la corrección, el mismo trabajo consume más cuota que la semana anterior.",
+        "La compañía estima que el límite se alcanza un 40 % más rápido con Astra y un 25 % con Sol.",
+        "OpenAI descarta cobrar la diferencia retroactivamente y anunció un restablecimiento de cuota para Go, Plus, Pro y Business."
+      ],
+      "sources": [
+        {
+          "name": "Portaltic",
+          "url": "https://www.europapress.es/portaltic/sector/noticia-openai-corrige-error-facturacion-gpt-62-astra-sol-usuarios-agotaran-limites-40-25-mas-rapido-20261127105257.html",
+          "publishedAt": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "storyKey": "microsoft-365-retirada-companions-windows-2026",
+      "category": "Microsoft",
+      "title": "Microsoft retirará Calendario, Personas y Archivos de Microsoft 365 Companions",
+      "sentences": [
+        "Las tres aplicaciones complementarias dejarán de funcionar el 16 de diciembre, según Microsoft.",
+        "Estas aplicaciones ofrecían accesos desde Windows a citas, contactos y documentos de trabajo.",
+        "Microsoft indica a los administradores que detengan las instalaciones y retiren las copias de los equipos gestionados.",
+        "Outlook, Teams y el Explorador de archivos siguen siendo opciones para acceder a esa información."
+      ],
+      "sources": [
+        {
+          "name": "Profesional Review",
+          "url": "https://www.profesionalreview.com/2026/11/27/microsoft-365-apps-complementarias-windows/",
+          "publishedAt": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "storyKey": "google-play-declaracion-comerciante-eee-reino-unido-2026",
+      "category": "Google",
+      "title": "Google Play pedirá a los desarrolladores que declaren si son comerciantes",
+      "sentences": [
+        "Google Play pide a los desarrolladores que declaren su condición de comerciante antes del 1 de febrero.",
+        "La declaración será visible en el Espacio Económico Europeo y el Reino Unido.",
+        "Quienes se declaren comerciantes deberán enlazar las condiciones del servicio de sus aplicaciones y, si usan una cuenta personal, facilitar datos de contacto.",
+        "Google advierte de que una declaración incorrecta o ausente puede provocar la retirada de aplicaciones o de la cuenta."
+      ],
+      "sources": [
+        {
+          "name": "Portaltic",
+          "url": "https://www.europapress.es/portaltic/software/noticia-google-exigira-desarrolladores-revelar-estatus-comerciante-datos-contacto-europa-20261127095408.html",
+          "publishedAt": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "storyKey": "google-home-gemini-camaras-actualizacion-noviembre-2026",
+      "category": "Domótica",
+      "title": "Google Home mejora el control por voz y añade sirenas remotas para algunas cámaras",
+      "sentences": [
+        "Google ha actualizado la versión de acceso anticipado de Gemini para el hogar con respuestas más rápidas a órdenes domóticas.",
+        "La actualización corrige casos en los que el asistente perdía el contexto entre dos órdenes sobre las mismas luces.",
+        "En pantallas inteligentes, Gemini también muestra las fuentes cuando responde con información obtenida de la web.",
+        "La aplicación Google Home permite activar o detener una sirena de treinta segundos al ver el vídeo en directo de cámaras compatibles."
+      ],
+      "sources": [
+        {
+          "name": "Portaltic",
+          "url": "https://www.europapress.es/portaltic/software/noticia-google-mejora-velocidad-fluidez-gemini-hogar-introduce-novedades-camara-termostato-google-home-20261126125318.html",
+          "publishedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "storyKey": "sber-gigachat-4-publicacion-pesos-noviembre-2026",
+      "category": "Inteligencia artificial",
+      "title": "Sber publica los pesos de dos modelos GigaChat 4 con licencias distintas",
+      "sentences": [
+        "El equipo de GigaChat ha publicado dos modelos, uno de 708.000 millones de parámetros y otro de 37.000 millones.",
+        "Ambos usan una arquitectura que activa solo una parte de sus parámetros para procesar cada unidad de texto.",
+        "La versión grande se distribuye con licencia MIT y la pequeña con una licencia no comercial para particulares.",
+        "Las fichas de ambos modelos indican que admiten un contexto de hasta 1.048.576 unidades de texto."
+      ],
+      "sources": [
+        {
+          "name": "Equipo de GigaChat",
+          "url": "https://huggingface.co/ai-sage/GigaChat4-708B-A41B",
+          "publishedAt": "2026-11-26"
+        },
+        {
+          "name": "Equipo de GigaChat",
+          "url": "https://huggingface.co/ai-sage/GigaChat4-37B-A4B",
+          "publishedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "storyKey": "zoom-herramientas-gobernanza-agentes-diciembre-2026",
+      "category": "Cloud",
+      "title": "Zoom prepara controles empresariales para los agentes de IA",
+      "sentences": [
+        "Zoom prevé incorporar en diciembre un panel central para administrar la actividad de sus herramientas de inteligencia artificial.",
+        "El panel dará a los administradores más control sobre los agentes que crean los usuarios de la organización.",
+        "En enero está prevista la llegada de reglas personalizadas para adaptar el uso de la IA a políticas internas.",
+        "Entre los ejemplos figura exigir una revisión humana antes de compartir determinados contenidos generados con clientes."
+      ],
+      "sources": [
+        {
+          "name": "Portaltic",
+          "url": "https://www.europapress.es/portaltic/empresas/noticia-nuevas-herramientas-zoom-ofreceran-empresas-mayor-control-visibilidad-inteligencia-artificial-20261127115557.html",
+          "publishedAt": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "storyKey": "whatsapp-beta-android-esim-viajes-1global-2026",
+      "category": "Android",
+      "title": "Una beta de WhatsApp apunta a la compra de eSIM de viaje",
+      "sentences": [
+        "Portaltic recoge que una versión beta de WhatsApp para Android contiene indicios de una función para contratar datos móviles de viaje.",
+        "La herramienta está en desarrollo y la información publicada apunta a una colaboración con el operador 1Global.",
+        "El usuario podría seleccionar un plan según su destino y seguir usando su número habitual en WhatsApp.",
+        "Todavía se desconoce cuándo estará disponible la compra de planes dentro de la aplicación."
+      ],
+      "sources": [
+        {
+          "name": "Portaltic",
+          "url": "https://www.europapress.es/portaltic/socialmedia/noticia-whatsapp-prepara-funcion-esim-contratar-directamente-app-planes-datos-moviles-extranjero-20261126161327.html",
+          "publishedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "storyKey": "amazon-meta-negociaciones-muse-tienda-noviembre-2026",
+      "category": "Empresas",
+      "title": "Amazon y Meta negocian el posible regreso del asistente Muse a la tienda",
+      "sentences": [
+        "Amazon y Meta mantienen conversaciones sobre el acceso del asistente de compras Muse, según fuentes citadas por Fortune y recogidas por Portaltic.",
+        "Amazon bloqueó en septiembre al agente para que dejara de navegar por su tienda y realizar compras por los usuarios.",
+        "Las conversaciones abarcan cómo se mostrarían los resultados de búsqueda y qué papel tendría la publicidad de Amazon.",
+        "La información publicada no da por cerrado un acuerdo ni señala una fecha para reabrir el acceso."
+      ],
+      "sources": [
+        {
+          "name": "Portaltic",
+          "url": "https://www.europapress.es/portaltic/sector/noticia-amazon-meta-negocian-regreso-agente-ia-muse-tienda-online-condicionado-gestion-anuncios-20261126112653.html",
+          "publishedAt": "2026-11-26"
+        }
+      ]
+    }
+  ]
+}
